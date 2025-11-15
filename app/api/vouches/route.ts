@@ -9,10 +9,22 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const page = parseInt(searchParams.get('page') || '1', 10);
     const limit = parseInt(searchParams.get('limit') || '30', 10);
+    const search = searchParams.get('search') || '';
     const skip = (page - 1) * limit;
+
+    // Build where clause for search
+    const whereClause = search
+      ? {
+          OR: [
+            { authorName: { contains: search, mode: 'insensitive' as const } },
+            { message: { contains: search, mode: 'insensitive' as const } },
+          ],
+        }
+      : {};
 
     const [vouches, total] = await Promise.all([
       prisma.vouch.findMany({
+        where: whereClause,
         skip,
         take: limit,
         orderBy: {
@@ -28,7 +40,7 @@ export async function GET(request: Request) {
           channelId: true,
         },
       }),
-      prisma.vouch.count(),
+      prisma.vouch.count({ where: whereClause }),
     ]);
 
     const totalPages = Math.ceil(total / limit);

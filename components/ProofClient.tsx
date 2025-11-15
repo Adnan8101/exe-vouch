@@ -5,7 +5,7 @@ import useSWR from 'swr';
 import { motion } from 'framer-motion';
 import Pagination from '@/components/Pagination';
 import { ProofSkeleton } from '@/components/Skeletons';
-import { getProofDiscordUrl } from '@/lib/utils';
+import { getDiscordMessageUrl } from '@/lib/utils';
 import Image from 'next/image';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -136,16 +136,20 @@ export default function ProofClient() {
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex-shrink-0">
-                  <img
-                    src={proof.authorName.toLowerCase().includes('damonn') || proof.authorName === '_.damonn'
-                      ? 'https://cdn.discordapp.com/attachments/1439226823404687472/1439247946783916263/f2f44ccfdb64d4e16b948e010c66cfc7.jpg?ex=6919d39a&is=6918821a&hm=cd75421354976686d7bc11e67cb902681464117c37220882116055721eb29622&'
-                      : proof.authorName.toLowerCase().includes('rex') || proof.authorName === 'rex.f'
-                      ? 'https://cdn.discordapp.com/avatars/643480211421265930/0ccf29cf250013d91b12dd21a149ca9c.png?size=1024'
-                      : proof.authorAvatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(proof.authorName)}&background=c9a76f&color=000000&size=128`
-                    }
-                    alt={proof.authorName}
-                    className="w-14 h-14 rounded-full border-2 border-[#c9a76f]/30"
-                  />
+                  {proof.authorAvatar ? (
+                    <img
+                      src={proof.authorId === '643480211421265930' 
+                        ? 'https://cdn.discordapp.com/avatars/643480211421265930/0ccf29cf250013d91b12dd21a149ca9c.png?size=1024'
+                        : proof.authorAvatar
+                      }
+                      alt={proof.authorName}
+                      className="w-14 h-14 rounded-full border-2 border-[#c9a76f]/30"
+                    />
+                  ) : (
+                    <div className="w-14 h-14 rounded-full bg-[#c9a76f] flex items-center justify-center text-black font-bold text-xl">
+                      {proof.authorName.charAt(0).toUpperCase()}
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -185,7 +189,7 @@ export default function ProofClient() {
               )}
 
               <a
-                href={getProofDiscordUrl(proof.messageId)}
+                href={getDiscordMessageUrl(proof.messageId, '1306533976809185323', proof.channelId)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-lg text-[#c9a76f] text-sm font-medium hover:bg-[#c9a76f]/20 hover:border-[#c9a76f]/50 transition-all mt-auto"

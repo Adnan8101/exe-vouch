@@ -31,7 +31,6 @@ export async function GET() {
     return NextResponse.json({
       totalVouches,
       ...stats,
-      decors: decorVouches, // Override with actual count
     });
   } catch (error) {
     console.error('Error fetching summary:', error);

@@ -6,30 +6,40 @@ export function extractCurrencyData(vouches: Array<{ message: string }>) {
     decors: 0,
     owo: 0,
     crypto: 0,
-    ltcGiveaways: 0,
+    cryptoGiveaways: 0,
   };
 
   vouches.forEach((vouch) => {
-    const message = vouch.message.toLowerCase();
+    const message = vouch.message;
 
-    // Extract INR amounts (e.g., "120 inr", "got 120inr", "legit got 120 inr")
-    const inrMatch = message.match(/(\d+)\s*inr/i);
+    // Extract INR amounts - case insensitive, multiple variations
+    // Matches: inr, INR, Inr, rupees, rupee, rs, ₹
+    // Also handles comma-separated numbers (Indian format)
+    const inrMatch = message.match(/([\d,]+)\s*(?:inr|rupees?|rs|₹)/i);
     if (inrMatch) {
-      stats.totalINR += parseInt(inrMatch[1], 10);
+      // Remove commas and parse
+      const amount = parseInt(inrMatch[1].replace(/,/g, ''), 10);
+      // Ignore unrealistic amounts (over 1 crore = 10,000,000)
+      if (!isNaN(amount) && amount <= 10000000) {
+        stats.totalINR += amount;
+      }
     }
 
-    // Count Nitro mentions
-    if (message.includes('nitro')) {
+    // Count Nitro mentions - case insensitive, multiple variations
+    // Matches: nitro, Nitro, NITRO, gift link, server boost, booster, nitro booster
+    if (/nitro\s*booster|server\s*boost|gift\s*link|booster|nitro/i.test(message)) {
       stats.nitro += 1;
     }
 
-    // Count Decor mentions
-    if (message.includes('decor')) {
+    // Count Decor mentions - case insensitive, multiple variations
+    // Matches: profile deco, profile decoration, deco, decor, decoration, decorations
+    if (/profile\s*deco(?:ration)?s?|deco(?:ration)?s?/i.test(message)) {
       stats.decors += 1;
     }
 
-    // Extract OWO amounts (e.g., "1.5m owo", "100k owo", "500 owo")
-    const owoMatch = message.match(/([\d.]+)\s*([km])?\s*owo/i);
+    // Extract OWO amounts - case insensitive, multiple variations
+    // Matches: owo, Owo, OWO, uwu, Uwu, UWU, owo cash, uwu cash
+    const owoMatch = message.match(/([\d.]+)\s*([km])?\s*(?:owo|uwu)(?:\s*cash)?/i);
     if (owoMatch) {
       let amount = parseFloat(owoMatch[1]);
       const multiplier = owoMatch[2]?.toLowerCase();
@@ -43,9 +53,10 @@ export function extractCurrencyData(vouches: Array<{ message: string }>) {
       stats.owo += Math.floor(amount);
     }
 
-    // Count LTC Giveaways (mentions of ltc or litecoin)
-    if (message.includes('ltc') || message.includes('litecoin')) {
-      stats.ltcGiveaways += 1;
+    // Count Crypto Giveaways - case insensitive, multiple variations
+    // Matches: crypto giveaways, ltc, LTC, bitcoin, Bitcoin, btc, BTC
+    if (/crypto\s*giveaways?|litecoin|bitcoin|ltc|btc|eth|ethereum|usdt|doge|dogecoin/i.test(message)) {
+      stats.cryptoGiveaways += 1;
     }
 
     // Extract Crypto amounts in USD (e.g., "0.10$ ltc", "$5 btc", "got 20$ crypto")

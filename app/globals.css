@@ -34,9 +34,36 @@ body {
   background: #d4b786;
 }
 
-/* Smooth animations */
+/* Smooth animations and buttery smooth transitions */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 * {
   scroll-behavior: smooth;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Buttery smooth page transitions */
+body {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Enhanced scrollbar for smoother feel */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c9a76f #1a1a1a;
 }
 
 /* Line clamp utilities */
@@ -58,4 +85,16 @@ body {
 img {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+}
+
+/* Hardware acceleration for smooth animations */
+.motion-element, 
+[class*="motion-"],
+button,
+a,
+input {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
