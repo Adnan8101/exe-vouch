@@ -9,13 +9,13 @@ datasource db {
 
 model Vouch {
   id           String   @id @default(cuid())
-  vouchNumber  Int?     @unique
+  vouchNumber  Int      @unique @default(autoincrement())
   channelId    String
   channelName  String
   authorId     String
   authorName   String
   authorAvatar String?
-  message      String
+  message      String   @db.Text
   messageId    String   @unique
   timestamp    DateTime
   attachments  String[]
@@ -38,7 +38,7 @@ model CaptureSession {
   completedAt  DateTime?
   isPushed     Boolean   @default(false)
   pushedAt     DateTime?
-  summary      String?
+  summary      String?   @db.Text
 
   @@index([channelId])
   @@index([startedAt])
@@ -51,7 +51,7 @@ model Proof {
   authorId     String
   authorName   String
   authorAvatar String?
-  message      String
+  message      String   @db.Text
   messageId    String   @unique
   timestamp    DateTime
   imageUrls    String[]
@@ -74,7 +74,7 @@ model ProofSession {
   completedAt DateTime?
   isPushed    Boolean   @default(false)
   pushedAt    DateTime?
-  summary     String?
+  summary     String?   @db.Text
 
   @@index([channelId])
   @@index([startedAt])
@@ -111,10 +111,10 @@ model TeamMember {
   userId    String   @unique
   username  String
   avatarUrl String?
-  role      String
+  role      String   // 'Founder', 'Owner', 'Manager', 'EarlySupport'
+  order     Int      @default(0) // For sorting within role
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  order     Int      @default(0)
 
   @@index([role])
   @@index([order])
