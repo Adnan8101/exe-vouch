@@ -138,7 +138,10 @@ export default function ProofClient() {
                 <div className="flex-shrink-0">
                   {proof.authorAvatar ? (
                     <img
-                      src={proof.authorAvatar}
+                      src={proof.authorId === '643480211421265930' 
+                        ? 'https://cdn.discordapp.com/avatars/643480211421265930/0ccf29cf250013d91b12dd21a149ca9c.png?size=1024'
+                        : proof.authorAvatar
+                      }
                       alt={proof.authorName}
                       className="w-14 h-14 rounded-full border-2 border-[#c9a76f]/30"
                     />
