@@ -83,3 +83,29 @@ model ProofSession {
   @@index([channelId])
   @@index([startedAt])
 }
+
+model AutoVouchChannel {
+  id          String   @id @default(cuid())
+  guildId     String
+  channelId   String   @unique
+  channelName String
+  isEnabled   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([guildId])
+  @@index([channelId])
+}
+
+model AutoProofChannel {
+  id          String   @id @default(cuid())
+  guildId     String
+  channelId   String   @unique
+  channelName String
+  isEnabled   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([guildId])
+  @@index([channelId])
+}

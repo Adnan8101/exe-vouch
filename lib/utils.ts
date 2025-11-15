@@ -130,6 +130,10 @@ export function getDiscordMessageUrl(messageId: string, guildId: string = '13065
   return `https://discord.com/channels/${guildId}/${channelId}/${messageId}`;
 }
 
+export function getProofDiscordUrl(messageId: string) {
+  return `https://discord.com/channels/449751480375705601/1330868077570691134/${messageId}`;
+}
+
 export function cn(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
