@@ -109,7 +109,7 @@ export default function HomePage() {
                   whileHover={{ scale: 1.05 }}
                   className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-6 hover:border-[#ff6b9d] transition-all duration-300 hover:shadow-lg hover:shadow-[#ff6b9d]/10 flex flex-col items-center justify-center min-h-[140px]"
                 >
-                  <p className="text-sm text-gray-500 mb-3 font-medium whitespace-nowrap">Decors</p>
+                  <p className="text-sm text-gray-500 mb-3 font-medium whitespace-nowrap">Profile Decorations</p>
                   <p className="text-3xl font-bold text-[#ff6b9d]">
                     {summary?.decors || 0}
                   </p>

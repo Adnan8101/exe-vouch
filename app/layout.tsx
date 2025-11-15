@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "EXE Vouches - Trusted Trading Platform",
+  title: "EXE Vouches & Proof",
   description: "View all vouches and proof of legitimate trades from the EXE community",
 };
 

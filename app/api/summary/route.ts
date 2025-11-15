@@ -7,13 +7,23 @@ export const revalidate = 0;
 
 export async function GET() {
   try {
-    const [vouches, totalVouches] = await Promise.all([
+    const [vouches, totalVouches, decorVouches] = await Promise.all([
       prisma.vouch.findMany({
         select: {
           message: true,
         },
       }),
       prisma.vouch.count(),
+      // Count vouches containing deco, pfp, or nameplates
+      prisma.vouch.count({
+        where: {
+          OR: [
+            { message: { contains: 'deco', mode: 'insensitive' } },
+            { message: { contains: 'pfp', mode: 'insensitive' } },
+            { message: { contains: 'nameplates', mode: 'insensitive' } },
+          ],
+        },
+      }),
     ]);
 
     const stats = extractCurrencyData(vouches);
@@ -21,6 +31,7 @@ export async function GET() {
     return NextResponse.json({
       totalVouches,
       ...stats,
+      decors: decorVouches, // Override with actual count
     });
   } catch (error) {
     console.error('Error fetching summary:', error);
