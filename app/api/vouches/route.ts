@@ -27,9 +27,10 @@ export async function GET(request: Request) {
         where: whereClause,
         skip,
         take: limit,
-        orderBy: {
-          vouchNumber: 'asc',
-        },
+        orderBy: [
+          { vouchNumber: 'asc' },
+          { timestamp: 'asc' },
+        ],
         select: {
           id: true,
           vouchNumber: true,
