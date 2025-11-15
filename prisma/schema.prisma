@@ -9,6 +9,7 @@ datasource db {
 
 model Vouch {
   id           String   @id @default(cuid())
+  vouchNumber  Int?     @unique
   channelId    String
   channelName  String
   authorId     String
@@ -24,6 +25,7 @@ model Vouch {
   @@index([channelId])
   @@index([authorId])
   @@index([timestamp])
+  @@index([vouchNumber])
 }
 
 model CaptureSession {
@@ -109,10 +111,10 @@ model TeamMember {
   userId    String   @unique
   username  String
   avatarUrl String?
-  role      String   // 'Founder', 'Owner', 'Manager', 'EarlySupport'
-  order     Int      @default(0) // For sorting within role
+  role      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  order     Int      @default(0)
 
   @@index([role])
   @@index([order])

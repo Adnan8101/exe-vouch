@@ -28,10 +28,11 @@ export async function GET(request: Request) {
         skip,
         take: limit,
         orderBy: {
-          timestamp: 'desc',
+          vouchNumber: 'asc',
         },
         select: {
           id: true,
+          vouchNumber: true,
           messageId: true,
           authorName: true,
           authorAvatar: true,

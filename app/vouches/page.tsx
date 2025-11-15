@@ -99,92 +99,229 @@ export default function VouchesPage() {
             </h2>
 
             {isLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-7xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-7xl mx-auto">
                 {[...Array(6)].map((_, i) => (
                   <StatCardSkeleton key={i} />
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 max-w-7xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-7xl mx-auto">
+                {/* Total Vouches - Premium Golden Card */}
                 <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
                   whileHover={{ 
-                    scale: 1.05,
-                    backgroundColor: 'rgba(201, 167, 111, 0.05)',
+                    scale: 1.08,
+                    y: -5,
                   }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-4 hover:border-[#c9a76f] transition-all duration-300 hover:shadow-lg hover:shadow-[#c9a76f]/20 flex flex-col items-center justify-center min-h-[120px]"
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#c9a76f]/40 rounded-2xl p-5 hover:border-[#c9a76f] transition-all duration-500 hover:shadow-2xl hover:shadow-[#c9a76f]/40 flex flex-col items-center justify-center min-h-[140px]"
                 >
-                  <FaCheckCircle className="text-[#c9a76f] text-3xl mb-2" />
-                  <p className="text-xs text-gray-500 mb-2 font-medium whitespace-nowrap">Total Vouches</p>
-                  <p className="text-2xl font-bold text-white">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, 5, -5, 0],
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <FaCheckCircle className="text-[#c9a76f] text-4xl mb-3 drop-shadow-[0_0_12px_rgba(201,167,111,0.8)]" />
+                  </motion.div>
+                  <p className="text-xs text-gray-400 mb-2 font-semibold tracking-wide uppercase">Total Vouches</p>
+                  <motion.p 
+                    className="text-3xl font-black text-white tracking-tight"
+                    animate={{ 
+                      textShadow: [
+                        "0 0 20px rgba(201,167,111,0.5)",
+                        "0 0 30px rgba(201,167,111,0.8)",
+                        "0 0 20px rgba(201,167,111,0.5)",
+                      ],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
                     {summary?.totalVouches || 0}
-                  </p>
+                  </motion.p>
                 </motion.div>
 
+                {/* Total INR - Money Green Card */}
                 <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
                   whileHover={{ 
-                    scale: 1.05,
-                    backgroundColor: 'rgba(34, 197, 94, 0.05)',
+                    scale: 1.08,
+                    y: -5,
                   }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-4 hover:border-[#22c55e] transition-all duration-300 hover:shadow-lg hover:shadow-[#22c55e]/20 flex flex-col items-center justify-center min-h-[120px]"
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#22c55e]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#22c55e]/40 rounded-2xl p-5 hover:border-[#22c55e] transition-all duration-500 hover:shadow-2xl hover:shadow-[#22c55e]/40 flex flex-col items-center justify-center min-h-[140px]"
                 >
-                  <div className="text-3xl mb-2">₹</div>
-                  <p className="text-xs text-gray-500 mb-2 font-medium whitespace-nowrap">Total INR</p>
-                  <p className="text-lg font-bold text-[#22c55e]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#22c55e]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.15, 1],
+                      rotate: [0, 10, -10, 0],
+                    }}
+                    transition={{ 
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="text-5xl mb-3 drop-shadow-[0_0_12px_rgba(34,197,94,0.8)]"
+                  >
+                    ₹
+                  </motion.div>
+                  <p className="text-xs text-gray-400 mb-2 font-semibold tracking-wide uppercase">Total INR</p>
+                  <motion.p 
+                    className="text-2xl font-black bg-gradient-to-r from-[#22c55e] via-[#4ade80] to-[#22c55e] bg-clip-text text-transparent"
+                    animate={{ 
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    style={{ backgroundSize: "200% auto" }}
+                  >
                     ₹{summary?.totalINR?.toLocaleString('en-IN') || 0}
-                  </p>
+                  </motion.p>
                 </motion.div>
 
+                {/* Nitro - Pink Premium Card */}
                 <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                   whileHover={{ 
-                    scale: 1.05,
-                    backgroundColor: 'rgba(255, 107, 222, 0.08)',
+                    scale: 1.08,
+                    y: -5,
                   }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-4 hover:border-[#ff6bde] transition-all duration-300 hover:shadow-lg hover:shadow-[#ff6bde]/30 flex flex-col items-center justify-center min-h-[120px]"
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#ff6bde]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ff6bde]/40 rounded-2xl p-5 hover:border-[#ff6bde] transition-all duration-500 hover:shadow-2xl hover:shadow-[#ff6bde]/50 flex flex-col items-center justify-center min-h-[140px]"
                 >
-                  <img 
-                    src="https://cdn-icons-png.flaticon.com/512/5968/5968898.png" 
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#ff6bde]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <motion.img 
+                    src="https://media.discordapp.net/attachments/1415272793788121248/1439346779136069883/Unknown-removebg-preview.png?ex=691a2fa5&is=6918de25&hm=9cb68d076911e5e72d0869ab7535d4b17147f30500c6c0dba3c991c23c520afd&=&format=webp&quality=lossless&width=450&height=450" 
                     alt="Nitro" 
-                    className="w-10 h-10 mb-2 object-contain drop-shadow-[0_0_8px_rgba(255,107,222,0.6)]"
+                    className="w-12 h-12 mb-3 object-contain"
+                    animate={{ 
+                      y: [0, -8, 0],
+                      filter: [
+                        "drop-shadow(0 0 8px rgba(255,107,222,0.6))",
+                        "drop-shadow(0 0 16px rgba(255,107,222,1))",
+                        "drop-shadow(0 0 8px rgba(255,107,222,0.6))",
+                      ],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
                   />
-                  <p className="text-xs text-gray-500 mb-2 font-medium whitespace-nowrap">Nitro</p>
-                  <p className="text-2xl font-bold text-[#ff6bde]">
+                  <p className="text-xs text-gray-400 mb-2 font-semibold tracking-wide uppercase">Nitro</p>
+                  <motion.p 
+                    className="text-3xl font-black text-[#ff6bde]"
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
                     {summary?.nitro || 0}
-                  </p>
+                  </motion.p>
                 </motion.div>
 
+                {/* Decor - Purple Card */}
                 <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
                   whileHover={{ 
-                    scale: 1.05,
-                    backgroundColor: 'rgba(138, 103, 255, 0.08)',
+                    scale: 1.08,
+                    y: -5,
                   }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-4 hover:border-[#8a67ff] transition-all duration-300 hover:shadow-lg hover:shadow-[#8a67ff]/30 flex flex-col items-center justify-center min-h-[120px]"
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#8a67ff]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#8a67ff]/40 rounded-2xl p-5 hover:border-[#8a67ff] transition-all duration-500 hover:shadow-2xl hover:shadow-[#8a67ff]/50 flex flex-col items-center justify-center min-h-[140px]"
                 >
-                  <FaGift className="text-[#8a67ff] text-3xl mb-2 drop-shadow-[0_0_8px_rgba(138,103,255,0.6)]" />
-                  <p className="text-xs text-gray-500 mb-2 font-medium whitespace-nowrap">Decor</p>
-                  <p className="text-2xl font-bold text-[#8a67ff]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#8a67ff]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, -10, 10, 0],
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{ 
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <FaGift className="text-[#8a67ff] text-4xl mb-3 drop-shadow-[0_0_12px_rgba(138,103,255,0.8)]" />
+                  </motion.div>
+                  <p className="text-xs text-gray-400 mb-2 font-semibold tracking-wide uppercase">Decor</p>
+                  <motion.p 
+                    className="text-3xl font-black text-[#8a67ff]"
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
                     {summary?.decors || 0}
-                  </p>
+                  </motion.p>
                 </motion.div>
 
+                {/* OWO - Light Pink Card */}
                 <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
                   whileHover={{ 
-                    scale: 1.05,
-                    backgroundColor: 'rgba(255, 182, 193, 0.08)',
+                    scale: 1.08,
+                    y: -5,
                   }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-4 hover:border-[#ffb6c1] transition-all duration-300 hover:shadow-lg hover:shadow-[#ffb6c1]/30 flex flex-col items-center justify-center min-h-[120px]"
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#ffb6c1]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ffb6c1]/40 rounded-2xl p-5 hover:border-[#ffb6c1] transition-all duration-500 hover:shadow-2xl hover:shadow-[#ffb6c1]/50 flex flex-col items-center justify-center min-h-[140px]"
                 >
-                  <img 
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#ffb6c1]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <motion.img 
                     src="https://i.imgur.com/zNBBkdl.png" 
                     alt="OWO" 
-                    className="w-10 h-10 mb-2 object-contain rounded-full drop-shadow-[0_0_8px_rgba(255,182,193,0.6)]"
+                    className="w-12 h-12 mb-3 object-contain rounded-full"
+                    animate={{ 
+                      rotate: [0, 360],
+                      filter: [
+                        "drop-shadow(0 0 8px rgba(255,182,193,0.6))",
+                        "drop-shadow(0 0 16px rgba(255,182,193,1))",
+                        "drop-shadow(0 0 8px rgba(255,182,193,0.6))",
+                      ],
+                    }}
+                    transition={{ 
+                      rotate: { duration: 4, repeat: Infinity, ease: "linear" },
+                      filter: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+                    }}
                   />
-                  <p className="text-xs text-gray-500 mb-2 font-medium whitespace-nowrap">OWO</p>
-                  <p className="text-2xl font-bold text-[#ffb6c1]">
+                  <p className="text-xs text-gray-400 mb-2 font-semibold tracking-wide uppercase">OWO</p>
+                  <motion.p 
+                    className="text-3xl font-black text-[#ffb6c1]"
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
                     {summary?.owo ? (
                       summary.owo >= 1000000 ? 
                         `${(summary.owo / 1000000).toFixed(1)}M` : 
@@ -192,26 +329,53 @@ export default function VouchesPage() {
                           `${(summary.owo / 1000).toFixed(1)}K` : 
                           summary.owo.toLocaleString()
                     ) : 0}
-                  </p>
+                  </motion.p>
                 </motion.div>
 
+                {/* Crypto - Bitcoin Orange Card */}
                 <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
                   whileHover={{ 
-                    scale: 1.05,
-                    backgroundColor: 'rgba(247, 147, 26, 0.08)',
+                    scale: 1.08,
+                    y: -5,
                   }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-4 hover:border-[#f7931a] transition-all duration-300 hover:shadow-lg hover:shadow-[#f7931a]/30 flex flex-col items-center justify-center min-h-[120px]"
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#f7931a]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#f7931a]/40 rounded-2xl p-5 hover:border-[#f7931a] transition-all duration-500 hover:shadow-2xl hover:shadow-[#f7931a]/50 flex flex-col items-center justify-center min-h-[140px]"
                 >
-                  <img 
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#f7931a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <motion.img 
                     src="https://cdn-icons-png.flaticon.com/512/7048/7048906.png" 
                     alt="Crypto" 
-                    className="w-10 h-10 mb-2 object-contain drop-shadow-[0_0_8px_rgba(247,147,26,0.6)]"
+                    className="w-12 h-12 mb-3 object-contain"
+                    animate={{ 
+                      y: [0, -8, 0],
+                      filter: [
+                        "drop-shadow(0 0 8px rgba(247,147,26,0.6))",
+                        "drop-shadow(0 0 16px rgba(247,147,26,1))",
+                        "drop-shadow(0 0 8px rgba(247,147,26,0.6))",
+                      ],
+                    }}
+                    transition={{ 
+                      duration: 2.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
                   />
-                  <p className="text-xs text-gray-500 mb-2 font-medium whitespace-nowrap">Crypto Giveaways</p>
-                  <p className="text-2xl font-bold text-[#f7931a]">
+                  <p className="text-xs text-gray-400 mb-2 font-semibold tracking-wide uppercase">Crypto Giveaways</p>
+                  <motion.p 
+                    className="text-3xl font-black text-[#f7931a]"
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
                     {summary?.cryptoGiveaways || 0}
-                  </p>
+                  </motion.p>
                 </motion.div>
               </div>
             )}

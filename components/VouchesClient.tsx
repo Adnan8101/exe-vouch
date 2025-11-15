@@ -12,6 +12,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 interface Vouch {
   id: string;
+  vouchNumber: number;
   messageId: string;
   authorName: string;
   authorAvatar: string | null;
@@ -128,8 +129,13 @@ export default function VouchesClient() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-300 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.02] flex flex-col h-full"
+              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-300 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.02] flex flex-col h-full relative"
             >
+              {/* Vouch Number Badge */}
+              <div className="absolute top-3 right-3 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-full px-3 py-1 text-xs font-bold text-[#c9a76f]">
+                #{vouch.vouchNumber}
+              </div>
+              
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex-shrink-0">
                   {vouch.authorAvatar ? (
