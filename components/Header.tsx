@@ -24,7 +24,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative">
                 <img 
-                  src="https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=6919a7e9&is=69185669&hm=5740bc6c6182bee0f1d0401e22660dd334cf1cdba20b77dd65a3ccf7557a420f&" 
+                  src="https://media.discordapp.net/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=691af969&is=6919a7e9&hm=651a541d4794ab72fcdff1792aa5bc7de355fa5f20225164fa09de5117e4efc4&=&width=1000&height=1000" 
                   alt="EXE" 
                   className="h-10 w-10 rounded-full ring-2 ring-[#c9a76f]/30 group-hover:ring-[#c9a76f]/60 transition-all duration-300"
                 />
