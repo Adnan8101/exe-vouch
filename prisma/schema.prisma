@@ -19,6 +19,7 @@ model Vouch {
   messageId    String   @unique
   timestamp    DateTime
   attachments  String[]
+  proofUrl     String?  // URL to proof image if linked
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 

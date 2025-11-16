@@ -188,21 +188,76 @@ export default function ProofClient() {
                 </div>
               )}
 
-              <a
+              <motion.a
                 href={getDiscordMessageUrl(proof.messageId, '1306533976809185323', proof.channelId)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-lg text-[#c9a76f] text-sm font-medium hover:bg-[#c9a76f]/20 hover:border-[#c9a76f]/50 transition-all mt-auto"
+                className="group relative inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-[#5865F2] via-[#7289DA] to-[#5865F2] text-white rounded-xl font-bold text-sm overflow-hidden mt-auto"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 0 25px rgba(88, 101, 242, 0.6)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                style={{ backgroundSize: "200% 100%" }}
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{
+                  backgroundPosition: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }
+                }}
               >
-                <svg
-                  className="w-4 h-4"
+                {/* Shine effect overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "100%" }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                />
+                
+                {/* Discord Icon with bounce animation */}
+                <motion.svg
+                  className="w-5 h-5 relative z-10"
                   fill="currentColor"
                   viewBox="0 0 24 24"
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 2 }}
                 >
                   <path d="M19.54 0c1.356 0 2.46 1.104 2.46 2.472v21.528l-2.58-2.28-1.452-1.344-1.536-1.428.636 2.22h-13.608c-1.356 0-2.46-1.104-2.46-2.472v-16.224c0-1.368 1.104-2.472 2.46-2.472h16.08zm-4.632 15.672c2.652-.084 3.672-1.824 3.672-1.824 0-3.864-1.728-6.996-1.728-6.996-1.728-1.296-3.372-1.26-3.372-1.26l-.168.192c2.04.624 2.988 1.524 2.988 1.524-1.248-.684-2.472-1.02-3.612-1.152-.864-.096-1.692-.072-2.424.024l-.204.024c-.42.036-1.44.192-2.724.756-.444.204-.708.348-.708.348s.996-.948 3.156-1.572l-.12-.144s-1.644-.036-3.372 1.26c0 0-1.728 3.132-1.728 6.996 0 0 1.008 1.74 3.66 1.824 0 0 .444-.54.804-.996-1.524-.456-2.1-1.416-2.1-1.416l.336.204.048.036.047.027.014.006.047.027c.3.168.6.3.876.408.492.192 1.08.384 1.764.516.9.168 1.956.228 3.108.012.564-.096 1.14-.264 1.74-.516.42-.156.888-.384 1.38-.708 0 0-.6.984-2.172 1.428.36.456.792.972.792.972zm-5.58-5.604c-.684 0-1.224.6-1.224 1.332 0 .732.552 1.332 1.224 1.332.684 0 1.224-.6 1.224-1.332.012-.732-.54-1.332-1.224-1.332zm4.38 0c-.684 0-1.224.6-1.224 1.332 0 .732.552 1.332 1.224 1.332.684 0 1.224-.6 1.224-1.332 0-.732-.54-1.332-1.224-1.332z" />
-                </svg>
-                View on Discord
-              </a>
+                </motion.svg>
+                
+                {/* Text with hover animation */}
+                <motion.span 
+                  className="relative z-10 font-black tracking-wide uppercase"
+                  animate={{ 
+                    textShadow: [
+                      "0 0 0px rgba(255,255,255,0.5)",
+                      "0 2px 4px rgba(255,255,255,0.5)",
+                      "0 0 0px rgba(255,255,255,0.5)",
+                    ]
+                  }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  View on Discord
+                </motion.span>
+                
+                {/* Pulsing border effect */}
+                <motion.div
+                  className="absolute inset-0 rounded-xl border-2 border-[#5865F2]"
+                  animate={{
+                    opacity: [0.5, 1, 0.5],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </motion.a>
             </motion.div>
           ))}
         </div>

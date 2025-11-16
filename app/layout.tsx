@@ -12,9 +12,9 @@ export const metadata: Metadata = {
   title: "Exe Vouches",
   description: "Pure chill community with daily VCs, giveaways, and nonstop good vibes — no toxicity, just family. EXE is back — louder, richer, and vibing harder than ever.",
   icons: {
-    icon: "https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif",
-    shortcut: "https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif",
-    apple: "https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif",
+    icon: "/exe.svg",
+    shortcut: "/exe.svg",
+    apple: "/exe.svg",
   },
   openGraph: {
     title: "Exe Vouches",

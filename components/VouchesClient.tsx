@@ -19,6 +19,7 @@ interface Vouch {
   message: string;
   timestamp: string;
   channelId: string;
+  proofUrl: string | null;
 }
 
 export default function VouchesClient() {
@@ -167,9 +168,71 @@ export default function VouchesClient() {
                 </div>
               </div>
 
-              <p className="text-gray-300 text-sm leading-relaxed flex-grow line-clamp-4">
+              <p className="text-gray-300 text-sm leading-relaxed flex-grow line-clamp-4 mb-3">
                 <MessageWithMentions message={vouch.message} />
               </p>
+
+              {/* Proof Link */}
+              {vouch.proofUrl && (
+                <motion.a
+                  href={vouch.proofUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-block mt-auto text-[#c9a76f] font-semibold text-sm"
+                  whileHover={{ 
+                    x: 5,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.span
+                    className="relative inline-block"
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                    animate={{
+                      color: ['#c9a76f', '#d4b786', '#c9a76f'],
+                    }}
+                    transition={{
+                      color: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }
+                    }}
+                  >
+                    Proof
+                    {/* Animated underline */}
+                    <motion.span
+                      className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#c9a76f] to-[#d4b786]"
+                      initial={{ width: 0 }}
+                      whileHover={{ width: '100%' }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    
+                    {/* Glow effect on hover */}
+                    <motion.span
+                      className="absolute inset-0 blur-sm bg-[#c9a76f] opacity-0"
+                      whileHover={{ opacity: 0.4 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.span>
+                  
+                  {/* Arrow icon */}
+                  <motion.span
+                    className="inline-block ml-1"
+                    animate={{
+                      x: [0, 3, 0],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    →
+                  </motion.span>
+                </motion.a>
+              )}
             </motion.div>
           ))}
         </div>

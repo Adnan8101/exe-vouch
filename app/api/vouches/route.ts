@@ -28,8 +28,8 @@ export async function GET(request: Request) {
         skip,
         take: limit,
         orderBy: [
-          { vouchNumber: 'asc' },
-          { timestamp: 'asc' },
+          { vouchNumber: 'desc' },
+          { timestamp: 'desc' },
         ],
         select: {
           id: true,
@@ -40,6 +40,7 @@ export async function GET(request: Request) {
           message: true,
           timestamp: true,
           channelId: true,
+          proofUrl: true,
         },
       }),
       prisma.vouch.count({ where: whereClause }),
