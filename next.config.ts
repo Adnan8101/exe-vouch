@@ -47,7 +47,6 @@ const nextConfig: NextConfig = {
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
     optimizeCss: true,
   },
-  swcMinify: true,
   async headers() {
     return [
       {
