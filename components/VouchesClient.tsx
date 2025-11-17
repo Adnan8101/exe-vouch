@@ -139,21 +139,18 @@ export default function VouchesClient() {
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex-shrink-0">
                   {vouch.authorAvatar ? (
-                    <motion.img
+                    <img
                       src={vouch.authorAvatar}
                       alt={vouch.authorName}
-                      className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30"
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ duration: 0.3 }}
+                      className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30 hover:scale-105 transition-transform duration-150"
+                      loading="lazy"
                     />
                   ) : (
-                    <motion.div 
-                      className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-[#c9a76f]/30"
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      transition={{ duration: 0.3 }}
+                    <div 
+                      className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-[#c9a76f]/30 hover:scale-105 transition-transform duration-150"
                     >
                       {vouch.authorName.charAt(0).toUpperCase()}
-                    </motion.div>
+                    </div>
                   )}
                 </div>
 

@@ -122,24 +122,11 @@ img {
   image-rendering: crisp-edges;
 }
 
-/* GOD-LEVEL Hardware acceleration for ultra-smooth animations */
-.motion-element, 
-[class*="motion-"],
-button,
-a,
-input,
-[class*="hover"],
-[class*="group"],
-img,
-video {
-  will-change: transform, opacity;
+/* Optimized hardware acceleration - only when needed */
+button:hover,
+a:hover {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  perspective: 1000px;
-  -webkit-perspective: 1000px;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
 }
 
 /* Silky smooth hover effects */
@@ -169,16 +156,10 @@ a:hover,
   animation: gradient 3s ease infinite;
 }
 
-/* GPU-accelerated transforms for GOD-LEVEL buttery smooth performance */
-.transform-gpu,
-[class*="transition"],
-[class*="duration"],
-[class*="ease"] {
+/* GPU-accelerated transforms - selective */
+.transform-gpu {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  -webkit-font-smoothing: subpixel-antialiased;
-  will-change: transform;
 }
 
 /* Ultra-smooth canvas rendering */
@@ -261,14 +242,9 @@ canvas {
   contain: layout style paint;
 }
 
-/* GOD-LEVEL Performance: Force GPU acceleration on all interactive elements */
-div[class*="bg-gradient"],
-div[class*="hover"],
-div[class*="motion"],
-section,
-article,
-main {
-  will-change: auto;
+/* Optimize only active elements */
+.active-animation {
+  will-change: transform;
   transform: translate3d(0, 0, 0);
 }
 
@@ -289,14 +265,12 @@ main {
   transition: background-position 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 60fps+ Animations - Force hardware acceleration */
+/* Smooth animations only when needed */
 @media (prefers-reduced-motion: no-preference) {
   .animate-spin,
   .animate-pulse,
   .animate-bounce {
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
   }
 }
 

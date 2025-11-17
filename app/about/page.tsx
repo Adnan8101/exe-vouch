@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import useSWR from 'swr';
-import { StatCardSkeleton } from '@/components/Skeletons';
+import { StatCardSkeleton, TeamMemberSkeleton, FounderCardSkeleton } from '@/components/Skeletons';
 import { FaCheckCircle, FaGift } from 'react-icons/fa';
 import OptimizedBackground from '@/components/OptimizedBackground';
 import AnimatedUsername from '@/components/AnimatedUsername';
@@ -27,12 +27,14 @@ interface TeamData {
 }
 
 export default function AboutPage() {
-  const { data: team } = useSWR<TeamData>('/api/team', fetcher, {
-    refreshInterval: 30000, // Refresh every 30 seconds
+  const { data: team, isLoading: teamLoading } = useSWR<TeamData>('/api/team', fetcher, {
+    refreshInterval: 60000,
+    revalidateOnFocus: false,
   });
   
-  const { data: summary, isLoading } = useSWR('/api/summary', fetcher, {
-    refreshInterval: 5000,
+  const { data: summary, isLoading: summaryLoading } = useSWR('/api/summary', fetcher, {
+    refreshInterval: 15000,
+    revalidateOnFocus: false,
   });
   return (
     <div className="min-h-screen relative">
@@ -43,12 +45,7 @@ export default function AboutPage() {
       <section className="relative py-8 px-6 overflow-hidden z-10">
         
         <div className="container mx-auto max-w-6xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="text-center mb-10"
-          >
+          <div className="text-center mb-10">
             <div className="mb-4 flex justify-center">
               <img 
                 src="https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=691c4ae9&is=691af969&hm=7e04c4e196526beb2ed147e70425145e8c6903cdf7b2def512cedaeb30c77f67&" 
@@ -80,7 +77,7 @@ export default function AboutPage() {
                 <span className="relative z-10">View Vouches</span>
               </Link>
             </div>
-          </motion.div>
+          </div>
 
           {/* Summary Stats */}
           <div>
@@ -88,7 +85,7 @@ export default function AboutPage() {
               <span className="text-[#c9a76f]">Live</span> Status
             </h2>
 
-{isLoading ? (
+{summaryLoading ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-7xl mx-auto">
                 {[...Array(6)].map((_, i) => (
                   <StatCardSkeleton key={i} />
@@ -97,16 +94,8 @@ export default function AboutPage() {
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-7xl mx-auto items-stretch">
                 {/* Total Vouches - Premium Golden Card */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -4,
-                    transition: { duration: 0.2, ease: "easeOut" }
-                  }}
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#c9a76f]/60 rounded-2xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-[0_0_30px_rgba(201,167,111,0.5)] flex flex-col items-center justify-center h-full transform-gpu"
+                <div
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#c9a76f]/60 rounded-2xl p-6 hover:border-[#c9a76f] transition-all duration-150 hover:shadow-[0_0_25px_rgba(201,167,111,0.4)] hover:scale-[1.02] hover:-translate-y-1 flex flex-col items-center justify-center h-full will-change-transform"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div>
@@ -116,7 +105,7 @@ export default function AboutPage() {
                   <p className="text-3xl font-black text-white tracking-tight text-center">
                     {summary?.totalVouches || 0}
                   </p>
-                </motion.div>
+                </div>
 
                 {/* Total INR - Money Green Card */}
                 <motion.div
@@ -156,6 +145,7 @@ export default function AboutPage() {
                   <img 
                     src="https://media.discordapp.net/attachments/1415272793788121248/1439346779136069883/Unknown-removebg-preview.png?ex=691a2fa5&is=6918de25&hm=9cb68d076911e5e72d0869ab7535d4b17147f30500c6c0dba3c991c23c520afd&=&format=webp&quality=lossless&width=450&height=450" 
                     alt="Nitro" 
+                    loading="lazy"
                     className="w-10 h-10 mb-2 object-contain drop-shadow-[0_0_8px_rgba(255,107,222,0.6)]"
                   />
                   <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#ff6bde]/80 text-center">Nitro Boosters</p>
@@ -202,6 +192,7 @@ export default function AboutPage() {
                   <img 
                     src="https://i.imgur.com/zNBBkdl.png" 
                     alt="OWO" 
+                    loading="lazy"
                     className="w-10 h-10 mb-2 object-contain rounded-full drop-shadow-[0_0_8px_rgba(255,182,193,0.6)]"
                   />
                   <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#ffb6c1]/80 text-center">Owo Currency</p>
@@ -232,6 +223,7 @@ export default function AboutPage() {
                   <img 
                     src="https://cdn-icons-png.flaticon.com/512/7048/7048906.png" 
                     alt="Crypto" 
+                    loading="lazy"
                     className="w-10 h-10 mb-2 object-contain drop-shadow-[0_0_8px_rgba(247,147,26,0.6)]"
                   />
                   <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#f7931a]/80 text-center">Crypto Giveaways</p>
@@ -255,12 +247,15 @@ export default function AboutPage() {
                 <img 
                   src="https://cdn.discordapp.com/attachments/1358403022106918936/1439626275458252895/st_small_845x845-pad_1000x1000_f8f8f8.u2-removebg-preview.png?ex=691b33f3&is=6919e273&hm=5efee5d4cd3779650b303ef55946f8f0fea5db01ca144abea03e78842f5d323c&"
                   alt="Founder Badge"
+                  loading="lazy"
                   className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
                 />
                 <h3 className="text-3xl font-black text-center bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>FOUNDER</h3>
               </div>
               <div className="flex justify-center">
-                {team?.founder?.[0] ? (
+                {teamLoading ? (
+                  <FounderCardSkeleton />
+                ) : team?.founder?.[0] ? (
                   <motion.a 
                     href={`https://id.rappytv.com/${team.founder[0].userId}`}
                     target="_blank" 
@@ -269,36 +264,15 @@ export default function AboutPage() {
                     className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] max-w-sm"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <motion.div 
-                      className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.6, 0.3],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    />
-                    <motion.div 
-                      className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl"
-                      animate={{
-                        scale: [1.2, 1, 1.2],
-                        opacity: [0.6, 0.3, 0.6],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    />
+                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
+                    <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl" />
                     <div className="relative z-10">
                       {team.founder[0].avatarUrl ? (
                         <div className="relative inline-block">
                           <img 
                             src={team.founder[0].avatarUrl}
                             alt={team.founder[0].username}
+                            loading="lazy"
                             className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
                           />
                           <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#c9a76f]/40 to-transparent animate-pulse" />
@@ -328,35 +302,14 @@ export default function AboutPage() {
                     className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] max-w-sm"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <motion.div 
-                      className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl"
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.6, 0.3],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    />
-                    <motion.div 
-                      className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl"
-                      animate={{
-                        scale: [1.2, 1, 1.2],
-                        opacity: [0.6, 0.3, 0.6],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    />
+                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
+                    <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl" />
                     <div className="relative z-10">
                       <div className="relative inline-block">
                         <img 
                           src="https://cdn.discordapp.com/avatars/959653911923396629/1a829abb7020436cbca22765be4e331b.png?size=1024" 
                           alt="imunknown69" 
+                          loading="lazy"
                           className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
                         />
                         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#c9a76f]/40 to-transparent animate-pulse" />
@@ -382,12 +335,18 @@ export default function AboutPage() {
                 <img 
                   src="https://cdn.discordapp.com/emojis/1439891152391376896.gif"
                   alt="Owner Badge"
+                  loading="lazy"
                   className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
                 />
                 <h3 className="text-2xl font-extrabold text-center text-[#c9a76f] tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>OWNERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                {team?.owners && team.owners.length > 0 ? (
+                {teamLoading ? (
+                  <>
+                    <TeamMemberSkeleton />
+                    <TeamMemberSkeleton />
+                  </>
+                ) : team?.owners && team.owners.length > 0 ? (
                   team.owners.map((owner) => (
                     <motion.a 
                       key={owner.userId}
@@ -398,23 +357,13 @@ export default function AboutPage() {
                       className="relative group overflow-hidden bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#c9a76f]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#c9a76f] hover:shadow-[0_0_40px_rgba(201,167,111,0.4)]"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <motion.div 
-                        className="absolute top-0 right-0 w-32 h-32 bg-[#c9a76f]/10 rounded-full blur-2xl"
-                        animate={{
-                          scale: [1, 1.3, 1],
-                          opacity: [0.2, 0.4, 0.2],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#c9a76f]/10 rounded-full blur-2xl" />
                       <div className="relative z-10">
                         {owner.avatarUrl ? (
                           <img 
                             src={owner.avatarUrl}
                             alt={owner.username}
+                            loading="lazy"
                             className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#c9a76f]/60 shadow-xl shadow-[#c9a76f]/30 ring-2 ring-[#c9a76f]/20"
                           />
                         ) : (
@@ -440,18 +389,7 @@ export default function AboutPage() {
                       className="relative group overflow-hidden bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#c9a76f]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#c9a76f] hover:shadow-[0_0_40px_rgba(201,167,111,0.4)]"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <motion.div 
-                        className="absolute top-0 right-0 w-32 h-32 bg-[#c9a76f]/10 rounded-full blur-2xl"
-                        animate={{
-                          scale: [1, 1.3, 1],
-                          opacity: [0.2, 0.4, 0.2],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#c9a76f]/10 rounded-full blur-2xl" />
                       <div className="relative z-10">
                         <img 
                           src="https://cdn.discordapp.com/avatars/643480211421265930/0ccf29cf250013d91b12dd21a149ca9c.png?size=1024" 
@@ -474,18 +412,7 @@ export default function AboutPage() {
                       className="relative group overflow-hidden bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#c9a76f]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#c9a76f] hover:shadow-[0_0_40px_rgba(201,167,111,0.4)]"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <motion.div 
-                        className="absolute top-0 right-0 w-32 h-32 bg-[#c9a76f]/10 rounded-full blur-2xl"
-                        animate={{
-                          scale: [1, 1.3, 1],
-                          opacity: [0.2, 0.4, 0.2],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#c9a76f]/10 rounded-full blur-2xl" />
                       <div className="relative z-10">
                         <img 
                           src="https://images-ext-1.discordapp.net/external/qUqtBKynxouMP3cfozPnjZFJ4kbxSPAv4H4ajaGABjY/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/283127777383809024/1b7166306a4eada744b9f5bc910b2f81.png?format=webp&quality=lossless&width=512&height=512" 
@@ -510,12 +437,18 @@ export default function AboutPage() {
                 <img 
                   src="https://cdn.discordapp.com/emojis/1435661859112878120.gif"
                   alt="Girl Owner Badge"
+                  loading="lazy"
                   className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(255,105,180,1)]"
                 />
                 <h3 className="text-2xl font-extrabold text-center bg-gradient-to-r from-[#ff69b4] via-[#ff1493] to-[#ff69b4] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>GIRL OWNERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                {team?.girlOwners && team.girlOwners.length > 0 ? (
+                {teamLoading ? (
+                  <>
+                    <TeamMemberSkeleton />
+                    <TeamMemberSkeleton />
+                  </>
+                ) : team?.girlOwners && team.girlOwners.length > 0 ? (
                   team.girlOwners.map((girlOwner: TeamMember) => (
                     <motion.a 
                       key={girlOwner.userId}
@@ -526,23 +459,13 @@ export default function AboutPage() {
                       className="relative group overflow-hidden bg-gradient-to-br from-[#2a1a2a] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#ff69b4]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#ff69b4] hover:shadow-[0_0_40px_rgba(255,105,180,0.4)]"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#ff69b4]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <motion.div 
-                        className="absolute top-0 right-0 w-32 h-32 bg-[#ff69b4]/10 rounded-full blur-2xl"
-                        animate={{
-                          scale: [1, 1.3, 1],
-                          opacity: [0.2, 0.4, 0.2],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
-                      />
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff69b4]/10 rounded-full blur-2xl" />
                       <div className="relative z-10">
                         {girlOwner.avatarUrl ? (
                           <img 
                             src={girlOwner.avatarUrl}
                             alt={girlOwner.username}
+                            loading="lazy"
                             className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#ff69b4]/60 shadow-xl shadow-[#ff69b4]/30 ring-2 ring-[#ff69b4]/20"
                           />
                         ) : (
@@ -572,12 +495,19 @@ export default function AboutPage() {
                 <img 
                   src="https://cdn.discordapp.com/attachments/1439158177189990510/1439917260280954970/Partner-removebg-preview.png?ex=691c42f3&is=691af173&hm=ed0b8c6fc85b1857478f2591c7edced4f2a83d64e9debddadb10d2cc6273b1e6&"
                   alt="Manager Badge"
+                  loading="lazy"
                   className="w-10 h-10 object-contain drop-shadow-[0_0_16px_rgba(201,167,111,0.85)]"
                 />
                 <h3 className="text-xl font-bold text-center text-white/90" style={{ fontFamily: 'Inter, sans-serif' }}>MANAGERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {team?.managers && team.managers.length > 0 ? (
+                {teamLoading ? (
+                  <>
+                    {[...Array(4)].map((_, i) => (
+                      <TeamMemberSkeleton key={i} />
+                    ))}
+                  </>
+                ) : team?.managers && team.managers.length > 0 ? (
                   team.managers.map((manager) => (
                     <motion.a 
                       key={manager.userId}
@@ -593,6 +523,7 @@ export default function AboutPage() {
                           <img 
                             src={manager.avatarUrl}
                             alt={manager.username}
+                            loading="lazy"
                             className="w-24 h-24 rounded-xl mx-auto mb-3 border-2 border-white/30 shadow-lg"
                           />
                         ) : (
@@ -700,12 +631,19 @@ export default function AboutPage() {
                 <img 
                   src="https://cdn.discordapp.com/attachments/1358403022106918936/1439627122409869312/lf_discord_early_supporter_acc_1753602131_3641eb14_progressive-removebg-preview.png?ex=691b34bc&is=6919e33c&hm=9af2d6cb3b44b809007399a3967fa83c0884ffa864c5ec486c3a07dea9800f9f&"
                   alt="Early Supporter Badge"
+                  loading="lazy"
                   className="w-8 h-8 object-contain drop-shadow-[0_0_12px_rgba(201,167,111,0.7)]"
                 />
                 <h3 className="text-lg font-semibold text-center text-white/70" style={{ fontFamily: 'Inter, sans-serif' }}>EARLY SUPPORTERS</h3>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 max-w-6xl mx-auto">
-                {team?.earlySupport && team.earlySupport.length > 0 ? (
+                {teamLoading ? (
+                  <>
+                    {[...Array(12)].map((_, i) => (
+                      <TeamMemberSkeleton key={i} />
+                    ))}
+                  </>
+                ) : team?.earlySupport && team.earlySupport.length > 0 ? (
                   team.earlySupport.map((supporter) => (
                     <motion.a 
                       key={supporter.userId}
@@ -721,6 +659,7 @@ export default function AboutPage() {
                           <img 
                             src={supporter.avatarUrl}
                             alt={supporter.username}
+                            loading="lazy"
                             className="w-16 h-16 rounded-lg mx-auto mb-2 border border-[#c9a76f]/20 shadow-md"
                           />
                         ) : (

@@ -11,7 +11,8 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function VouchesPage() {
   const { data: summary, isLoading } = useSWR('/api/summary', fetcher, {
-    refreshInterval: 5000,
+    refreshInterval: 15000,
+    revalidateOnFocus: false,
   });
 
   return (
@@ -49,6 +50,7 @@ export default function VouchesPage() {
               <img 
                 src="https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=6919a7e9&is=69185669&hm=5740bc6c6182bee0f1d0401e22660dd334cf1cdba20b77dd65a3ccf7557a420f&" 
                 alt="EXE Logo" 
+                loading="lazy"
                 className="h-20 w-20 rounded-full border-4 border-white/20 shadow-2xl shadow-[#c9a76f]/50 backdrop-blur-sm"
               />
             </motion.div>
@@ -107,92 +109,28 @@ export default function VouchesPage() {
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-7xl mx-auto">
                 {/* Total Vouches - Premium Golden Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  whileHover={{ 
-                    scale: 1.08,
-                    y: -5,
-                  }}
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#c9a76f]/40 rounded-2xl p-5 hover:border-[#c9a76f] transition-all duration-500 hover:shadow-2xl hover:shadow-[#c9a76f]/40 flex flex-col items-center justify-center min-h-[140px]"
+                <div
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#c9a76f]/40 rounded-2xl p-5 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/40 hover:scale-[1.02] hover:-translate-y-1 flex flex-col items-center justify-center min-h-[140px] will-change-transform"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <motion.div
-                    animate={{ 
-                      rotate: [0, 5, -5, 0],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{ 
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    <FaCheckCircle className="text-[#c9a76f] text-4xl mb-3 drop-shadow-[0_0_12px_rgba(201,167,111,0.8)]" />
-                  </motion.div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                  <FaCheckCircle className="text-[#c9a76f] text-4xl mb-3" />
                   <p className="text-xs text-gray-400 mb-2 font-semibold tracking-wide uppercase">Total Vouches</p>
-                  <motion.p 
-                    className="text-3xl font-black text-white tracking-tight"
-                    animate={{ 
-                      textShadow: [
-                        "0 0 20px rgba(201,167,111,0.5)",
-                        "0 0 30px rgba(201,167,111,0.8)",
-                        "0 0 20px rgba(201,167,111,0.5)",
-                      ],
-                    }}
-                    transition={{ 
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
+                  <p className="text-3xl font-black text-white tracking-tight">
                     {summary?.totalVouches || 0}
-                  </motion.p>
-                </motion.div>
+                  </p>
+                </div>
 
                 {/* Total INR - Money Green Card */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  whileHover={{ 
-                    scale: 1.08,
-                    y: -5,
-                  }}
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#22c55e]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#22c55e]/40 rounded-2xl p-5 hover:border-[#22c55e] transition-all duration-500 hover:shadow-2xl hover:shadow-[#22c55e]/40 flex flex-col items-center justify-center min-h-[140px]"
+                <div
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#22c55e]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#22c55e]/40 rounded-2xl p-5 hover:border-[#22c55e] transition-all duration-200 hover:shadow-xl hover:shadow-[#22c55e]/40 hover:scale-[1.02] hover:-translate-y-1 flex flex-col items-center justify-center min-h-[140px] will-change-transform"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#22c55e]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.15, 1],
-                      rotate: [0, 10, -10, 0],
-                    }}
-                    transition={{ 
-                      duration: 2.5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    className="text-5xl mb-3 drop-shadow-[0_0_12px_rgba(34,197,94,0.8)]"
-                  >
-                    ₹
-                  </motion.div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#22c55e]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                  <div className="text-5xl mb-3">₹</div>
                   <p className="text-xs text-gray-400 mb-2 font-semibold tracking-wide uppercase">Total INR</p>
-                  <motion.p 
-                    className="text-2xl font-black bg-gradient-to-r from-[#22c55e] via-[#4ade80] to-[#22c55e] bg-clip-text text-transparent"
-                    animate={{ 
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{ 
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                    style={{ backgroundSize: "200% auto" }}
-                  >
+                  <p className="text-2xl font-black text-[#22c55e]">
                     ₹{summary?.totalINR?.toLocaleString('en-IN') || 0}
-                  </motion.p>
-                </motion.div>
+                  </p>
+                </div>
 
                 {/* Nitro - Pink Premium Card */}
                 <motion.div
