@@ -10,7 +10,7 @@ export default function HomePage() {
         <div className="container mx-auto max-w-7xl text-center">
           <div className="flex items-center justify-center gap-3 mb-2">
             <Image 
-              src="https://cdn.discordapp.com/emojis/1360507855769305160.gif" 
+              src="https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=691c4ae9&is=691af969&hm=7e04c4e196526beb2ed147e70425145e8c6903cdf7b2def512cedaeb30c77f67&" 
               alt="EXE" 
               width={64}
               height={64}
