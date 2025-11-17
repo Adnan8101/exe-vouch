@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -23,9 +24,14 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative">
-                <img 
+                <Image 
                   src="https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=691c4ae9&is=691af969&hm=7e04c4e196526beb2ed147e70425145e8c6903cdf7b2def512cedaeb30c77f67&" 
                   alt="EXE" 
+                  width={40}
+                  height={40}
+                  quality={85}
+                  priority
+                  unoptimized
                   className="h-10 w-10 rounded-full ring-2 ring-[#c9a76f]/30 group-hover:ring-[#c9a76f]/60 transition-all duration-300"
                 />
                 <div className="absolute inset-0 rounded-full bg-[#c9a76f]/20 blur-md group-hover:bg-[#c9a76f]/40 transition-all duration-300" />

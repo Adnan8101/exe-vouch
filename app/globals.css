@@ -34,7 +34,7 @@ body {
   background: #d4b786;
 }
 
-/* GOD-LEVEL SMOOTHNESS - Ultra smooth animations and buttery transitions */
+/* Optimized smooth rendering */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -43,45 +43,21 @@ html {
   scroll-padding-top: 2rem;
 }
 
-* {
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-/* Ultra-smooth easing curves */
-*[class*="transition"] {
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-*[class*="hover:"] {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
 /* Optimize rendering performance */
 img, video, iframe {
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
 }
 
-/* Buttery smooth page transitions */
 body {
-  animation: fadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overscroll-behavior: none;
   overflow-x: hidden;
 }
 
-/* Extreme performance optimizations */
+/* Performance optimizations */
 * {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Optimize repaints and reflows */
-.card, [class*="card"], [class*="motion"] {
-  contain: layout style;
-  will-change: auto;
 }
 
 /* Reduce layout shifts */
@@ -122,23 +98,11 @@ img {
   image-rendering: crisp-edges;
 }
 
-/* Optimized hardware acceleration - only when needed */
-button:hover,
-a:hover {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-}
-
-/* Silky smooth hover effects */
-button:hover,
-a:hover,
-[class*="hover:"]:hover {
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Smooth scale transforms */
-[class*="scale"]:hover {
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+/* Optimized hover transitions - CPU only */
+button,
+a,
+[class*="hover:"] {
+  transition: transform 0.2s ease, opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
 /* Discord button gradient animation */
@@ -156,146 +120,36 @@ a:hover,
   animation: gradient 3s ease infinite;
 }
 
-/* GPU-accelerated transforms - selective */
-.transform-gpu {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-}
-
-/* Ultra-smooth canvas rendering */
+/* Optimized canvas rendering */
 canvas {
   image-rendering: optimizeQuality;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   contain: strict;
   pointer-events: none;
 }
 
-/* Smooth opacity transitions */
-[class*="opacity"] {
-  transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Smooth color transitions */
-[class*="bg-"],
-[class*="text-"],
-[class*="border-"] {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* GOD-LEVEL smooth scrolling with reduced motion support */
+/* Reduced motion support */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
-  
-  * {
-    animation-duration: 0.3s;
-    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
 }
 
-/* Optimize animations for 120fps smoothness */
+/* Simple fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translate3d(0, 0, 0) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
-/* Smooth slide-in animations */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes slideInDown {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -20px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-/* Optimize background rendering */
-[style*="backgroundImage"] {
-  will-change: auto;
-  contain: paint;
-}
-
-/* Reduce repaints for hover effects */
-.group:hover .group-hover\:opacity-100 {
-  contain: layout style paint;
-}
-
-/* Optimize only active elements */
-.active-animation {
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-}
-
-/* Smooth shadow transitions */
-[class*="shadow"]:hover {
-  transition: box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Ultra-smooth border transitions */
-[class*="border"]:hover {
-  transition: border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Smooth gradient animations */
-[class*="gradient"] {
-  background-size: 200% 200%;
-  transition: background-position 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Smooth animations only when needed */
-@media (prefers-reduced-motion: no-preference) {
-  .animate-spin,
-  .animate-pulse,
-  .animate-bounce {
-    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-}
-
-/* Ultra-smooth page element transitions */
-main > * {
-  animation: slideInUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
-}
-
-main > *:nth-child(1) { animation-delay: 0s; }
-main > *:nth-child(2) { animation-delay: 0.05s; }
-main > *:nth-child(3) { animation-delay: 0.1s; }
-main > *:nth-child(4) { animation-delay: 0.15s; }
-main > *:nth-child(5) { animation-delay: 0.2s; }
-
-/* Buttery smooth link clicks */
+/* Mobile touch optimization */
 a {
   -webkit-tap-highlight-color: rgba(201, 167, 111, 0.1);
 }
 
-/* Optimize for mobile touch */
 @media (hover: none) and (pointer: coarse) {
-  * {
-    transition-duration: 200ms;
-  }
-  
   button, a {
     -webkit-tap-highlight-color: rgba(201, 167, 111, 0.2);
   }

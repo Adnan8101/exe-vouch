@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import useSWR from 'swr';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Pagination from '@/components/Pagination';
 import { VouchSkeleton } from '@/components/Skeletons';

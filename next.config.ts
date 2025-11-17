@@ -45,7 +45,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion', 'react-icons', '@react-three/fiber', '@react-three/drei'],
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
+    optimizeCss: true,
   },
+  swcMinify: true,
   async headers() {
     return [
       {
@@ -77,15 +79,15 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+            value: 'camera=(), microphone=(), geolocation=()'
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.discordapp.com https://media.discordapp.net https://i.imgur.com https://cdn-icons-png.flaticon.com https://images-ext-1.discordapp.net; font-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self';"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://cdn.discordapp.com https://media.discordapp.net https://i.imgur.com https://cdn-icons-png.flaticon.com https://images-ext-1.discordapp.net; font-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none';"
           },
           {
             key: 'Cross-Origin-Embedder-Policy',
-            value: 'unsafe-none'
+            value: 'credentialless'
           },
           {
             key: 'Cross-Origin-Opener-Policy',

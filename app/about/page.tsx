@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -11,7 +10,7 @@ import AnimatedUsername from '@/components/AnimatedUsername';
 
 const OptimizedBackground = dynamic(() => import('@/components/OptimizedBackground'), {
   ssr: false,
-  loading: () => <div className="fixed inset-0 -z-10 bg-[#0a0a0a]" />,
+  loading: () => null,
 });
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -126,16 +125,8 @@ export default function AboutPage() {
                 </div>
 
                 {/* Total INR - Money Green Card */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.05 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -4,
-                    transition: { duration: 0.2, ease: "easeOut" }
-                  }}
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#22c55e]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#22c55e]/60 rounded-2xl p-6 hover:border-[#22c55e] transition-all duration-200 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] flex flex-col items-center justify-center h-full transform-gpu"
+                <div
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#22c55e]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#22c55e]/60 rounded-2xl p-6 hover:border-[#22c55e] transition-all duration-200 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#22c55e]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div className="text-4xl mb-2 drop-shadow-[0_0_8px_rgba(34,197,94,0.6)]">
@@ -145,23 +136,15 @@ export default function AboutPage() {
                   <p className="text-xl font-bold text-[#22c55e] text-center">
                     ₹{summary?.totalINR?.toLocaleString('en-IN') || 0}
                   </p>
-                </motion.div>
+                </div>
 
                 {/* Nitro - Pink Premium Card */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -4,
-                    transition: { duration: 0.2, ease: "easeOut" }
-                  }}
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#ff6bde]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ff6bde]/60 rounded-2xl p-6 hover:border-[#ff6bde] transition-all duration-200 hover:shadow-[0_0_30px_rgba(255,107,222,0.6)] flex flex-col items-center justify-center h-full transform-gpu"
+                <div
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#ff6bde]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ff6bde]/60 rounded-2xl p-6 hover:border-[#ff6bde] transition-all duration-200 hover:shadow-[0_0_30px_rgba(255,107,222,0.6)] hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#ff6bde]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <Image 
-                    src="https://media.discordapp.net/attachments/1415272793788121248/1439346779136069883/Unknown-removebg-preview.png?ex=691a2fa5&is=6918de25&hm=9cb68d076911e5e72d0869ab7535d4b17147f30500c6c0dba3c991c23c520afd&=&format=webp&quality=lossless&width=450&height=450" 
+                    src="https://cdn.discordapp.com/emojis/1360507855769305160.gif"
                     alt="Nitro" 
                     width={40}
                     height={40}
@@ -172,19 +155,11 @@ export default function AboutPage() {
                   <p className="text-2xl font-bold text-[#ff6bde] text-center">
                     {summary?.nitro || 0}
                   </p>
-                </motion.div>
+                </div>
 
                 {/* Decor - Purple Card */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.15 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -4,
-                    transition: { duration: 0.2, ease: "easeOut" }
-                  }}
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#8a67ff]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#8a67ff]/40 rounded-2xl p-6 hover:border-[#8a67ff] transition-all duration-200 hover:shadow-xl hover:shadow-[#8a67ff]/40 flex flex-col items-center justify-center h-full transform-gpu"
+                <div
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#8a67ff]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#8a67ff]/40 rounded-2xl p-6 hover:border-[#8a67ff] transition-all duration-200 hover:shadow-xl hover:shadow-[#8a67ff]/40 hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#8a67ff]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div>
@@ -194,19 +169,11 @@ export default function AboutPage() {
                   <p className="text-2xl font-bold text-[#8a67ff] text-center">
                     {summary?.decors || 0}
                   </p>
-                </motion.div>
+                </div>
 
                 {/* OWO - Light Pink Card */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.2 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -4,
-                    transition: { duration: 0.2, ease: "easeOut" }
-                  }}
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#ffb6c1]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ffb6c1]/60 rounded-2xl p-6 hover:border-[#ffb6c1] transition-all duration-200 hover:shadow-[0_0_30px_rgba(255,182,193,0.6)] flex flex-col items-center justify-center h-full transform-gpu"
+                <div
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#ffb6c1]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ffb6c1]/60 rounded-2xl p-6 hover:border-[#ffb6c1] transition-all duration-200 hover:shadow-[0_0_30px_rgba(255,182,193,0.6)] hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#ffb6c1]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <Image 
@@ -227,19 +194,11 @@ export default function AboutPage() {
                           summary.owo.toLocaleString()
                     ) : 0}
                   </p>
-                </motion.div>
+                </div>
 
                 {/* Crypto - Bitcoin Orange Card */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.25 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -4,
-                    transition: { duration: 0.2, ease: "easeOut" }
-                  }}
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#f7931a]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#f7931a]/40 rounded-2xl p-6 hover:border-[#f7931a] transition-all duration-200 hover:shadow-xl hover:shadow-[#f7931a]/40 flex flex-col items-center justify-center h-full transform-gpu"
+                <div
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#f7931a]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#f7931a]/40 rounded-2xl p-6 hover:border-[#f7931a] transition-all duration-200 hover:shadow-xl hover:shadow-[#f7931a]/40 hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#f7931a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <Image 
@@ -254,7 +213,7 @@ export default function AboutPage() {
                   <p className="text-2xl font-bold text-[#f7931a] text-center">
                     {summary?.cryptoGiveaways || 0}
                   </p>
-                </motion.div>
+                </div>
               </div>
             )}
           </div>
@@ -282,12 +241,11 @@ export default function AboutPage() {
                 {teamLoading ? (
                   <FounderCardSkeleton />
                 ) : team?.founder?.[0] ? (
-                  <motion.a 
+                  <a 
                     href={`https://id.rappytv.com/${team.founder[0].userId}`}
                     target="_blank" 
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05, y: -10 }}
-                    className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] max-w-sm"
+                    className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-sm"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
@@ -321,14 +279,13 @@ export default function AboutPage() {
                       <p className="text-sm text-[#c9a76f]/80 mb-3 font-bold uppercase tracking-wider">{team.founder[0].role}</p>
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">{team.founder[0].userId}</p>
                     </div>
-                  </motion.a>
+                  </a>
                 ) : (
-                  <motion.a 
+                  <a 
                     href="https://id.rappytv.com/959653911923396629" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05, y: -10 }}
-                    className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] max-w-sm"
+                    className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-sm"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
@@ -356,7 +313,7 @@ export default function AboutPage() {
                       <p className="text-sm text-[#c9a76f]/80 mb-3 font-bold uppercase tracking-wider">Founder</p>
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">959653911923396629</p>
                     </div>
-                  </motion.a>
+                  </a>
                 )}
               </div>
             </div>
@@ -383,13 +340,12 @@ export default function AboutPage() {
                   </>
                 ) : team?.owners && team.owners.length > 0 ? (
                   team.owners.map((owner) => (
-                    <motion.a 
+                    <a 
                       key={owner.userId}
                       href={`https://id.rappytv.com/${owner.userId}`}
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03, y: -5 }}
-                      className="relative group overflow-hidden bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#c9a76f]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#c9a76f] hover:shadow-[0_0_40px_rgba(201,167,111,0.4)]"
+                      className="relative group overflow-hidden bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#c9a76f]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#c9a76f] hover:shadow-[0_0_40px_rgba(201,167,111,0.4)] hover:scale-[1.03] hover:-translate-y-1"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="absolute top-0 right-0 w-32 h-32 bg-[#c9a76f]/10 rounded-full blur-2xl" />
@@ -414,15 +370,14 @@ export default function AboutPage() {
                         <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">{owner.role}</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{owner.userId}</p>
                       </div>
-                    </motion.a>
+                    </a>
                   ))
                 ) : (
                   <>
-                    <motion.a 
+                    <a 
                       href="https://id.rappytv.com/643480211421265930" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03, y: -5 }}
                       className="relative group overflow-hidden bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#c9a76f]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#c9a76f] hover:shadow-[0_0_40px_rgba(201,167,111,0.4)]"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -442,13 +397,12 @@ export default function AboutPage() {
                         <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">Owner</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">643480211421265930</p>
                       </div>
-                    </motion.a>
+                    </a>
                     
-                    <motion.a 
+                    <a 
                       href="https://id.rappytv.com/283127777383809024" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03, y: -5 }}
                       className="relative group overflow-hidden bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#c9a76f]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#c9a76f] hover:shadow-[0_0_40px_rgba(201,167,111,0.4)]"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -468,7 +422,7 @@ export default function AboutPage() {
                         <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">Owner</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">283127777383809024</p>
                       </div>
-                    </motion.a>
+                    </a>
                   </>
                 )}
               </div>
@@ -496,13 +450,12 @@ export default function AboutPage() {
                   </>
                 ) : team?.girlOwners && team.girlOwners.length > 0 ? (
                   team.girlOwners.map((girlOwner: TeamMember) => (
-                    <motion.a 
+                    <a 
                       key={girlOwner.userId}
                       href={`https://id.rappytv.com/${girlOwner.userId}`}
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03, y: -5 }}
-                      className="relative group overflow-hidden bg-gradient-to-br from-[#2a1a2a] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#ff69b4]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#ff69b4] hover:shadow-[0_0_40px_rgba(255,105,180,0.4)]"
+                      className="relative group overflow-hidden bg-gradient-to-br from-[#2a1a2a] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#ff69b4]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#ff69b4] hover:shadow-[0_0_40px_rgba(255,105,180,0.4)] hover:scale-[1.03] hover:-translate-y-1"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#ff69b4]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="absolute top-0 right-0 w-32 h-32 bg-[#ff69b4]/10 rounded-full blur-2xl" />
@@ -527,7 +480,7 @@ export default function AboutPage() {
                         <p className="text-sm text-[#ff69b4]/70 mb-2 font-semibold uppercase tracking-wide">{girlOwner.role}</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{girlOwner.userId}</p>
                       </div>
-                    </motion.a>
+                    </a>
                   ))
                 ) : (
                   <div className="col-span-full text-center text-gray-500">
@@ -559,12 +512,11 @@ export default function AboutPage() {
                   </>
                 ) : team?.managers && team.managers.length > 0 ? (
                   team.managers.map((manager) => (
-                    <motion.a 
+                    <a 
                       key={manager.userId}
                       href={`https://id.rappytv.com/${manager.userId}`}
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -6 }}
                       className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -589,15 +541,14 @@ export default function AboutPage() {
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">{manager.role}</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">{manager.userId}</p>
                       </div>
-                    </motion.a>
+                    </a>
                   ))
                 ) : (
                   <>
-                    <motion.a 
+                    <a 
                       href="https://id.rappytv.com/785398118095126570" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -6 }}
                       className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -611,13 +562,12 @@ export default function AboutPage() {
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">785398118095126570</p>
                       </div>
-                    </motion.a>
+                    </a>
 
-                    <motion.a 
+                    <a 
                       href="https://id.rappytv.com/1255565188829155388" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -6 }}
                       className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -631,13 +581,12 @@ export default function AboutPage() {
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1255565188829155388</p>
                       </div>
-                    </motion.a>
+                    </a>
 
-                    <motion.a 
+                    <a 
                       href="https://id.rappytv.com/1391157574958710835" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -6 }}
                       className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -651,13 +600,12 @@ export default function AboutPage() {
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1391157574958710835</p>
                       </div>
-                    </motion.a>
+                    </a>
 
-                    <motion.a 
+                    <a 
                       href="https://id.rappytv.com/930109353137176586" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, y: -6 }}
                       className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
@@ -671,7 +619,7 @@ export default function AboutPage() {
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">930109353137176586</p>
                       </div>
-                    </motion.a>
+                    </a>
                   </>
                 )}
               </div>
@@ -699,13 +647,12 @@ export default function AboutPage() {
                   </>
                 ) : team?.earlySupport && team.earlySupport.length > 0 ? (
                   team.earlySupport.map((supporter) => (
-                    <motion.a 
+                    <a 
                       key={supporter.userId}
                       href={`https://id.rappytv.com/${supporter.userId}`}
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.08, y: -4 }}
-                      className="relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#0a0a0a] border border-[#2a2a2a]/50 rounded-lg p-4 text-center transition-all duration-300 hover:border-[#c9a76f]/40 hover:shadow-lg hover:shadow-[#c9a76f]/10 backdrop-blur-sm"
+                      className="relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#0a0a0a] border border-[#2a2a2a]/50 rounded-lg p-4 text-center transition-all duration-300 hover:border-[#c9a76f]/40 hover:shadow-lg hover:shadow-[#c9a76f]/10 hover:scale-[1.08] hover:-translate-y-1 backdrop-blur-sm"
                     >
                       <div className="absolute bottom-0 right-0 w-16 h-16 bg-[#c9a76f]/5 rounded-full blur-xl" />
                       <div className="relative z-10">
@@ -729,15 +676,14 @@ export default function AboutPage() {
                         <p className="text-[10px] text-[#c9a76f]/60 uppercase tracking-wider font-semibold mb-1">Supporter</p>
                         <p className="text-gray-500 text-[10px] font-mono bg-black/20 rounded px-1.5 py-0.5 inline-block">{supporter.userId}</p>
                       </div>
-                    </motion.a>
+                    </a>
                   ))
                 ) : (
                   <div className="col-span-full flex justify-center">
-                    <motion.a 
+                    <a 
                       href="https://id.rappytv.com/1395736628793839646" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.08, y: -4 }}
                       className="relative bg-gradient-to-br from-[#1a1a1a]/80 to-[#0a0a0a] border border-[#2a2a2a]/50 rounded-lg p-6 text-center transition-all duration-300 hover:border-[#c9a76f]/40 hover:shadow-lg hover:shadow-[#c9a76f]/10 backdrop-blur-sm max-w-xs"
                     >
                       <div className="absolute bottom-0 right-0 w-24 h-24 bg-[#c9a76f]/5 rounded-full blur-xl" />
@@ -749,7 +695,7 @@ export default function AboutPage() {
                         <p className="text-xs text-[#c9a76f]/60 uppercase tracking-wider font-semibold">Supporter</p>
                         <p className="text-gray-500 text-xs font-mono mt-2">1395736628793839646</p>
                       </div>
-                    </motion.a>
+                    </a>
                   </div>
                 )}
               </div>

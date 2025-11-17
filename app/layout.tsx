@@ -70,6 +70,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://cdn.discordapp.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.discordapp.com" />
+        <link rel="dns-prefetch" href="https://media.discordapp.net" />
+        <link rel="dns-prefetch" href="https://images-ext-1.discordapp.net" />
+        <link 
+          rel="preload" 
+          href="https://cdn.discordapp.com/emojis/1360507855769305160.gif" 
+          as="image"
+          type="image/gif"
+        />
+      </head>
       <body className={`${inter.variable} font-sans bg-[#0a0a0a] text-white antialiased`}>
         <ErrorBoundary>
           <Header />
