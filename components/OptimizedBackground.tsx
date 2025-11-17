@@ -51,17 +51,17 @@ export default function OptimizedBackground() {
     window.addEventListener('resize', resizeCanvas);
 
     // Initialize particles
-    const particleCount = 100; // Optimized for 60fps
+    const particleCount = 200; // More sparkles!
     particlesRef.current = Array.from({ length: particleCount }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      size: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      size: Math.random() * 2.5 + 0.8,
       opacity: Math.random(),
-      twinkleSpeed: Math.random() * 0.02 + 0.01,
+      twinkleSpeed: Math.random() * 0.03 + 0.015,
       twinkleOffset: Math.random() * Math.PI * 2,
-      hue: Math.random() * 30 + 30, // Gold hues (30-60)
+      hue: Math.random() * 40 + 25, // Wider gold/white hues (25-65)
     }));
 
     // Animation loop
