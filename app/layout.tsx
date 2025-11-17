@@ -1,16 +1,29 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: 'swap',
+  preload: true,
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#c9a76f',
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.exevouches.com'),
   title: "Exe Vouches",
   description: "Pure chill community with daily VCs, giveaways, and nonstop good vibes — no toxicity, just family. EXE is back — louder, richer, and vibing harder than ever.",
+  keywords: "EXE, vouches, discord community, gaming, giveaways, voice chat",
+  authors: [{ name: "EXE Team" }],
   icons: {
     icon: "/exe.svg",
     shortcut: "/exe.svg",
@@ -19,6 +32,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Exe Vouches",
     description: "Pure chill community with daily VCs, giveaways, and nonstop good vibes — no toxicity, just family.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Exe Vouches",
     images: [
       {
         url: "https://images-ext-1.discordapp.net/external/MtDdz6yEB-5BuhaCp5cBB9o5r3hTTMsgO5l5ea9_dDg/%3Fsize%3D1024/https/cdn.discordapp.com/banners/449751480375705601/fd2c333bb4b71d1f152ad61f96826a2c.png?format=webp&quality=lossless&width=800&height=428",
@@ -34,6 +50,17 @@ export const metadata: Metadata = {
     description: "Pure chill community with daily VCs, giveaways, and nonstop good vibes — no toxicity, just family.",
     images: ["https://images-ext-1.discordapp.net/external/MtDdz6yEB-5BuhaCp5cBB9o5r3hTTMsgO5l5ea9_dDg/%3Fsize%3D1024/https/cdn.discordapp.com/banners/449751480375705601/fd2c333bb4b71d1f152ad61f96826a2c.png?format=webp&quality=lossless&width=800&height=428"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -44,10 +71,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} font-sans bg-[#0a0a0a] text-white antialiased`}>
-        <Header />
-        <main className="pt-20">
-          {children}
-        </main>
+        <ErrorBoundary>
+          <Header />
+          <main className="pt-20">
+            {children}
+          </main>
+        </ErrorBoundary>
       </body>
     </html>
   );

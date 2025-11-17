@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Pagination from '@/components/Pagination';
 import { VouchSkeleton } from '@/components/Skeletons';
 import { getDiscordMessageUrl } from '@/lib/utils';
@@ -139,11 +140,13 @@ export default function VouchesClient() {
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex-shrink-0">
                   {vouch.authorAvatar ? (
-                    <img
+                    <Image
                       src={vouch.authorAvatar}
                       alt={vouch.authorName}
+                      width={124}
+                      height={124}
+                      quality={80}
                       className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30 hover:scale-105 transition-transform duration-150"
-                      loading="lazy"
                     />
                   ) : (
                     <div 

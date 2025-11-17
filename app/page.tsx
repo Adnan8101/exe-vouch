@@ -1,4 +1,5 @@
 import VouchesClient from '@/components/VouchesClient';
+import Image from 'next/image';
 
 export default function HomePage() {
 
@@ -8,10 +9,14 @@ export default function HomePage() {
       <section className="relative py-6 px-6 bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border-b border-[#2a2a2a]">
         <div className="container mx-auto max-w-7xl text-center">
           <div className="flex items-center justify-center gap-3 mb-2">
-            <img 
+            <Image 
               src="https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=691c4ae9&is=691af969&hm=7e04c4e196526beb2ed147e70425145e8c6903cdf7b2def512cedaeb30c77f67&" 
               alt="EXE" 
-              loading="lazy"
+              width={64}
+              height={64}
+              quality={85}
+              priority
+              unoptimized
               className="h-8 w-8 rounded-full"
             />
             <h1 className="text-2xl font-bold">
