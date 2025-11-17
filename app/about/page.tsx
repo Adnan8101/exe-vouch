@@ -6,6 +6,7 @@ import useSWR from 'swr';
 import { StatCardSkeleton } from '@/components/Skeletons';
 import { FaCheckCircle, FaGift } from 'react-icons/fa';
 import OptimizedBackground from '@/components/OptimizedBackground';
+import AnimatedUsername from '@/components/AnimatedUsername';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -20,6 +21,7 @@ interface TeamMember {
 interface TeamData {
   founder: TeamMember[];
   owners: TeamMember[];
+  girlOwners: TeamMember[];
   managers: TeamMember[];
   earlySupport: TeamMember[];
 }
@@ -129,11 +131,11 @@ export default function AboutPage() {
                   className="relative group overflow-hidden bg-gradient-to-br from-[#22c55e]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#22c55e]/60 rounded-2xl p-6 hover:border-[#22c55e] transition-all duration-200 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] flex flex-col items-center justify-center h-full transform-gpu"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#22c55e]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                  <div className="text-5xl mb-3 drop-shadow-[0_0_12px_rgba(34,197,94,0.8)]">
+                  <div className="text-4xl mb-2 drop-shadow-[0_0_8px_rgba(34,197,94,0.6)]">
                     ₹
                   </div>
-                  <p className="text-sm mb-2 font-black tracking-wider uppercase bg-gradient-to-r from-[#22c55e] via-[#4ade80] to-[#22c55e] bg-clip-text text-transparent text-center" style={{ letterSpacing: '0.1em' }}>Total INR</p>
-                  <p className="text-2xl font-black bg-gradient-to-r from-[#22c55e] via-[#4ade80] to-[#22c55e] bg-clip-text text-transparent text-center">
+                  <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#22c55e]/80 text-center">Total INR</p>
+                  <p className="text-xl font-bold text-[#22c55e] text-center">
                     ₹{summary?.totalINR?.toLocaleString('en-IN') || 0}
                   </p>
                 </motion.div>
@@ -154,10 +156,10 @@ export default function AboutPage() {
                   <img 
                     src="https://media.discordapp.net/attachments/1415272793788121248/1439346779136069883/Unknown-removebg-preview.png?ex=691a2fa5&is=6918de25&hm=9cb68d076911e5e72d0869ab7535d4b17147f30500c6c0dba3c991c23c520afd&=&format=webp&quality=lossless&width=450&height=450" 
                     alt="Nitro" 
-                    className="w-12 h-12 mb-3 object-contain drop-shadow-[0_0_12px_rgba(255,107,222,0.8)]"
+                    className="w-10 h-10 mb-2 object-contain drop-shadow-[0_0_8px_rgba(255,107,222,0.6)]"
                   />
-                  <p className="text-sm mb-2 font-black tracking-wider uppercase bg-gradient-to-r from-[#ff6bde] via-[#ffa3e8] to-[#ff6bde] bg-clip-text text-transparent text-center" style={{ letterSpacing: '0.1em' }}>Nitro Boosters</p>
-                  <p className="text-3xl font-black text-[#ff6bde] text-center">
+                  <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#ff6bde]/80 text-center">Nitro Boosters</p>
+                  <p className="text-2xl font-bold text-[#ff6bde] text-center">
                     {summary?.nitro || 0}
                   </p>
                 </motion.div>
@@ -176,10 +178,10 @@ export default function AboutPage() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#8a67ff]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div>
-                    <FaGift className="text-[#8a67ff] text-4xl mb-3 drop-shadow-[0_0_12px_rgba(138,103,255,0.8)]" />
+                    <FaGift className="text-[#8a67ff] text-3xl mb-2 drop-shadow-[0_0_8px_rgba(138,103,255,0.6)]" />
                   </div>
-                  <p className="text-sm mb-2 font-black tracking-wider uppercase bg-gradient-to-r from-[#8a67ff] via-[#b494ff] to-[#8a67ff] bg-clip-text text-transparent text-center" style={{ letterSpacing: '0.08em' }}>Profile Decorations</p>
-                  <p className="text-3xl font-black text-[#8a67ff] text-center">
+                  <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#8a67ff]/80 text-center">Decorations</p>
+                  <p className="text-2xl font-bold text-[#8a67ff] text-center">
                     {summary?.decors || 0}
                   </p>
                 </motion.div>
@@ -200,10 +202,10 @@ export default function AboutPage() {
                   <img 
                     src="https://i.imgur.com/zNBBkdl.png" 
                     alt="OWO" 
-                    className="w-12 h-12 mb-3 object-contain rounded-full drop-shadow-[0_0_12px_rgba(255,182,193,0.8)]"
+                    className="w-10 h-10 mb-2 object-contain rounded-full drop-shadow-[0_0_8px_rgba(255,182,193,0.6)]"
                   />
-                  <p className="text-sm mb-2 font-black tracking-wider uppercase bg-gradient-to-r from-[#ffb6c1] via-[#ffd6db] to-[#ffb6c1] bg-clip-text text-transparent text-center" style={{ letterSpacing: '0.1em' }}>Owo Currency</p>
-                  <p className="text-3xl font-black text-[#ffb6c1] text-center">
+                  <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#ffb6c1]/80 text-center">Owo Currency</p>
+                  <p className="text-2xl font-bold text-[#ffb6c1] text-center">
                     {summary?.owo ? (
                       summary.owo >= 1000000 ? 
                         `${(summary.owo / 1000000).toFixed(1)}M` : 
@@ -230,10 +232,10 @@ export default function AboutPage() {
                   <img 
                     src="https://cdn-icons-png.flaticon.com/512/7048/7048906.png" 
                     alt="Crypto" 
-                    className="w-12 h-12 mb-3 object-contain drop-shadow-[0_0_12px_rgba(247,147,26,0.8)]"
+                    className="w-10 h-10 mb-2 object-contain drop-shadow-[0_0_8px_rgba(247,147,26,0.6)]"
                   />
-                  <p className="text-sm mb-2 font-black tracking-wider uppercase bg-gradient-to-r from-[#f7931a] via-[#ffb347] to-[#f7931a] bg-clip-text text-transparent text-center" style={{ letterSpacing: '0.08em' }}>Crypto Giveaways</p>
-                  <p className="text-3xl font-black text-[#f7931a] text-center">
+                  <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#f7931a]/80 text-center">Crypto Giveaways</p>
+                  <p className="text-2xl font-bold text-[#f7931a] text-center">
                     {summary?.cryptoGiveaways || 0}
                   </p>
                 </motion.div>
@@ -260,7 +262,7 @@ export default function AboutPage() {
               <div className="flex justify-center">
                 {team?.founder?.[0] ? (
                   <motion.a 
-                    href={`https://discord.com/users/${team.founder[0].userId}`}
+                    href={`https://id.rappytv.com/${team.founder[0].userId}`}
                     target="_blank" 
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05, y: -10 }}
@@ -306,27 +308,20 @@ export default function AboutPage() {
                           <span className="text-5xl font-black text-black">{team.founder[0].username.charAt(0).toUpperCase()}</span>
                         </div>
                       )}
-                      <motion.p 
-                        className="text-2xl font-black mb-2 bg-gradient-to-r from-[#c9a76f] via-[#f4e5c3] to-[#c9a76f] bg-clip-text text-transparent"
-                        animate={{
-                          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "linear"
-                        }}
-                        style={{ backgroundSize: "200% auto" }}
-                      >
-                        {team.founder[0].username}
-                      </motion.p>
+                      <div className="mb-2">
+                        <AnimatedUsername 
+                          username={team.founder[0].username} 
+                          role="founder"
+                          className="text-center block"
+                        />
+                      </div>
                       <p className="text-sm text-[#c9a76f]/80 mb-3 font-bold uppercase tracking-wider">{team.founder[0].role}</p>
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">{team.founder[0].userId}</p>
                     </div>
                   </motion.a>
                 ) : (
                   <motion.a 
-                    href="https://discord.com/users/959653911923396629" 
+                    href="https://id.rappytv.com/959653911923396629" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05, y: -10 }}
@@ -366,20 +361,13 @@ export default function AboutPage() {
                         />
                         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#c9a76f]/40 to-transparent animate-pulse" />
                       </div>
-                      <motion.p 
-                        className="text-2xl font-black mb-2 bg-gradient-to-r from-[#c9a76f] via-[#f4e5c3] to-[#c9a76f] bg-clip-text text-transparent"
-                        animate={{
-                          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                        }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "linear"
-                        }}
-                        style={{ backgroundSize: "200% auto" }}
-                      >
-                        imunknown69
-                      </motion.p>
+                      <div className="mb-2">
+                        <AnimatedUsername 
+                          username="imunknown69" 
+                          role="founder"
+                          className="text-center block"
+                        />
+                      </div>
                       <p className="text-sm text-[#c9a76f]/80 mb-3 font-bold uppercase tracking-wider">Founder</p>
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">959653911923396629</p>
                     </div>
@@ -392,9 +380,9 @@ export default function AboutPage() {
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <img 
-                  src="https://cdn.discordapp.com/attachments/1358403022106918936/1439625956984750141/Partner-removebg-preview.png?ex=691b33a7&is=6919e227&hm=86053a51d73f71f0c6368e88159b77dddbfb8fc3157852f775a58fd64affa5c7&"
+                  src="https://cdn.discordapp.com/emojis/1439891152391376896.gif"
                   alt="Owner Badge"
-                  className="w-10 h-10 object-contain drop-shadow-[0_0_18px_rgba(201,167,111,0.9)]"
+                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
                 />
                 <h3 className="text-2xl font-extrabold text-center text-[#c9a76f] tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>OWNERS</h3>
               </div>
@@ -403,7 +391,7 @@ export default function AboutPage() {
                   team.owners.map((owner) => (
                     <motion.a 
                       key={owner.userId}
-                      href={`https://discord.com/users/${owner.userId}`}
+                      href={`https://id.rappytv.com/${owner.userId}`}
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.03, y: -5 }}
@@ -434,7 +422,9 @@ export default function AboutPage() {
                             <span className="text-4xl font-bold text-black">{owner.username.charAt(0).toUpperCase()}</span>
                           </div>
                         )}
-                        <p className="text-[#c9a76f] font-bold text-xl mb-2">{owner.username}</p>
+                        <div className="mb-2">
+                          <AnimatedUsername username={owner.username} role="owner" className="text-center block" />
+                        </div>
                         <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">{owner.role}</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{owner.userId}</p>
                       </div>
@@ -443,7 +433,7 @@ export default function AboutPage() {
                 ) : (
                   <>
                     <motion.a 
-                      href="https://discord.com/users/643480211421265930" 
+                      href="https://id.rappytv.com/643480211421265930" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.03, y: -5 }}
@@ -468,14 +458,16 @@ export default function AboutPage() {
                           alt="rex.f" 
                           className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#c9a76f]/60 shadow-xl shadow-[#c9a76f]/30 ring-2 ring-[#c9a76f]/20"
                         />
-                        <p className="text-[#c9a76f] font-bold text-xl mb-2">rex.f</p>
+                        <div className="mb-2">
+                          <AnimatedUsername username="rex.f" role="owner" className="text-center block" />
+                        </div>
                         <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">Owner</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">643480211421265930</p>
                       </div>
                     </motion.a>
                     
                     <motion.a 
-                      href="https://discord.com/users/283127777383809024" 
+                      href="https://id.rappytv.com/283127777383809024" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.03, y: -5 }}
@@ -500,7 +492,9 @@ export default function AboutPage() {
                           alt="Alexx" 
                           className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#c9a76f]/60 shadow-xl shadow-[#c9a76f]/30 ring-2 ring-[#c9a76f]/20"
                         />
-                        <p className="text-[#c9a76f] font-bold text-xl mb-2">Alexx</p>
+                        <div className="mb-2">
+                          <AnimatedUsername username="Alexx" role="owner" className="text-center block" />
+                        </div>
                         <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">Owner</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">283127777383809024</p>
                       </div>
@@ -510,13 +504,75 @@ export default function AboutPage() {
               </div>
             </div>
 
+            {/* Girl Owners */}
+            <div className="mb-16">
+              <div className="flex items-center justify-center gap-3 mb-8">
+                <img 
+                  src="https://cdn.discordapp.com/emojis/1435661859112878120.gif"
+                  alt="Girl Owner Badge"
+                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(255,105,180,1)]"
+                />
+                <h3 className="text-2xl font-extrabold text-center bg-gradient-to-r from-[#ff69b4] via-[#ff1493] to-[#ff69b4] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>GIRL OWNERS</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                {team?.girlOwners && team.girlOwners.length > 0 ? (
+                  team.girlOwners.map((girlOwner: TeamMember) => (
+                    <motion.a 
+                      key={girlOwner.userId}
+                      href={`https://id.rappytv.com/${girlOwner.userId}`}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.03, y: -5 }}
+                      className="relative group overflow-hidden bg-gradient-to-br from-[#2a1a2a] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#ff69b4]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#ff69b4] hover:shadow-[0_0_40px_rgba(255,105,180,0.4)]"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#ff69b4]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <motion.div 
+                        className="absolute top-0 right-0 w-32 h-32 bg-[#ff69b4]/10 rounded-full blur-2xl"
+                        animate={{
+                          scale: [1, 1.3, 1],
+                          opacity: [0.2, 0.4, 0.2],
+                        }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                      <div className="relative z-10">
+                        {girlOwner.avatarUrl ? (
+                          <img 
+                            src={girlOwner.avatarUrl}
+                            alt={girlOwner.username}
+                            className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#ff69b4]/60 shadow-xl shadow-[#ff69b4]/30 ring-2 ring-[#ff69b4]/20"
+                          />
+                        ) : (
+                          <div className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#ff69b4]/60 shadow-xl shadow-[#ff69b4]/30 bg-gradient-to-br from-[#ff69b4]/80 to-[#ff1493]/80 flex items-center justify-center ring-2 ring-[#ff69b4]/20">
+                            <span className="text-4xl font-bold text-black">{girlOwner.username.charAt(0).toUpperCase()}</span>
+                          </div>
+                        )}
+                        <div className="mb-2">
+                          <AnimatedUsername username={girlOwner.username} role="girlOwner" className="text-center block" />
+                        </div>
+                        <p className="text-sm text-[#ff69b4]/70 mb-2 font-semibold uppercase tracking-wide">{girlOwner.role}</p>
+                        <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{girlOwner.userId}</p>
+                      </div>
+                    </motion.a>
+                  ))
+                ) : (
+                  <div className="col-span-full text-center text-gray-500">
+                    No Girl Owners assigned yet
+                  </div>
+                )}
+              </div>
+            </div>
+
             {/* Managers */}
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <img 
-                  src="https://cdn.discordapp.com/attachments/1358403022106918936/1439626680649125969/52962-moderator-removebg-preview.png?ex=691b3453&is=6919e2d3&hm=bbcb431bce5f5c8a857f179b055d4415bc0bcc9885be6da12314e851377974ce&"
+                  src="https://cdn.discordapp.com/attachments/1439158177189990510/1439917260280954970/Partner-removebg-preview.png?ex=691c42f3&is=691af173&hm=ed0b8c6fc85b1857478f2591c7edced4f2a83d64e9debddadb10d2cc6273b1e6&"
                   alt="Manager Badge"
-                  className="w-9 h-9 object-contain drop-shadow-[0_0_15px_rgba(201,167,111,0.8)]"
+                  className="w-10 h-10 object-contain drop-shadow-[0_0_16px_rgba(201,167,111,0.85)]"
                 />
                 <h3 className="text-xl font-bold text-center text-white/90" style={{ fontFamily: 'Inter, sans-serif' }}>MANAGERS</h3>
               </div>
@@ -525,7 +581,7 @@ export default function AboutPage() {
                   team.managers.map((manager) => (
                     <motion.a 
                       key={manager.userId}
-                      href={`https://discord.com/users/${manager.userId}`}
+                      href={`https://id.rappytv.com/${manager.userId}`}
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05, y: -6 }}
@@ -544,7 +600,9 @@ export default function AboutPage() {
                             <span className="text-3xl font-bold text-white">{manager.username.charAt(0).toUpperCase()}</span>
                           </div>
                         )}
-                        <p className="text-white font-bold text-lg mb-1">{manager.username}</p>
+                        <div className="mb-1">
+                          <AnimatedUsername username={manager.username} role="manager" className="text-center block" />
+                        </div>
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">{manager.role}</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">{manager.userId}</p>
                       </div>
@@ -553,7 +611,7 @@ export default function AboutPage() {
                 ) : (
                   <>
                     <motion.a 
-                      href="https://discord.com/users/785398118095126570" 
+                      href="https://id.rappytv.com/785398118095126570" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05, y: -6 }}
@@ -564,14 +622,16 @@ export default function AboutPage() {
                         <div className="w-24 h-24 rounded-xl mx-auto mb-3 border-2 border-white/30 shadow-lg bg-gradient-to-br from-[#3a3a3a] to-[#1a1a1a] flex items-center justify-center">
                           <span className="text-3xl font-bold text-white">D</span>
                         </div>
-                        <p className="text-white font-bold text-lg mb-1">Damon</p>
+                        <div className="mb-1">
+                          <AnimatedUsername username="Damon" role="manager" className="text-center block" />
+                        </div>
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">785398118095126570</p>
                       </div>
                     </motion.a>
 
                     <motion.a 
-                      href="https://discord.com/users/1255565188829155388" 
+                      href="https://id.rappytv.com/1255565188829155388" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05, y: -6 }}
@@ -582,14 +642,16 @@ export default function AboutPage() {
                         <div className="w-24 h-24 rounded-xl mx-auto mb-3 border-2 border-white/30 shadow-lg bg-gradient-to-br from-[#3a3a3a] to-[#1a1a1a] flex items-center justify-center">
                           <span className="text-3xl font-bold text-white">D</span>
                         </div>
-                        <p className="text-white font-bold text-lg mb-1">Devo</p>
+                        <div className="mb-1">
+                          <AnimatedUsername username="Devo" role="manager" className="text-center block" />
+                        </div>
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1255565188829155388</p>
                       </div>
                     </motion.a>
 
                     <motion.a 
-                      href="https://discord.com/users/1391157574958710835" 
+                      href="https://id.rappytv.com/1391157574958710835" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05, y: -6 }}
@@ -600,14 +662,16 @@ export default function AboutPage() {
                         <div className="w-24 h-24 rounded-xl mx-auto mb-3 border-2 border-white/30 shadow-lg bg-gradient-to-br from-[#3a3a3a] to-[#1a1a1a] flex items-center justify-center">
                           <span className="text-3xl font-bold text-white">M</span>
                         </div>
-                        <p className="text-white font-bold text-lg mb-1">Mahad</p>
+                        <div className="mb-1">
+                          <AnimatedUsername username="Mahad" role="manager" className="text-center block" />
+                        </div>
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1391157574958710835</p>
                       </div>
                     </motion.a>
 
                     <motion.a 
-                      href="https://discord.com/users/930109353137176586" 
+                      href="https://id.rappytv.com/930109353137176586" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05, y: -6 }}
@@ -618,7 +682,9 @@ export default function AboutPage() {
                         <div className="w-24 h-24 rounded-xl mx-auto mb-3 border-2 border-white/30 shadow-lg bg-gradient-to-br from-[#3a3a3a] to-[#1a1a1a] flex items-center justify-center">
                           <span className="text-3xl font-bold text-white">K</span>
                         </div>
-                        <p className="text-white font-bold text-lg mb-1">Kuchu</p>
+                        <div className="mb-1">
+                          <AnimatedUsername username="Kuchu" role="manager" className="text-center block" />
+                        </div>
                         <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">930109353137176586</p>
                       </div>
@@ -643,7 +709,7 @@ export default function AboutPage() {
                   team.earlySupport.map((supporter) => (
                     <motion.a 
                       key={supporter.userId}
-                      href={`https://discord.com/users/${supporter.userId}`}
+                      href={`https://id.rappytv.com/${supporter.userId}`}
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.08, y: -4 }}
@@ -662,7 +728,9 @@ export default function AboutPage() {
                             <span className="text-2xl font-bold text-[#c9a76f]/80">{supporter.username.charAt(0).toUpperCase()}</span>
                           </div>
                         )}
-                        <p className="text-white/90 font-medium text-sm mb-1 truncate">{supporter.username}</p>
+                        <div className="mb-1">
+                          <AnimatedUsername username={supporter.username} role="earlySupport" className="text-center block truncate" />
+                        </div>
                         <p className="text-[10px] text-[#c9a76f]/60 uppercase tracking-wider font-semibold mb-1">Supporter</p>
                         <p className="text-gray-500 text-[10px] font-mono bg-black/20 rounded px-1.5 py-0.5 inline-block">{supporter.userId}</p>
                       </div>
@@ -671,7 +739,7 @@ export default function AboutPage() {
                 ) : (
                   <div className="col-span-full flex justify-center">
                     <motion.a 
-                      href="https://discord.com/users/1395736628793839646" 
+                      href="https://id.rappytv.com/1395736628793839646" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.08, y: -4 }}

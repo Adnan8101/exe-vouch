@@ -51,7 +51,7 @@ export default function OptimizedBackground() {
     window.addEventListener('resize', resizeCanvas);
 
     // Initialize particles
-    const particleCount = 150; // Reduced for performance
+    const particleCount = 100; // Optimized for 60fps
     particlesRef.current = Array.from({ length: particleCount }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,

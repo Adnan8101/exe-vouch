@@ -76,6 +76,7 @@ export async function GET() {
     const coreTeamIds = [
       ...teamMembers.filter(m => m.role === 'Founder').map(m => m.userId),
       ...teamMembers.filter(m => m.role === 'Owner').map(m => m.userId),
+      ...teamMembers.filter(m => m.role === 'Girl Owner').map(m => m.userId),
       ...teamMembers.filter(m => m.role === 'Manager').map(m => m.userId),
     ];
 
@@ -83,9 +84,10 @@ export async function GET() {
     const grouped = {
       founder: teamMembers.filter(m => m.role === 'Founder'),
       owners: teamMembers.filter(m => m.role === 'Owner'),
+      girlOwners: teamMembers.filter(m => m.role === 'Girl Owner'),
       managers: teamMembers.filter(m => m.role === 'Manager'),
       earlySupport: teamMembers.filter(m => 
-        m.role === 'EarlySupport' && !coreTeamIds.includes(m.userId)
+        m.role === 'Early Support' && !coreTeamIds.includes(m.userId)
       ),
     };
 

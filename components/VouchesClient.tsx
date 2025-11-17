@@ -7,6 +7,7 @@ import Pagination from '@/components/Pagination';
 import { VouchSkeleton } from '@/components/Skeletons';
 import { getDiscordMessageUrl } from '@/lib/utils';
 import { MessageWithMentions } from './MessageWithMentions';
+import AnimatedUsername from '@/components/AnimatedUsername';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -125,12 +126,10 @@ export default function VouchesClient() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {vouches.map((vouch, index) => (
-            <motion.div
+            <div
               key={vouch.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-300 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.02] flex flex-col h-full relative"
+              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative"
+              style={{ contain: 'layout style paint' }}
             >
               {/* Vouch Number Badge */}
               <div className="absolute top-3 right-3 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-full px-3 py-1 text-xs font-bold text-[#c9a76f]">
@@ -140,31 +139,46 @@ export default function VouchesClient() {
               <div className="flex items-start gap-4 mb-4">
                 <div className="flex-shrink-0">
                   {vouch.authorAvatar ? (
-                    <img
+                    <motion.img
                       src={vouch.authorAvatar}
                       alt={vouch.authorName}
-                      className="w-14 h-14 rounded-full border-2 border-[#c9a76f]/30"
+                      className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ duration: 0.3 }}
                     />
                   ) : (
-                    <div className="w-14 h-14 rounded-full bg-[#c9a76f] flex items-center justify-center text-black font-bold text-xl">
+                    <motion.div 
+                      className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-[#c9a76f]/30"
+                      whileHover={{ scale: 1.1, rotate: -5 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       {vouch.authorName.charAt(0).toUpperCase()}
-                    </div>
+                    </motion.div>
                   )}
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-white font-semibold text-lg mb-1 truncate">
-                    {vouch.authorName}
-                  </h3>
-                  <span className="text-xs text-gray-500">
-                    {new Date(vouch.timestamp).toLocaleDateString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                      year: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </span>
+                  <div className="mb-2">
+                    <AnimatedUsername 
+                      username={vouch.authorName} 
+                      role="default" 
+                      className="block"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-xs text-gray-400 font-medium">
+                      {new Date(vouch.timestamp).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -174,66 +188,20 @@ export default function VouchesClient() {
 
               {/* Proof Link */}
               {vouch.proofUrl && (
-                <motion.a
+                <a
                   href={vouch.proofUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-block mt-auto text-[#c9a76f] font-semibold text-sm"
-                  whileHover={{ 
-                    x: 5,
-                  }}
-                  transition={{ duration: 0.2 }}
+                  className="inline-block mt-auto text-[#c9a76f] hover:text-[#d4b786] font-semibold text-sm transition-colors duration-200"
                 >
-                  <motion.span
-                    className="relative inline-block"
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                    animate={{
-                      color: ['#c9a76f', '#d4b786', '#c9a76f'],
-                    }}
-                    transition={{
-                      color: {
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }
-                    }}
-                  >
+                  <span className="relative">
                     Proof
-                    {/* Animated underline */}
-                    <motion.span
-                      className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#c9a76f] to-[#d4b786]"
-                      initial={{ width: 0 }}
-                      whileHover={{ width: '100%' }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    
-                    {/* Glow effect on hover */}
-                    <motion.span
-                      className="absolute inset-0 blur-sm bg-[#c9a76f] opacity-0"
-                      whileHover={{ opacity: 0.4 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.span>
-                  
-                  {/* Arrow icon */}
-                  <motion.span
-                    className="inline-block ml-1"
-                    animate={{
-                      x: [0, 3, 0],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    →
-                  </motion.span>
-                </motion.a>
+                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#c9a76f] group-hover:w-full transition-all duration-200" />
+                  </span>
+                  <span className="ml-1">→</span>
+                </a>
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
       )}
