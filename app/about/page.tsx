@@ -5,13 +5,7 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import { StatCardSkeleton } from '@/components/Skeletons';
 import { FaCheckCircle, FaGift } from 'react-icons/fa';
-import dynamic from 'next/dynamic';
-
-// Dynamic import for better performance - load animation after page renders
-const UltraAnimatedBackground = dynamic(
-  () => import('@/components/UltraAnimatedBackground'),
-  { ssr: false }
-);
+import OptimizedBackground from '@/components/OptimizedBackground';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -40,73 +34,54 @@ export default function AboutPage() {
   });
   return (
     <div className="min-h-screen relative">
-      {/* Ultra Custom Animated Background */}
-      <UltraAnimatedBackground />
+      {/* Optimized Sparkle Background */}
+      <OptimizedBackground />
       
       {/* Hero Section */}
-      <section className="relative py-8 px-6 overflow-hidden will-change-auto z-10">
+      <section className="relative py-8 px-6 overflow-hidden z-10">
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="text-center mb-10"
           >
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="mb-4 flex justify-center"
-            >
+            <div className="mb-4 flex justify-center">
               <img 
                 src="https://media.discordapp.net/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=691af969&is=6919a7e9&hm=651a541d4794ab72fcdff1792aa5bc7de355fa5f20225164fa09de5117e4efc4&=&width=1000&height=1000" 
                 alt="EXE Logo" 
+                loading="lazy"
                 className="h-20 w-20 rounded-full border-4 border-white/20 shadow-2xl shadow-[#c9a76f]/50 backdrop-blur-sm"
               />
-            </motion.div>
+            </div>
             
-            <motion.h1 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+            <h1 
               className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white via-white to-gray-300 bg-clip-text text-transparent tracking-tight"
               style={{ fontWeight: 700, letterSpacing: '-0.02em' }}
             >
               EXE
-            </motion.h1>
+            </h1>
             
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
+            <p 
               className="text-base md:text-lg text-white/90 max-w-3xl mx-auto leading-relaxed mb-6 font-light"
               style={{ textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}
             >
               EXE is back — louder, richer, and vibing harder than ever. Once a powerhouse in the Indian gaming scene with 22k members, the server was nuked and went silent for 3 years. But now, it's reborn as a pure chill community: daily VCs, music, memes, movie nights, crazy giveaways, and nonstop good vibes. No toxicity, no pressure—just a place where people remember your name and treat you like family. EXE isn't trying to be the biggest; just the best place to vibe, chat, and enjoy real company. Welcome home.
-            </motion.p>
+            </p>
 
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-              className="flex items-center justify-center gap-4 mt-6"
-            >
+            <div className="flex items-center justify-center gap-4 mt-6">
               <Link
                 href="/"
-                className="group px-8 py-3 bg-[#c9a76f] text-black font-semibold rounded-full hover:bg-[#d4b786] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/30 hover:scale-105 backdrop-blur-sm text-sm transform-gpu"
+                className="group px-8 py-3 bg-[#c9a76f] text-black font-semibold rounded-full hover:bg-[#d4b786] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/30 hover:scale-105 backdrop-blur-sm text-sm"
               >
                 <span className="relative z-10">View Vouches</span>
               </Link>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Summary Stats */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-          >
+          <div>
             <h2 className="text-2xl font-bold text-center mb-6">
               <span className="text-[#c9a76f]">Live</span> Status
             </h2>
@@ -264,15 +239,10 @@ export default function AboutPage() {
                 </motion.div>
               </div>
             )}
-          </motion.div>
+          </div>
 
           {/* Team Members Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            className="mt-16"
-          >
+          <div className="mt-16">
             <h2 className="text-3xl font-bold text-center mb-8">
               <span className="text-[#c9a76f]">Our</span> Team
             </h2>
@@ -721,7 +691,7 @@ export default function AboutPage() {
                 )}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

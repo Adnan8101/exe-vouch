@@ -36,28 +36,23 @@ body {
 
 /* Smooth animations and buttery smooth transitions */
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 * {
-  scroll-behavior: smooth;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimize rendering performance */
+img, video, iframe {
+  content-visibility: auto;
 }
 
 /* Buttery smooth page transitions */
 body {
   animation: fadeIn 0.3s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 /* Enhanced scrollbar for smoother feel */
@@ -125,22 +120,29 @@ input {
 /* Ultra-smooth canvas rendering */
 canvas {
   image-rendering: optimizeQuality;
-  image-rendering: -webkit-optimize-contrast;
-  will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  perspective: 1000px;
-  -webkit-perspective: 1000px;
+  contain: strict;
 }
 
-/* Optimize 3D transforms */
-[class*="three"],
-[class*="canvas"] {
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  will-change: transform, opacity;
-  contain: layout style paint;
+/* Smooth scrolling with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Optimize animations for 60fps */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
 }
 
 /* Optimize background rendering */
