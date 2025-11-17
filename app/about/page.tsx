@@ -5,6 +5,13 @@ import Link from 'next/link';
 import useSWR from 'swr';
 import { StatCardSkeleton } from '@/components/Skeletons';
 import { FaCheckCircle, FaGift } from 'react-icons/fa';
+import dynamic from 'next/dynamic';
+
+// Dynamic import for better performance - load animation after page renders
+const UltraAnimatedBackground = dynamic(
+  () => import('@/components/UltraAnimatedBackground'),
+  { ssr: false }
+);
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -32,33 +39,12 @@ export default function AboutPage() {
     refreshInterval: 5000,
   });
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Ultra Custom Animated Background */}
+      <UltraAnimatedBackground />
+      
       {/* Hero Section */}
-      <section className="relative py-8 px-6 overflow-hidden will-change-auto">
-        {/* Animated GIF Background Banner - Hardware Accelerated */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Animated Background GIF - Optimized with GPU Acceleration */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transform-gpu"
-            style={{
-              backgroundImage: 'url(https://cdn.discordapp.com/attachments/1412133468162359356/1439885049465147482/FromKlickPinCFPinbyonOverlaysinstagramLightingoverlaysGreenscreenbackgroundsavatarlink-ezgif.com-video-to-gif-converter.gif?ex=691c24f3&is=691ad373&hm=6d9363a2362cfd56190b88ea93b66ccbb783d09713c0c59d1a9c2f0b661ba624&)',
-              filter: 'brightness(1.1) contrast(1.05)',
-              willChange: 'transform',
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden',
-              transform: 'translateZ(0)',
-            }}
-          />
-          
-          {/* Professional Gradient Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
-          
-          {/* Subtle Brand Color Accent */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/5 via-transparent to-transparent" />
-          
-          {/* Clean Vignette Effect */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.4)_100%)]" />
-        </div>
+      <section className="relative py-8 px-6 overflow-hidden will-change-auto z-10">
         
         <div className="container mx-auto max-w-6xl relative z-10">
           <motion.div

@@ -122,6 +122,27 @@ input {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
+/* Ultra-smooth canvas rendering */
+canvas {
+  image-rendering: optimizeQuality;
+  image-rendering: -webkit-optimize-contrast;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+/* Optimize 3D transforms */
+[class*="three"],
+[class*="canvas"] {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform, opacity;
+  contain: layout style paint;
+}
+
 /* Optimize background rendering */
 [style*="backgroundImage"] {
   will-change: auto;
