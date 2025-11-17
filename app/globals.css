@@ -113,3 +113,22 @@ input {
   background-size: 200% 200%;
   animation: gradient 3s ease infinite;
 }
+
+/* GPU-accelerated transforms for buttery smooth performance */
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Optimize background rendering */
+[style*="backgroundImage"] {
+  will-change: auto;
+  contain: paint;
+}
+
+/* Reduce repaints for hover effects */
+.group:hover .group-hover\:opacity-100 {
+  contain: layout style paint;
+}
