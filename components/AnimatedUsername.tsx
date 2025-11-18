@@ -30,7 +30,7 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
     girlOwner: '#ff69b4',
     manager: '#ffffff',
     earlySupport: '#c9a76f',
-    default: '#ffffff',
+    default: '#c9a76f', // Changed from white to match vouch ID box color
   };
 
   useEffect(() => {
