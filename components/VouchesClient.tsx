@@ -3,11 +3,16 @@
 import { useState, useEffect, memo } from 'react';
 import useSWR from 'swr';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import Pagination from '@/components/Pagination';
 import { VouchSkeleton } from '@/components/Skeletons';
 import { getDiscordMessageUrl } from '@/lib/utils';
 import { MessageWithMentions } from './MessageWithMentions';
-import AnimatedUsername from '@/components/AnimatedUsername';
+
+const AnimatedUsername = dynamic(() => import('@/components/AnimatedUsername'), {
+  ssr: false,
+  loading: () => <span className="inline-block px-3 py-1.5">Loading...</span>,
+});
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -127,12 +132,9 @@ export default function VouchesClient() {
       ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {vouches.map((vouch, index) => (
-            <a
+            <div
               key={vouch.id}
-              href={`https://id.rappytv.com/${vouch.authorId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative block"
+              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative"
               style={{ contain: 'layout style paint', willChange: 'transform' }}
             >
               {/* Vouch Number Badge */}
@@ -141,7 +143,12 @@ export default function VouchesClient() {
               </div>
               
               <div className="flex items-start gap-4 mb-4">
-                <div className="flex-shrink-0">
+                <a
+                  href={`https://id.rappytv.com/${vouch.authorId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0"
+                >
                   {vouch.authorAvatar ? (
                     <Image
                       src={vouch.authorAvatar}
@@ -160,7 +167,7 @@ export default function VouchesClient() {
                       {vouch.authorName.charAt(0).toUpperCase()}
                     </div>
                   )}
-                </div>
+                </a>
 
                 <div className="flex-1 min-w-0">
                   <div className="mb-2">
@@ -207,7 +214,7 @@ export default function VouchesClient() {
                   <span className="ml-1">→</span>
                 </a>
               )}
-            </a>
+            </div>
           ))}
         </div>
       )}

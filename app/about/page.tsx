@@ -6,11 +6,15 @@ import dynamic from 'next/dynamic';
 import useSWR from 'swr';
 import { StatCardSkeleton, TeamMemberSkeleton, FounderCardSkeleton } from '@/components/Skeletons';
 import { FaCheckCircle, FaGift } from 'react-icons/fa';
-import AnimatedUsername from '@/components/AnimatedUsername';
 
 const OptimizedBackground = dynamic(() => import('@/components/OptimizedBackground'), {
   ssr: false,
   loading: () => null,
+});
+
+const AnimatedUsername = dynamic(() => import('@/components/AnimatedUsername'), {
+  ssr: false,
+  loading: () => <span className="inline-block px-3 py-1.5">Loading...</span>,
 });
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -493,7 +497,7 @@ export default function AboutPage() {
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Image 
-                  src="https://cdn.discordapp.com/attachments/1330460716947214346/1440204152692146307/Pi7_GIF_CMP.gif?ex=691d4e23&is=691bfca3&hm=acd3472559131b1befd68388b8e827879e5a24cf0f6a784ab205fe6af13f9f5c&"
+                  src="https://cdn.discordapp.com/emojis/1384862648314626078.png"
                   alt="Manager Badge"
                   width={80}
                   height={80}

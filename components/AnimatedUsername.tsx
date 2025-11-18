@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface AnimatedUsernameProps {
   username: string;
@@ -26,8 +26,15 @@ interface Particle {
 export default function AnimatedUsername({ username, role, className = '' }: AnimatedUsernameProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
@@ -218,10 +225,11 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
         ctx.closePath();
 
         const starGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, outerRadius);
-        starGradient.addColorStop(0, `#ffffff`);
-        starGradient.addColorStop(0.3, `${particle.color}${Math.floor(currentOpacity * 255).toString(16).padStart(2, '0')}`);
-        starGradient.addColorStop(0.6, `${particle.color}${Math.floor(currentOpacity * 200).toString(16).padStart(2, '0')}`);
-        starGradient.addColorStop(1, `${particle.color}${Math.floor(currentOpacity * 60).toString(16).padStart(2, '0')}`);
+        const safeOpacity = Math.max(0, Math.min(1, currentOpacity));
+        starGradient.addColorStop(0, `rgba(255, 255, 255, ${safeOpacity})`);
+        starGradient.addColorStop(0.3, `rgba(255, 255, 255, ${safeOpacity * 0.8})`);
+        starGradient.addColorStop(0.6, particle.color);
+        starGradient.addColorStop(1, `rgba(0, 0, 0, 0)`);
 
         ctx.fillStyle = starGradient;
         ctx.fill();
@@ -254,7 +262,7 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
     return () => {
       cancelAnimationFrame(animationId);
     };
-  }, [role]);
+  }, [role, mounted]);
 
   // SPECTACULAR font styles with HEAVY effects
   const fontStyles = {
