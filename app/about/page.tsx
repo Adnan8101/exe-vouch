@@ -227,14 +227,6 @@ export default function AboutPage() {
             {/* Founder */}
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
-                <Image 
-                  src="https://cdn.discordapp.com/attachments/1358403022106918936/1439626275458252895/st_small_845x845-pad_1000x1000_f8f8f8.u2-removebg-preview.png?ex=691b33f3&is=6919e273&hm=5efee5d4cd3779650b303ef55946f8f0fea5db01ca144abea03e78842f5d323c&"
-                  alt="Founder Badge"
-                  width={96}
-                  height={96}
-                  quality={80}
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
-                />
                 <h3 className="text-3xl font-black text-center bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>FOUNDER</h3>
               </div>
               <div className="flex justify-center">
@@ -259,6 +251,7 @@ export default function AboutPage() {
                           height={240}
                           quality={90}
                           priority
+                          unoptimized={team.founder[0].avatarUrl.includes('.gif')}
                           className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
                         />
                       ) : (
@@ -349,6 +342,7 @@ export default function AboutPage() {
                             width={184}
                             height={184}
                             quality={85}
+                            unoptimized={owner.avatarUrl.includes('.gif')}
                             className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#c9a76f]/60 shadow-xl shadow-[#c9a76f]/30 ring-2 ring-[#c9a76f]/20"
                           />
                         ) : (
@@ -456,6 +450,7 @@ export default function AboutPage() {
                             width={184}
                             height={184}
                             quality={85}
+                            unoptimized={girlOwner.avatarUrl.includes('.gif')}
                             className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#ff69b4]/60 shadow-xl shadow-[#ff69b4]/30 ring-2 ring-[#ff69b4]/20"
                           />
                         ) : (
@@ -516,6 +511,7 @@ export default function AboutPage() {
                             width={124}
                             height={124}
                             quality={80}
+                            unoptimized={manager.avatarUrl.includes('.gif')}
                             className="w-24 h-24 rounded-xl mx-auto mb-3 border-2 border-white/30 shadow-lg"
                           />
                         ) : (
@@ -646,6 +642,7 @@ export default function AboutPage() {
                             width={124}
                             height={124}
                             quality={75}
+                            unoptimized={supporter.avatarUrl.includes('.gif')}
                             className="w-16 h-16 rounded-lg mx-auto mb-2 border border-[#c9a76f]/20 shadow-md"
                           />
                         ) : (

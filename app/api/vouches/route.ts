@@ -35,6 +35,7 @@ export async function GET(request: Request) {
           id: true,
           vouchNumber: true,
           messageId: true,
+          authorId: true,
           authorName: true,
           authorAvatar: true,
           message: true,

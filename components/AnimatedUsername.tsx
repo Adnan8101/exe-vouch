@@ -48,55 +48,55 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
 
     updateSize();
 
-    // SPECTACULAR particle configuration with EXTREME VISIBILITY
+    // Balanced particle configuration - maximum visual impact with smooth performance
     const particleConfigs = {
       founder: {
-        count: 150,
+        count: 55,
         colors: ['#FFD700', '#FFA500', '#c9a76f', '#FFEC8B', '#FFD700', '#FF8C00'],
-        size: [4, 8],
-        speed: 1.5,
-        twinkleSpeed: 0.12,
-        glowIntensity: 4.0,
+        size: [3, 6],
+        speed: 1.2,
+        twinkleSpeed: 0.08,
+        glowIntensity: 2.8,
       },
       owner: {
-        count: 120,
+        count: 50,
         colors: ['#FFD700', '#FFED4E', '#FFA500', '#c9a76f', '#FFEC8B'],
-        size: [3.5, 7.5],
-        speed: 1.3,
-        twinkleSpeed: 0.11,
-        glowIntensity: 3.5,
-      },
-      girlOwner: {
-        count: 120,
-        colors: ['#ff69b4', '#ff1493', '#ff85c1', '#ffc0cb', '#ff00ff', '#ff69b4'],
-        size: [3.5, 7.5],
-        speed: 1.3,
-        twinkleSpeed: 0.11,
-        glowIntensity: 3.8,
-      },
-      manager: {
-        count: 100,
-        colors: ['#ffffff', '#f0f0f0', '#e0e0e0', '#f5f5f5', '#ffffff'],
-        size: [3, 7],
-        speed: 1.2,
-        twinkleSpeed: 0.1,
-        glowIntensity: 3.0,
-      },
-      earlySupport: {
-        count: 80,
-        colors: ['#c9a76f', '#d4b786', '#ffffff', '#c9a76f'],
-        size: [2.5, 6],
+        size: [2.5, 5.5],
         speed: 1.0,
-        twinkleSpeed: 0.09,
+        twinkleSpeed: 0.07,
         glowIntensity: 2.5,
       },
+      girlOwner: {
+        count: 50,
+        colors: ['#ff69b4', '#ff1493', '#ff85c1', '#ffc0cb', '#ff00ff', '#ff69b4'],
+        size: [2.5, 5.5],
+        speed: 1.0,
+        twinkleSpeed: 0.07,
+        glowIntensity: 2.6,
+      },
+      manager: {
+        count: 45,
+        colors: ['#ffffff', '#f0f0f0', '#e0e0e0', '#f5f5f5', '#ffffff'],
+        size: [2, 5],
+        speed: 0.9,
+        twinkleSpeed: 0.06,
+        glowIntensity: 2.3,
+      },
+      earlySupport: {
+        count: 40,
+        colors: ['#c9a76f', '#d4b786', '#ffffff', '#c9a76f'],
+        size: [2, 4.5],
+        speed: 0.8,
+        twinkleSpeed: 0.05,
+        glowIntensity: 2.1,
+      },
       default: {
-        count: 90,
+        count: 45,
         colors: ['#ffffff', '#c9a76f', '#e0e0e0'],
-        size: [3, 7],
-        speed: 1.1,
-        twinkleSpeed: 0.1,
-        glowIntensity: 2.8,
+        size: [2, 5],
+        speed: 0.9,
+        twinkleSpeed: 0.06,
+        glowIntensity: 2.2,
       },
     };
 
@@ -125,27 +125,29 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
       ctx.clearRect(0, 0, container.offsetWidth, container.offsetHeight);
       frame++;
 
-      // Draw HIGHLY VISIBLE electric connections between nearby particles
-      particles.forEach((p1, i) => {
-        particles.slice(i + 1).forEach((p2) => {
-          const dx = p2.x - p1.x;
-          const dy = p2.y - p1.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+      // Draw electric connections every few frames for performance
+      if (frame % 2 === 0) {
+        particles.forEach((p1, i) => {
+          // Only check next 6 particles to reduce calculations while maintaining effect
+          const checkLimit = Math.min(i + 7, particles.length);
+          for (let j = i + 1; j < checkLimit; j++) {
+            const p2 = particles[j];
+            const dx = p2.x - p1.x;
+            const dy = p2.y - p1.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 120 && distance > 0) {
-            const opacity = (1 - distance / 120) * 0.6;
-            ctx.strokeStyle = `${p1.color}${Math.floor(opacity * 180).toString(16).padStart(2, '0')}`;
-            ctx.lineWidth = 2.5;
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = p1.color;
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-            ctx.shadowBlur = 0;
+            if (distance < 110 && distance > 0) {
+              const opacity = (1 - distance / 110) * 0.5;
+              ctx.strokeStyle = `${p1.color}${Math.floor(opacity * 180).toString(16).padStart(2, '0')}`;
+              ctx.lineWidth = 1.8;
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
           }
         });
-      });
+      }
 
       particles.forEach((particle) => {
         // Update position
@@ -167,9 +169,9 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
         const glowValue = (Math.sin(particle.glowPhase) + 1) / 2;
         const currentOpacity = particle.opacity * (0.5 + twinkleValue * 0.5) * (0.7 + glowValue * 0.3);
 
-        // Draw MASSIVE glow layers for MAXIMUM VISIBILITY
-        for (let i = 1; i <= 5; i++) {
-          const glowRadius = particle.size * (15 - i * 2) * config.glowIntensity;
+        // Draw optimized glow layers - visible but performant
+        for (let i = 1; i <= 3; i++) {
+          const glowRadius = particle.size * (10 - i * 2) * config.glowIntensity;
           const glowGradient = ctx.createRadialGradient(
             particle.x,
             particle.y,
@@ -179,20 +181,16 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
             glowRadius
           );
 
-          const baseOpacity = currentOpacity * (0.9 / i);
-          glowGradient.addColorStop(0, `${particle.color}${Math.floor(baseOpacity * 255).toString(16).padStart(2, '0')}`);
-          glowGradient.addColorStop(0.3, `${particle.color}${Math.floor(baseOpacity * 200).toString(16).padStart(2, '0')}`);
-          glowGradient.addColorStop(0.6, `${particle.color}${Math.floor(baseOpacity * 120).toString(16).padStart(2, '0')}`);
-          glowGradient.addColorStop(0.8, `${particle.color}${Math.floor(baseOpacity * 50).toString(16).padStart(2, '0')}`);
+          const baseOpacity = currentOpacity * (0.8 / i);
+          glowGradient.addColorStop(0, `${particle.color}${Math.floor(baseOpacity * 220).toString(16).padStart(2, '0')}`);
+          glowGradient.addColorStop(0.4, `${particle.color}${Math.floor(baseOpacity * 150).toString(16).padStart(2, '0')}`);
+          glowGradient.addColorStop(0.7, `${particle.color}${Math.floor(baseOpacity * 80).toString(16).padStart(2, '0')}`);
           glowGradient.addColorStop(1, `${particle.color}00`);
 
           ctx.fillStyle = glowGradient;
-          ctx.shadowBlur = 20;
-          ctx.shadowColor = particle.color;
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, glowRadius, 0, Math.PI * 2);
           ctx.fill();
-          ctx.shadowBlur = 0;
         }
 
         // Draw main particle with STAR shape for sparkle effect
@@ -200,10 +198,10 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
         ctx.translate(particle.x, particle.y);
         ctx.rotate(particle.rotation);
 
-        // Star core - MUCH LARGER
-        const spikes = 8;
-        const outerRadius = particle.size * 5;
-        const innerRadius = particle.size * 2.5;
+        // Star core - optimized size
+        const spikes = 6;
+        const outerRadius = particle.size * 3.5;
+        const innerRadius = particle.size * 1.8;
 
         ctx.beginPath();
         for (let i = 0; i < spikes * 2; i++) {
@@ -221,38 +219,29 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
 
         const starGradient = ctx.createRadialGradient(0, 0, 0, 0, 0, outerRadius);
         starGradient.addColorStop(0, `#ffffff`);
-        starGradient.addColorStop(0.3, `${particle.color}ff`);
-        starGradient.addColorStop(0.6, `${particle.color}${Math.floor(currentOpacity * 230).toString(16).padStart(2, '0')}`);
-        starGradient.addColorStop(1, `${particle.color}${Math.floor(currentOpacity * 80).toString(16).padStart(2, '0')}`);
+        starGradient.addColorStop(0.3, `${particle.color}${Math.floor(currentOpacity * 255).toString(16).padStart(2, '0')}`);
+        starGradient.addColorStop(0.6, `${particle.color}${Math.floor(currentOpacity * 200).toString(16).padStart(2, '0')}`);
+        starGradient.addColorStop(1, `${particle.color}${Math.floor(currentOpacity * 60).toString(16).padStart(2, '0')}`);
 
         ctx.fillStyle = starGradient;
-        ctx.shadowBlur = 25;
-        ctx.shadowColor = particle.color;
         ctx.fill();
-        ctx.shadowBlur = 0;
 
         ctx.restore();
 
-        // Draw EXTREMELY BRIGHT core sparkle when twinkling
-        if (twinkleValue > 0.5) {
-          const coreSize = particle.size * (2 + (twinkleValue - 0.5) * 3);
+        // Draw bright core sparkle when twinkling
+        if (twinkleValue > 0.65) {
+          const coreSize = particle.size * (1.5 + (twinkleValue - 0.65) * 2);
           ctx.fillStyle = `${particle.color}ff`;
-          ctx.shadowBlur = 30;
-          ctx.shadowColor = particle.color;
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, coreSize, 0, Math.PI * 2);
           ctx.fill();
-          ctx.shadowBlur = 0;
 
-          // Extra bright white center with bloom
-          if (twinkleValue > 0.7) {
+          // Extra bright white center
+          if (twinkleValue > 0.8) {
             ctx.fillStyle = '#ffffff';
-            ctx.shadowBlur = 40;
-            ctx.shadowColor = '#ffffff';
             ctx.beginPath();
-            ctx.arc(particle.x, particle.y, coreSize * 0.6, 0, Math.PI * 2);
+            ctx.arc(particle.x, particle.y, coreSize * 0.5, 0, Math.PI * 2);
             ctx.fill();
-            ctx.shadowBlur = 0;
           }
         }
       });
