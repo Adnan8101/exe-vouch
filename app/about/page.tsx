@@ -252,18 +252,15 @@ export default function AboutPage() {
                     <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl" />
                     <div className="relative z-10">
                       {team.founder[0].avatarUrl ? (
-                        <div className="relative inline-block">
-                          <Image 
-                            src={team.founder[0].avatarUrl}
-                            alt={team.founder[0].username}
-                            width={240}
-                            height={240}
-                            quality={90}
-                            priority
-                            className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
-                          />
-                          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#c9a76f]/40 to-transparent animate-pulse" />
-                        </div>
+                        <Image 
+                          src={team.founder[0].avatarUrl}
+                          alt={team.founder[0].username}
+                          width={240}
+                          height={240}
+                          quality={90}
+                          priority
+                          className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
+                        />
                       ) : (
                         <div className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center ring-4 ring-[#c9a76f]/30">
                           <span className="text-5xl font-black text-black">{team.founder[0].username.charAt(0).toUpperCase()}</span>
@@ -276,7 +273,6 @@ export default function AboutPage() {
                           className="text-center block"
                         />
                       </div>
-                      <p className="text-sm text-[#c9a76f]/80 mb-3 font-bold uppercase tracking-wider">{team.founder[0].role}</p>
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">{team.founder[0].userId}</p>
                     </div>
                   </a>
@@ -291,18 +287,15 @@ export default function AboutPage() {
                     <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
                     <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl" />
                     <div className="relative z-10">
-                      <div className="relative inline-block">
-                        <Image 
-                          src="https://cdn.discordapp.com/avatars/959653911923396629/1a829abb7020436cbca22765be4e331b.png?size=1024" 
-                          alt="imunknown69" 
-                          width={240}
-                          height={240}
-                          quality={90}
-                          priority
-                          className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
-                        />
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#c9a76f]/40 to-transparent animate-pulse" />
-                      </div>
+                      <Image 
+                        src="https://cdn.discordapp.com/avatars/959653911923396629/1a829abb7020436cbca22765be4e331b.png?size=1024" 
+                        alt="imunknown69" 
+                        width={240}
+                        height={240}
+                        quality={90}
+                        priority
+                        className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
+                      />
                       <div className="mb-2">
                         <AnimatedUsername 
                           username="imunknown69" 
@@ -310,7 +303,6 @@ export default function AboutPage() {
                           className="text-center block"
                         />
                       </div>
-                      <p className="text-sm text-[#c9a76f]/80 mb-3 font-bold uppercase tracking-wider">Founder</p>
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">959653911923396629</p>
                     </div>
                   </a>
@@ -367,7 +359,6 @@ export default function AboutPage() {
                         <div className="mb-2">
                           <AnimatedUsername username={owner.username} role="owner" className="text-center block" />
                         </div>
-                        <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">{owner.role}</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{owner.userId}</p>
                       </div>
                     </a>
@@ -394,7 +385,6 @@ export default function AboutPage() {
                         <div className="mb-2">
                           <AnimatedUsername username="rex.f" role="owner" className="text-center block" />
                         </div>
-                        <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">Owner</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">643480211421265930</p>
                       </div>
                     </a>
@@ -419,7 +409,6 @@ export default function AboutPage() {
                         <div className="mb-2">
                           <AnimatedUsername username="Alexx" role="owner" className="text-center block" />
                         </div>
-                        <p className="text-sm text-[#c9a76f]/70 mb-2 font-semibold uppercase tracking-wide">Owner</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">283127777383809024</p>
                       </div>
                     </a>
@@ -477,7 +466,6 @@ export default function AboutPage() {
                         <div className="mb-2">
                           <AnimatedUsername username={girlOwner.username} role="girlOwner" className="text-center block" />
                         </div>
-                        <p className="text-sm text-[#ff69b4]/70 mb-2 font-semibold uppercase tracking-wide">{girlOwner.role}</p>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{girlOwner.userId}</p>
                       </div>
                     </a>
@@ -494,7 +482,7 @@ export default function AboutPage() {
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Image 
-                  src="https://cdn.discordapp.com/attachments/1439158177189990510/1439917260280954970/Partner-removebg-preview.png?ex=691c42f3&is=691af173&hm=ed0b8c6fc85b1857478f2591c7edced4f2a83d64e9debddadb10d2cc6273b1e6&"
+                  src="https://cdn.discordapp.com/attachments/1330460716947214346/1440204152692146307/Pi7_GIF_CMP.gif?ex=691d4e23&is=691bfca3&hm=acd3472559131b1befd68388b8e827879e5a24cf0f6a784ab205fe6af13f9f5c&"
                   alt="Manager Badge"
                   width={80}
                   height={80}
@@ -538,7 +526,6 @@ export default function AboutPage() {
                         <div className="mb-1">
                           <AnimatedUsername username={manager.username} role="manager" className="text-center block" />
                         </div>
-                        <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">{manager.role}</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">{manager.userId}</p>
                       </div>
                     </a>
@@ -559,7 +546,6 @@ export default function AboutPage() {
                         <div className="mb-1">
                           <AnimatedUsername username="Damon" role="manager" className="text-center block" />
                         </div>
-                        <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">785398118095126570</p>
                       </div>
                     </a>
@@ -578,7 +564,6 @@ export default function AboutPage() {
                         <div className="mb-1">
                           <AnimatedUsername username="Devo" role="manager" className="text-center block" />
                         </div>
-                        <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1255565188829155388</p>
                       </div>
                     </a>
@@ -597,7 +582,6 @@ export default function AboutPage() {
                         <div className="mb-1">
                           <AnimatedUsername username="Mahad" role="manager" className="text-center block" />
                         </div>
-                        <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1391157574958710835</p>
                       </div>
                     </a>
@@ -616,7 +600,6 @@ export default function AboutPage() {
                         <div className="mb-1">
                           <AnimatedUsername username="Kuchu" role="manager" className="text-center block" />
                         </div>
-                        <p className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">Manager</p>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">930109353137176586</p>
                       </div>
                     </a>
@@ -673,7 +656,6 @@ export default function AboutPage() {
                         <div className="mb-1">
                           <AnimatedUsername username={supporter.username} role="earlySupport" className="text-center block truncate" />
                         </div>
-                        <p className="text-[10px] text-[#c9a76f]/60 uppercase tracking-wider font-semibold mb-1">Supporter</p>
                         <p className="text-gray-500 text-[10px] font-mono bg-black/20 rounded px-1.5 py-0.5 inline-block">{supporter.userId}</p>
                       </div>
                     </a>
@@ -692,7 +674,6 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-[#c9a76f]/80">E</span>
                         </div>
                         <p className="text-white/90 font-medium mb-1">Early Supporter</p>
-                        <p className="text-xs text-[#c9a76f]/60 uppercase tracking-wider font-semibold">Supporter</p>
                         <p className="text-gray-500 text-xs font-mono mt-2">1395736628793839646</p>
                       </div>
                     </a>

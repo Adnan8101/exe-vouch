@@ -15,6 +15,7 @@ interface Vouch {
   id: string;
   vouchNumber: number;
   messageId: string;
+  authorId: string;
   authorName: string;
   authorAvatar: string | null;
   message: string;
@@ -124,11 +125,14 @@ export default function VouchesClient() {
           <p className="text-gray-400 text-lg">No vouches found</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {vouches.map((vouch, index) => (
-            <div
+            <a
               key={vouch.id}
-              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative"
+              href={`https://id.rappytv.com/${vouch.authorId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative block"
               style={{ contain: 'layout style paint' }}
             >
               {/* Vouch Number Badge */}
@@ -191,6 +195,7 @@ export default function VouchesClient() {
                   href={vouch.proofUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
                   className="inline-block mt-auto text-[#c9a76f] hover:text-[#d4b786] font-semibold text-sm transition-colors duration-200"
                 >
                   <span className="relative">
@@ -200,7 +205,7 @@ export default function VouchesClient() {
                   <span className="ml-1">→</span>
                 </a>
               )}
-            </div>
+            </a>
           ))}
         </div>
       )}
