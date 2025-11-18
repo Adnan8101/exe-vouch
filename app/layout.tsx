@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   keywords: "EXE, vouches, discord community, gaming, giveaways, voice chat",
   authors: [{ name: "EXE Team" }],
   icons: {
-    icon: "/exe.svg",
-    shortcut: "/exe.svg",
-    apple: "/exe.svg",
+    icon: "/exe.png",
+    shortcut: "/exe.png",
+    apple: "/exe.png",
   },
   openGraph: {
     title: "Exe Vouches",
