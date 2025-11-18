@@ -282,7 +282,7 @@ export default function AboutPage() {
                         <AnimatedUsername 
                           username={team.founder[0].username} 
                           role="founder"
-                          className="text-center block"
+                          className="inline-block"
                         />
                       </div>
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">{team.founder[0].userId}</p>
@@ -312,7 +312,7 @@ export default function AboutPage() {
                         <AnimatedUsername 
                           username="imunknown69" 
                           role="founder"
-                          className="text-center block"
+                          className="inline-block"
                         />
                       </div>
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">959653911923396629</p>
@@ -371,7 +371,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <div className="mb-2">
-                          <AnimatedUsername username={owner.username} role="owner" className="text-center block" />
+                          <AnimatedUsername username={owner.username} role="owner" className="inline-block" />
                         </div>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{owner.userId}</p>
                       </div>
@@ -397,7 +397,7 @@ export default function AboutPage() {
                           className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#c9a76f]/60 shadow-xl shadow-[#c9a76f]/30 ring-2 ring-[#c9a76f]/20"
                         />
                         <div className="mb-2">
-                          <AnimatedUsername username="rex.f" role="owner" className="text-center block" />
+                          <AnimatedUsername username="rex.f" role="owner" className="inline-block" />
                         </div>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">643480211421265930</p>
                       </div>
@@ -421,7 +421,7 @@ export default function AboutPage() {
                           className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#c9a76f]/60 shadow-xl shadow-[#c9a76f]/30 ring-2 ring-[#c9a76f]/20"
                         />
                         <div className="mb-2">
-                          <AnimatedUsername username="Alexx" role="owner" className="text-center block" />
+                          <AnimatedUsername username="Alexx" role="owner" className="inline-block" />
                         </div>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">283127777383809024</p>
                       </div>
@@ -479,7 +479,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <div className="mb-2">
-                          <AnimatedUsername username={girlOwner.username} role="girlOwner" className="text-center block" />
+                          <AnimatedUsername username={girlOwner.username} role="girlOwner" className="inline-block" />
                         </div>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{girlOwner.userId}</p>
                       </div>
@@ -540,7 +540,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <div className="mb-1">
-                          <AnimatedUsername username={manager.username} role="manager" className="text-center block" />
+                          <AnimatedUsername username={manager.username} role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">{manager.userId}</p>
                       </div>
@@ -560,7 +560,7 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-white">D</span>
                         </div>
                         <div className="mb-1">
-                          <AnimatedUsername username="Damon" role="manager" className="text-center block" />
+                          <AnimatedUsername username="Damon" role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">785398118095126570</p>
                       </div>
@@ -578,7 +578,7 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-white">D</span>
                         </div>
                         <div className="mb-1">
-                          <AnimatedUsername username="Devo" role="manager" className="text-center block" />
+                          <AnimatedUsername username="Devo" role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1255565188829155388</p>
                       </div>
@@ -596,7 +596,7 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-white">M</span>
                         </div>
                         <div className="mb-1">
-                          <AnimatedUsername username="Mahad" role="manager" className="text-center block" />
+                          <AnimatedUsername username="Mahad" role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1391157574958710835</p>
                       </div>
@@ -614,7 +614,7 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-white">K</span>
                         </div>
                         <div className="mb-1">
-                          <AnimatedUsername username="Kuchu" role="manager" className="text-center block" />
+                          <AnimatedUsername username="Kuchu" role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">930109353137176586</p>
                       </div>
@@ -671,7 +671,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <div className="mb-1">
-                          <AnimatedUsername username={supporter.username} role="earlySupport" className="text-center block truncate" />
+                          <AnimatedUsername username={supporter.username} role="earlySupport" className="inline-block truncate" />
                         </div>
                         <p className="text-gray-500 text-[10px] font-mono bg-black/20 rounded px-1.5 py-0.5 inline-block">{supporter.userId}</p>
                       </div>

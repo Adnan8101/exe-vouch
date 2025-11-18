@@ -132,9 +132,12 @@ export default function VouchesClient() {
       ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {vouches.map((vouch, index) => (
-            <div
+            <a
               key={vouch.id}
-              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative"
+              href={`https://id.rappytv.com/${vouch.authorId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative cursor-pointer block"
               style={{ contain: 'layout style paint', willChange: 'transform' }}
             >
               {/* Vouch Number Badge */}
@@ -143,12 +146,7 @@ export default function VouchesClient() {
               </div>
               
               <div className="flex items-start gap-4 mb-4">
-                <a
-                  href={`https://id.rappytv.com/${vouch.authorId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0"
-                >
+                <div className="flex-shrink-0">
                   {vouch.authorAvatar ? (
                     <Image
                       src={vouch.authorAvatar}
@@ -167,14 +165,14 @@ export default function VouchesClient() {
                       {vouch.authorName.charAt(0).toUpperCase()}
                     </div>
                   )}
-                </a>
+                </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="mb-2">
                     <AnimatedUsername 
                       username={vouch.authorName} 
                       role="default" 
-                      className="block"
+                      className="inline-block"
                     />
                   </div>
                   <div className="flex items-center gap-2">
@@ -200,21 +198,24 @@ export default function VouchesClient() {
 
               {/* Proof Link */}
               {vouch.proofUrl && (
-                <a
-                  href={vouch.proofUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="inline-block mt-auto text-[#c9a76f] hover:text-[#d4b786] font-semibold text-sm transition-colors duration-200"
+                <span
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (vouch.proofUrl) {
+                      window.open(vouch.proofUrl, '_blank', 'noopener,noreferrer');
+                    }
+                  }}
+                  className="inline-block mt-auto text-[#c9a76f] hover:text-[#d4b786] font-semibold text-sm transition-colors duration-200 cursor-pointer"
                 >
                   <span className="relative">
                     Proof
                     <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#c9a76f] group-hover:w-full transition-all duration-200" />
                   </span>
                   <span className="ml-1">→</span>
-                </a>
+                </span>
               )}
-            </div>
+            </a>
           ))}
         </div>
       )}
