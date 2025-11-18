@@ -238,7 +238,7 @@ export default function AboutPage() {
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Image 
-                  src="https://cdn.discordapp.com/emojis/1439891152391376896.gif"
+                  src="https://cdn.discordapp.com/emojis/1398664984640094299.png"
                   alt="Founder Badge"
                   width={184}
                   height={184}
@@ -281,6 +281,7 @@ export default function AboutPage() {
                       <div className="mb-2">
                         <AnimatedUsername 
                           username={team.founder[0].username} 
+                          userId={team.founder[0].userId}
                           role="founder"
                           className="inline-block"
                         />
@@ -311,6 +312,7 @@ export default function AboutPage() {
                       <div className="mb-2">
                         <AnimatedUsername 
                           username="imunknown69" 
+                          userId="959653911923396629"
                           role="founder"
                           className="inline-block"
                         />
@@ -326,7 +328,7 @@ export default function AboutPage() {
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Image 
-                  src="https://cdn.discordapp.com/emojis/1439891152391376896.gif"
+                  src="https://cdn.discordapp.com/attachments/1358403022106918936/1439626275458252895/st_small_845x845-pad_1000x1000_f8f8f8.u2-removebg-preview.png?ex=691d2e33&is=691bdcb3&hm=0e7971876a1ebaed7d5d22f36ef1ede34d63fc77f3773b9180dcf88dcb517f26&"
                   alt="Owner Badge"
                   width={184}
                   height={184}
@@ -371,7 +373,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <div className="mb-2">
-                          <AnimatedUsername username={owner.username} role="owner" className="inline-block" />
+                          <AnimatedUsername username={owner.username} userId={owner.userId} role="owner" className="inline-block" />
                         </div>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{owner.userId}</p>
                       </div>
@@ -397,7 +399,7 @@ export default function AboutPage() {
                           className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#c9a76f]/60 shadow-xl shadow-[#c9a76f]/30 ring-2 ring-[#c9a76f]/20"
                         />
                         <div className="mb-2">
-                          <AnimatedUsername username="rex.f" role="owner" className="inline-block" />
+                          <AnimatedUsername username="rex.f" userId="643480211421265930" role="owner" className="inline-block" />
                         </div>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">643480211421265930</p>
                       </div>
@@ -421,7 +423,7 @@ export default function AboutPage() {
                           className="w-28 h-28 rounded-full mx-auto mb-4 border-3 border-[#c9a76f]/60 shadow-xl shadow-[#c9a76f]/30 ring-2 ring-[#c9a76f]/20"
                         />
                         <div className="mb-2">
-                          <AnimatedUsername username="Alexx" role="owner" className="inline-block" />
+                          <AnimatedUsername username="Alexx" userId="283127777383809024" role="owner" className="inline-block" />
                         </div>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">283127777383809024</p>
                       </div>
@@ -479,7 +481,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <div className="mb-2">
-                          <AnimatedUsername username={girlOwner.username} role="girlOwner" className="inline-block" />
+                          <AnimatedUsername username={girlOwner.username} userId={girlOwner.userId} role="girlOwner" className="inline-block" />
                         </div>
                         <p className="text-gray-400 text-xs font-mono bg-black/20 rounded-md px-3 py-1.5 inline-block">{girlOwner.userId}</p>
                       </div>
@@ -540,7 +542,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <div className="mb-1">
-                          <AnimatedUsername username={manager.username} role="manager" className="inline-block" />
+                          <AnimatedUsername username={manager.username} userId={manager.userId} role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">{manager.userId}</p>
                       </div>
@@ -560,7 +562,7 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-white">D</span>
                         </div>
                         <div className="mb-1">
-                          <AnimatedUsername username="Damon" role="manager" className="inline-block" />
+                          <AnimatedUsername username="Damon" userId="785398118095126570" role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">785398118095126570</p>
                       </div>
@@ -578,7 +580,7 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-white">D</span>
                         </div>
                         <div className="mb-1">
-                          <AnimatedUsername username="Devo" role="manager" className="inline-block" />
+                          <AnimatedUsername username="Devo" userId="1255565188829155388" role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1255565188829155388</p>
                       </div>
@@ -596,7 +598,7 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-white">M</span>
                         </div>
                         <div className="mb-1">
-                          <AnimatedUsername username="Mahad" role="manager" className="inline-block" />
+                          <AnimatedUsername username="Mahad" userId="1391157574958710835" role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">1391157574958710835</p>
                       </div>
@@ -614,7 +616,7 @@ export default function AboutPage() {
                           <span className="text-3xl font-bold text-white">K</span>
                         </div>
                         <div className="mb-1">
-                          <AnimatedUsername username="Kuchu" role="manager" className="inline-block" />
+                          <AnimatedUsername username="Kuchu" userId="930109353137176586" role="manager" className="inline-block" />
                         </div>
                         <p className="text-gray-500 text-xs font-mono bg-black/30 rounded px-2 py-1 inline-block">930109353137176586</p>
                       </div>
@@ -671,7 +673,7 @@ export default function AboutPage() {
                           </div>
                         )}
                         <div className="mb-1">
-                          <AnimatedUsername username={supporter.username} role="earlySupport" className="inline-block truncate" />
+                          <AnimatedUsername username={supporter.username} userId={supporter.userId} role="earlySupport" className="inline-block truncate" />
                         </div>
                         <p className="text-gray-500 text-[10px] font-mono bg-black/20 rounded px-1.5 py-0.5 inline-block">{supporter.userId}</p>
                       </div>

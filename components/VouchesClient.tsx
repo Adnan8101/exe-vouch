@@ -171,6 +171,7 @@ export default function VouchesClient() {
                   <div className="mb-2">
                     <AnimatedUsername 
                       username={vouch.authorName} 
+                      userId={vouch.authorId}
                       role="default" 
                       className="inline-block"
                     />

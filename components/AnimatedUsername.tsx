@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 
 interface AnimatedUsernameProps {
   username: string;
+  userId?: string; // Add optional userId prop for fetching display name
   role: 'founder' | 'owner' | 'girlOwner' | 'manager' | 'earlySupport' | 'default';
   className?: string;
 }
@@ -18,10 +19,49 @@ interface Dot {
   color: string;
 }
 
-export default function AnimatedUsername({ username, role, className = '' }: AnimatedUsernameProps) {
+export default function AnimatedUsername({ username, userId, role, className = '' }: AnimatedUsernameProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [displayName, setDisplayName] = useState(username);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch display name from rappytv.com if userId is provided
+  useEffect(() => {
+    if (!userId) return;
+    
+    const fetchDisplayName = async () => {
+      setLoading(true);
+      try {
+        // Use our API endpoint to avoid CORS issues
+        const response = await fetch(`/api/display-name?userId=${userId}`);
+        
+        if (!response.ok) {
+          console.log(`API request failed for ${userId}: ${response.status}`);
+          return;
+        }
+        
+        const data = await response.json();
+        
+        if (data.displayName && data.displayName !== username && data.displayName !== 'N/A') {
+          setDisplayName(data.displayName);
+          console.log(`✅ Display name fetched for ${userId}: ${data.displayName}`);
+        } else {
+          console.log(`❌ No valid display name found for ${userId}, keeping: ${username}`);
+        }
+        
+      } catch (error) {
+        console.log(`Failed to fetch display name for ${userId}:`, error);
+        // Keep original username on error
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    // Add a small delay to avoid overwhelming the API and spread requests
+    const timeoutId = setTimeout(fetchDisplayName, Math.random() * 1000 + 500);
+    return () => clearTimeout(timeoutId);
+  }, [userId, username]);
 
   // Simple colors for each role
   const roleColors = {
@@ -124,7 +164,7 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
           fontSize: '1rem',
         }}
       >
-        {username}
+        {loading ? username : displayName}
       </span>
     </div>
   );
