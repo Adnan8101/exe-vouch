@@ -133,7 +133,7 @@ export default function VouchesClient() {
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative block"
-              style={{ contain: 'layout style paint' }}
+              style={{ contain: 'layout style paint', willChange: 'transform' }}
             >
               {/* Vouch Number Badge */}
               <div className="absolute top-3 right-3 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-full px-3 py-1 text-xs font-bold text-[#c9a76f]">
@@ -151,6 +151,7 @@ export default function VouchesClient() {
                       quality={80}
                       unoptimized={vouch.authorAvatar.includes('.gif')}
                       className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30 hover:scale-105 transition-transform duration-150"
+                      style={{ willChange: 'transform' }}
                     />
                   ) : (
                     <div 

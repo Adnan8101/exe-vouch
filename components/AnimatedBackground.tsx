@@ -11,7 +11,7 @@ import { createNoise3D } from 'simplex-noise';
 // Particle System - Floating Golden Particles
 function ParticleField() {
   const pointsRef = useRef<THREE.Points>(null);
-  const particleCount = 5000;
+  const particleCount = 2500; // Reduced for performance
   
   const [positions, colors] = useMemo(() => {
     const positions = new Float32Array(particleCount * 3);
@@ -234,7 +234,7 @@ function Line({ points, color }: { points: THREE.Vector3[]; color: THREE.Color }
 // Rotating Galaxy
 function RotatingGalaxy() {
   const pointsRef = useRef<THREE.Points>(null);
-  const particleCount = 10000;
+  const particleCount = 5000; // Reduced for performance
   
   const [positions, colors, scales] = useMemo(() => {
     const positions = new Float32Array(particleCount * 3);
@@ -409,7 +409,7 @@ function Scene() {
       <Stars
         radius={100}
         depth={50}
-        count={5000}
+        count={2500}
         factor={4}
         saturation={0}
         fade
@@ -466,8 +466,9 @@ export default function AnimatedBackground() {
           powerPreference: 'high-performance',
           preserveDrawingBuffer: false,
         }}
-        dpr={[1, 2]}
-        performance={{ min: 0.5 }}
+        dpr={[1, 1.5]}
+        performance={{ min: 0.5, max: 1 }}
+        frameloop="demand"
       >
         <color attach="background" args={['#0a0a0a']} />
         <fog attach="fog" args={['#0a0a0a', 30, 80]} />

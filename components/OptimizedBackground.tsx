@@ -50,8 +50,8 @@ export default function OptimizedBackground() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Initialize particles
-    const particleCount = 200; // More sparkles!
+    // Initialize particles - optimized count
+    const particleCount = 120; // Balanced sparkles for performance
     particlesRef.current = Array.from({ length: particleCount }, () => ({
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
@@ -64,19 +64,23 @@ export default function OptimizedBackground() {
       hue: Math.random() * 40 + 25, // Wider gold/white hues (25-65)
     }));
 
-    // Animation loop
+    // Animation loop with frame skipping
     let time = 0;
+    let frame = 0;
     const animate = () => {
       time += 0.016; // ~60fps
+      frame++;
 
       // Clear canvas
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
-      // Update and draw particles
+      // Update and draw particles (skip position updates every other frame)
       particlesRef.current.forEach((particle) => {
-        // Update position
-        particle.x += particle.vx;
-        particle.y += particle.vy;
+        // Update position every other frame
+        if (frame % 2 === 0) {
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+        }
 
         // Wrap around edges (seamless loop)
         if (particle.x < 0) particle.x = window.innerWidth;
@@ -130,7 +134,8 @@ export default function OptimizedBackground() {
         className="fixed inset-0 w-full h-full -z-10 pointer-events-none"
         style={{
           transform: 'translateZ(0)',
-          willChange: 'auto',
+          willChange: 'transform',
+          contain: 'strict',
         }}
       />
       

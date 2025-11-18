@@ -32,7 +32,7 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
     const container = containerRef.current;
     if (!canvas || !container) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: true, desynchronized: true });
     if (!ctx) return;
 
     // Set canvas size with higher resolution
@@ -48,55 +48,55 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
 
     updateSize();
 
-    // Balanced particle configuration - maximum visual impact with smooth performance
+    // Enhanced particle configuration - highly visible sparkles with optimized rendering
     const particleConfigs = {
       founder: {
-        count: 55,
+        count: 85,
         colors: ['#FFD700', '#FFA500', '#c9a76f', '#FFEC8B', '#FFD700', '#FF8C00'],
-        size: [3, 6],
+        size: [3.5, 7],
         speed: 1.2,
-        twinkleSpeed: 0.08,
-        glowIntensity: 2.8,
+        twinkleSpeed: 0.09,
+        glowIntensity: 3.2,
       },
       owner: {
-        count: 50,
+        count: 80,
         colors: ['#FFD700', '#FFED4E', '#FFA500', '#c9a76f', '#FFEC8B'],
-        size: [2.5, 5.5],
+        size: [3, 6.5],
         speed: 1.0,
-        twinkleSpeed: 0.07,
-        glowIntensity: 2.5,
+        twinkleSpeed: 0.08,
+        glowIntensity: 2.9,
       },
       girlOwner: {
-        count: 50,
+        count: 80,
         colors: ['#ff69b4', '#ff1493', '#ff85c1', '#ffc0cb', '#ff00ff', '#ff69b4'],
-        size: [2.5, 5.5],
+        size: [3, 6.5],
         speed: 1.0,
-        twinkleSpeed: 0.07,
-        glowIntensity: 2.6,
+        twinkleSpeed: 0.08,
+        glowIntensity: 3.0,
       },
       manager: {
-        count: 45,
+        count: 75,
         colors: ['#ffffff', '#f0f0f0', '#e0e0e0', '#f5f5f5', '#ffffff'],
-        size: [2, 5],
+        size: [2.5, 6],
         speed: 0.9,
-        twinkleSpeed: 0.06,
-        glowIntensity: 2.3,
+        twinkleSpeed: 0.07,
+        glowIntensity: 2.7,
       },
       earlySupport: {
-        count: 40,
+        count: 70,
         colors: ['#c9a76f', '#d4b786', '#ffffff', '#c9a76f'],
-        size: [2, 4.5],
+        size: [2.5, 5.5],
         speed: 0.8,
-        twinkleSpeed: 0.05,
-        glowIntensity: 2.1,
+        twinkleSpeed: 0.06,
+        glowIntensity: 2.5,
       },
       default: {
-        count: 45,
+        count: 75,
         colors: ['#ffffff', '#c9a76f', '#e0e0e0'],
-        size: [2, 5],
+        size: [2.5, 6],
         speed: 0.9,
-        twinkleSpeed: 0.06,
-        glowIntensity: 2.2,
+        twinkleSpeed: 0.07,
+        glowIntensity: 2.6,
       },
     };
 
@@ -109,7 +109,7 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
       vx: (Math.random() - 0.5) * config.speed,
       vy: (Math.random() - 0.5) * config.speed,
       size: Math.random() * (config.size[1] - config.size[0]) + config.size[0],
-      opacity: Math.random() * 0.6 + 0.4,
+      opacity: Math.random() * 0.5 + 0.6,
       color: config.colors[Math.floor(Math.random() * config.colors.length)],
       twinkle: Math.random() * Math.PI * 2,
       twinkleSpeed: config.twinkleSpeed + Math.random() * 0.03,
@@ -125,21 +125,21 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
       ctx.clearRect(0, 0, container.offsetWidth, container.offsetHeight);
       frame++;
 
-      // Draw electric connections every few frames for performance
-      if (frame % 2 === 0) {
+      // Draw electric connections every 4 frames for optimal performance with increased particles
+      if (frame % 4 === 0) {
         particles.forEach((p1, i) => {
-          // Only check next 6 particles to reduce calculations while maintaining effect
-          const checkLimit = Math.min(i + 7, particles.length);
+          // Only check next 5 particles to maintain smooth performance
+          const checkLimit = Math.min(i + 6, particles.length);
           for (let j = i + 1; j < checkLimit; j++) {
             const p2 = particles[j];
             const dx = p2.x - p1.x;
             const dy = p2.y - p1.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < 110 && distance > 0) {
-              const opacity = (1 - distance / 110) * 0.5;
-              ctx.strokeStyle = `${p1.color}${Math.floor(opacity * 180).toString(16).padStart(2, '0')}`;
-              ctx.lineWidth = 1.8;
+            if (distance < 100 && distance > 0) {
+              const opacity = (1 - distance / 100) * 0.45;
+              ctx.strokeStyle = `${p1.color}${Math.floor(opacity * 170).toString(16).padStart(2, '0')}`;
+              ctx.lineWidth = 1.6;
               ctx.beginPath();
               ctx.moveTo(p1.x, p1.y);
               ctx.lineTo(p2.x, p2.y);
@@ -169,7 +169,7 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
         const glowValue = (Math.sin(particle.glowPhase) + 1) / 2;
         const currentOpacity = particle.opacity * (0.5 + twinkleValue * 0.5) * (0.7 + glowValue * 0.3);
 
-        // Draw optimized glow layers - visible but performant
+        // Draw enhanced glow layers - highly visible with smart optimization
         for (let i = 1; i <= 3; i++) {
           const glowRadius = particle.size * (10 - i * 2) * config.glowIntensity;
           const glowGradient = ctx.createRadialGradient(
@@ -181,10 +181,10 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
             glowRadius
           );
 
-          const baseOpacity = currentOpacity * (0.8 / i);
-          glowGradient.addColorStop(0, `${particle.color}${Math.floor(baseOpacity * 220).toString(16).padStart(2, '0')}`);
-          glowGradient.addColorStop(0.4, `${particle.color}${Math.floor(baseOpacity * 150).toString(16).padStart(2, '0')}`);
-          glowGradient.addColorStop(0.7, `${particle.color}${Math.floor(baseOpacity * 80).toString(16).padStart(2, '0')}`);
+          const baseOpacity = currentOpacity * (0.95 / i);
+          glowGradient.addColorStop(0, `${particle.color}${Math.floor(baseOpacity * 240).toString(16).padStart(2, '0')}`);
+          glowGradient.addColorStop(0.3, `${particle.color}${Math.floor(baseOpacity * 190).toString(16).padStart(2, '0')}`);
+          glowGradient.addColorStop(0.6, `${particle.color}${Math.floor(baseOpacity * 120).toString(16).padStart(2, '0')}`);
           glowGradient.addColorStop(1, `${particle.color}00`);
 
           ctx.fillStyle = glowGradient;
@@ -347,25 +347,30 @@ export default function AnimatedUsername({ username, role, className = '' }: Ani
   const style = fontStyles[role] || fontStyles.default;
 
   return (
-    <div ref={containerRef} className={`relative inline-block ${className}`}>
+    <div ref={containerRef} className={`relative inline-block max-w-full ${className}`}>
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-[2px] rounded-lg" style={{ zIndex: -1 }} />
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none"
-        style={{ zIndex: 0 }}
+        style={{ zIndex: 0, willChange: 'transform' }}
       />
       <span
-        className="relative z-10 inline-block px-3 py-1.5"
-        style={style}
+        className="relative z-10 inline-block px-3 py-1.5 overflow-hidden text-ellipsis whitespace-nowrap max-w-full"
+        style={{...style, display: 'block', maxWidth: '100%'}}
       >
         {username}
       </span>
       <style jsx>{`
+        div {
+          contain: layout style paint;
+        }
         @keyframes shimmer {
           0% { background-position: 0% 50%; }
           100% { background-position: 300% 50%; }
         }
         span {
           animation: shimmer 2.5s linear infinite;
+          will-change: background-position;
         }
       `}</style>
     </div>

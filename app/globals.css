@@ -125,6 +125,38 @@ canvas {
   image-rendering: optimizeQuality;
   contain: strict;
   pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* GPU acceleration for animated elements */
+[class*="animate-"],
+[class*="transition-"],
+.group:hover > * {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* CSS containment for better performance */
+.relative {
+  contain: layout style;
+}
+
+/* Optimize heavy cards */
+[class*="bg-gradient"] {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize image loading */
+img[loading="lazy"] {
+  content-visibility: auto;
+}
+
+/* Reduce paint areas */
+.border,
+[class*="border-"] {
+  contain: paint;
 }
 
 /* Reduced motion support */

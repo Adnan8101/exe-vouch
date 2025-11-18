@@ -112,7 +112,8 @@ export default function AboutPage() {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-7xl mx-auto items-stretch">
                 {/* Total Vouches - Premium Golden Card */}
                 <div
-                  className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#c9a76f]/60 rounded-2xl p-6 hover:border-[#c9a76f] transition-all duration-150 hover:shadow-[0_0_25px_rgba(201,167,111,0.4)] hover:scale-[1.02] hover:-translate-y-1 flex flex-col items-center justify-center h-full will-change-transform"
+                  className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#c9a76f]/60 rounded-2xl p-6 hover:border-[#c9a76f] transition-all duration-150 hover:shadow-[0_0_25px_rgba(201,167,111,0.4)] hover:scale-[1.02] hover:-translate-y-1 flex flex-col items-center justify-center h-full"
+                  style={{ willChange: 'transform', contain: 'layout style paint' }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div>
@@ -127,6 +128,7 @@ export default function AboutPage() {
                 {/* Total INR - Money Green Card */}
                 <div
                   className="relative group overflow-hidden bg-gradient-to-br from-[#22c55e]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#22c55e]/60 rounded-2xl p-6 hover:border-[#22c55e] transition-all duration-200 hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
+                  style={{ willChange: 'transform', contain: 'layout style paint' }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#22c55e]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div className="text-4xl mb-2 drop-shadow-[0_0_8px_rgba(34,197,94,0.6)]">
@@ -141,6 +143,7 @@ export default function AboutPage() {
                 {/* Nitro - Pink Premium Card */}
                 <div
                   className="relative group overflow-hidden bg-gradient-to-br from-[#ff6bde]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ff6bde]/60 rounded-2xl p-6 hover:border-[#ff6bde] transition-all duration-200 hover:shadow-[0_0_30px_rgba(255,107,222,0.6)] hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
+                  style={{ willChange: 'transform', contain: 'layout style paint' }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#ff6bde]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <Image 
@@ -160,6 +163,7 @@ export default function AboutPage() {
                 {/* Decor - Purple Card */}
                 <div
                   className="relative group overflow-hidden bg-gradient-to-br from-[#8a67ff]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#8a67ff]/40 rounded-2xl p-6 hover:border-[#8a67ff] transition-all duration-200 hover:shadow-xl hover:shadow-[#8a67ff]/40 hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
+                  style={{ willChange: 'transform', contain: 'layout style paint' }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#8a67ff]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div>
@@ -174,6 +178,7 @@ export default function AboutPage() {
                 {/* OWO - Light Pink Card */}
                 <div
                   className="relative group overflow-hidden bg-gradient-to-br from-[#ffb6c1]/30 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#ffb6c1]/60 rounded-2xl p-6 hover:border-[#ffb6c1] transition-all duration-200 hover:shadow-[0_0_30px_rgba(255,182,193,0.6)] hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
+                  style={{ willChange: 'transform', contain: 'layout style paint' }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#ffb6c1]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <Image 
@@ -199,6 +204,7 @@ export default function AboutPage() {
                 {/* Crypto - Bitcoin Orange Card */}
                 <div
                   className="relative group overflow-hidden bg-gradient-to-br from-[#f7931a]/20 via-[#1a1a1a] to-[#0a0a0a] border-2 border-[#f7931a]/40 rounded-2xl p-6 hover:border-[#f7931a] transition-all duration-200 hover:shadow-xl hover:shadow-[#f7931a]/40 hover:scale-105 hover:-translate-y-1 flex flex-col items-center justify-center h-full"
+                  style={{ willChange: 'transform', contain: 'layout style paint' }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#f7931a]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <Image 
@@ -227,6 +233,15 @@ export default function AboutPage() {
             {/* Founder */}
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
+                <Image 
+                  src="https://cdn.discordapp.com/emojis/1439891152391376896.gif"
+                  alt="Founder Badge"
+                  width={184}
+                  height={184}
+                  quality={85}
+                  unoptimized
+                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
+                />
                 <h3 className="text-3xl font-black text-center bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>FOUNDER</h3>
               </div>
               <div className="flex justify-center">
@@ -331,6 +346,7 @@ export default function AboutPage() {
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="relative group overflow-hidden bg-gradient-to-br from-[#1f1f1f] via-[#1a1a1a] to-[#0a0a0a] border-3 border-[#c9a76f]/60 rounded-2xl p-8 text-center transition-all duration-300 hover:border-[#c9a76f] hover:shadow-[0_0_40px_rgba(201,167,111,0.4)] hover:scale-[1.03] hover:-translate-y-1"
+                      style={{ willChange: 'transform', contain: 'layout style paint' }}
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[#c9a76f]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       <div className="absolute top-0 right-0 w-32 h-32 bg-[#c9a76f]/10 rounded-full blur-2xl" />
