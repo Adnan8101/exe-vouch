@@ -164,7 +164,7 @@ export default function AnimatedUsername({ username, userId, role, className = '
           fontSize: '1rem',
         }}
       >
-        {loading ? username : displayName}
+        {username}
       </span>
     </div>
   );
