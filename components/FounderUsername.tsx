@@ -39,16 +39,16 @@ export default function FounderUsername({ username, className = '' }: FounderUse
       <style jsx>{`
         @keyframes shimmer {
           0% {
-            background-position: -200% center;
+            background-position: -250% center;
           }
           100% {
-            background-position: 200% center;
+            background-position: 250% center;
           }
         }
         
         .shimmer-text {
-          animation: shimmer 3s ease-in-out infinite;
-          background-size: 200% auto;
+          animation: shimmer 3s linear infinite;
+          background-size: 250% 100%;
         }
       `}</style>
       
@@ -58,11 +58,11 @@ export default function FounderUsername({ username, className = '' }: FounderUse
           fontFamily: "'Inter', 'Helvetica Neue', 'Arial', sans-serif",
           fontWeight: 800,
           letterSpacing: '0.05em',
-          background: 'linear-gradient(90deg, #c78d4e 0%, #e6bb7f 45%, #fff9e6 50%, #e6bb7f 55%, #c78d4e 100%)',
+          background: 'linear-gradient(90deg, #a67439 0%, #c78d4e 15%, #d4a46a 30%, #e6bb7f 40%, #ffffff 50%, #e6bb7f 60%, #d4a46a 70%, #c78d4e 85%, #a67439 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
-          textShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+          display: 'inline-block',
         }}
       >
         {username}
