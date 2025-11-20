@@ -157,7 +157,8 @@ export default function OptimizedBackground() {
     <>
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 w-full h-full -z-10 pointer-events-none"
+        className="absolute top-0 left-0 w-full -z-10 pointer-events-none"
+        style={{ height: '100%' }}
       />
       
       {/* Gradient Overlays */}
