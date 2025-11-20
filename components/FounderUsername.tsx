@@ -134,10 +134,10 @@ export default function FounderUsername({ username, className = '' }: FounderUse
     return (
       <div className={`relative inline-block ${className}`}>
         <p 
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wider"
+          className="text-lg sm:text-xl font-bold tracking-wide"
           style={{
             fontFamily: "'Inter', 'Helvetica Neue', 'Arial', sans-serif",
-            fontWeight: 900,
+            fontWeight: 800,
             background: 'linear-gradient(135deg, #EAC77C 0%, #F4DFA0 50%, #F0C762 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -159,17 +159,17 @@ export default function FounderUsername({ username, className = '' }: FounderUse
       />
       
       <p 
-        className="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wider"
+        className="relative text-lg sm:text-xl font-bold tracking-wide"
         style={{
           zIndex: 2,
           fontFamily: "'Inter', 'Helvetica Neue', 'Arial', sans-serif",
-          fontWeight: 900,
-          letterSpacing: '0.08em',
+          fontWeight: 800,
+          letterSpacing: '0.05em',
           background: 'linear-gradient(to bottom, #EAC77C 0%, #F4DFA0 45%, #F0C762 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
-          filter: 'drop-shadow(0 0 8px rgba(240, 199, 98, 0.4)) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.6))',
+          filter: 'drop-shadow(0 0 6px rgba(240, 199, 98, 0.3)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5))',
         }}
       >
         <span 
