@@ -157,15 +157,35 @@ export default function AnimatedUsername({ username, userId, role, className = '
         className="absolute pointer-events-none"
         style={{ zIndex: 0, left: '-20px', top: '-10px' }}
       />
-      <span
-        className="relative z-10 font-medium inline-block no-underline"
+      <a
+        href={userId ? `https://id.rappytv.com/${userId}` : undefined}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative z-10 font-medium inline-block no-underline"
         style={{
           color: color,
           fontSize: '1rem',
         }}
       >
         {username}
-      </span>
+        <span 
+          className="absolute left-0 right-0 bottom-0 h-[2px] w-0 group-hover:w-full transition-all duration-300"
+          style={{ 
+            backgroundColor: color,
+            transform: 'translateY(4px)'
+          }}
+        />
+        <span 
+          className="absolute left-0 opacity-0 group-hover:opacity-100 text-xs whitespace-nowrap transition-opacity duration-300"
+          style={{ 
+            color: color,
+            transform: 'translateY(8px)',
+            top: '100%'
+          }}
+        >
+          Check Proof
+        </span>
+      </a>
     </div>
   );
 }

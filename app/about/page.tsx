@@ -245,9 +245,9 @@ export default function AboutPage() {
                   height={48}
                   quality={85}
                   unoptimized
-                  className="w-12 h-12 object-contain flex-shrink-0"
+                  className="w-12 h-12 object-contain"
                 />
-                <h3 className="text-3xl font-black bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight leading-none" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>FOUNDER</h3>
+                <h3 className="text-3xl font-black bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em', lineHeight: '1' }}>FOUNDER</h3>
               </div>
               <div className="flex justify-center">
                 {teamLoading ? (
@@ -317,9 +317,9 @@ export default function AboutPage() {
                   height={48}
                   quality={85}
                   unoptimized
-                  className="w-12 h-12 object-contain flex-shrink-0"
+                  className="w-12 h-12 object-contain"
                 />
-                <h3 className="text-2xl font-extrabold text-[#c9a76f] tracking-tight leading-none" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>OWNERS</h3>
+                <h3 className="text-2xl font-extrabold text-[#c9a76f] tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em', lineHeight: '1' }}>OWNERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {teamLoading ? (
@@ -426,9 +426,9 @@ export default function AboutPage() {
                   height={48}
                   quality={85}
                   unoptimized
-                  className="w-12 h-12 object-contain flex-shrink-0"
+                  className="w-12 h-12 object-contain"
                 />
-                <h3 className="text-2xl font-extrabold bg-gradient-to-r from-[#ff69b4] via-[#ff1493] to-[#ff69b4] bg-clip-text text-transparent tracking-tight leading-none" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>GIRL OWNERS</h3>
+                <h3 className="text-2xl font-extrabold bg-gradient-to-r from-[#ff69b4] via-[#ff1493] to-[#ff69b4] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em', lineHeight: '1' }}>GIRL OWNERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {teamLoading ? (
@@ -487,9 +487,9 @@ export default function AboutPage() {
                   width={48}
                   height={48}
                   quality={80}
-                  className="w-12 h-12 object-contain flex-shrink-0"
+                  className="w-12 h-12 object-contain"
                 />
-                <h3 className="text-xl font-bold text-white/90 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>MANAGERS</h3>
+                <h3 className="text-xl font-bold text-white/90" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1' }}>MANAGERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {teamLoading ? (
@@ -623,9 +623,9 @@ export default function AboutPage() {
                   width={48}
                   height={48}
                   quality={75}
-                  className="w-12 h-12 object-contain flex-shrink-0"
+                  className="w-12 h-12 object-contain"
                 />
-                <h3 className="text-lg font-semibold text-white/70 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>EARLY SUPPORTERS</h3>
+                <h3 className="text-lg font-semibold text-white/70" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1' }}>EARLY SUPPORTERS</h3>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 max-w-6xl mx-auto">
                 {teamLoading ? (
