@@ -158,13 +158,13 @@ export default function VouchesClient() {
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline justify-between gap-2 mb-1">
+                  <div className="flex items-center justify-between gap-3 mb-2">
                     <a
                       href={`https://id.rappytv.com/${vouch.authorId}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-[#c9a76f] font-semibold text-lg hover:text-[#d4b786] transition-colors truncate"
+                      className="text-[#c9a76f] font-semibold text-base hover:text-[#d4b786] transition-colors truncate"
                     >
                       {vouch.authorName}
                     </a>
@@ -176,6 +176,7 @@ export default function VouchesClient() {
                       })}
                     </span>
                   </div>
+                  <hr className="border-[#2a2a2a]" />
                 </div>
               </div>
 

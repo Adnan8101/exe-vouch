@@ -151,7 +151,7 @@ export default function AnimatedUsername({ username, userId, role, className = '
   const color = roleColors[role] || roleColors.default;
 
   return (
-    <div ref={containerRef} className={`relative inline-block ${className}`}>
+    <div ref={containerRef} className={`relative inline-block ${className} group`}>
       <canvas
         ref={canvasRef}
         className="absolute pointer-events-none"
@@ -165,6 +165,13 @@ export default function AnimatedUsername({ username, userId, role, className = '
         }}
       >
         {username}
+        <span 
+          className="absolute left-0 right-0 bottom-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ 
+            backgroundColor: color,
+            transform: 'translateY(4px)'
+          }}
+        />
       </span>
     </div>
   );
