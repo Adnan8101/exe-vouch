@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import useSWR from 'swr';
 import { StatCardSkeleton, TeamMemberSkeleton, FounderCardSkeleton } from '@/components/Skeletons';
 import { FaCheckCircle, FaGift } from 'react-icons/fa';
+import FounderUsername from '@/components/FounderUsername';
 
 const OptimizedBackground = dynamic(() => import('@/components/OptimizedBackground'), {
   ssr: false,
@@ -65,7 +66,7 @@ export default function AboutPage() {
           <div className="text-center mb-10">
             <div className="mb-4 flex justify-center">
               <Image 
-                src="https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=691c4ae9&is=691af969&hm=7e04c4e196526beb2ed147e70425145e8c6903cdf7b2def512cedaeb30c77f67&" 
+                src="https://cdn.discordapp.com/attachments/1341814548507791454/1440981673352368251/Extreme_Official-2.gif?ex=69202243&is=691ed0c3&hm=49a0242d3510fe27d09fd039b434417306c5a60464b72d9693a85258ec088505&" 
                 alt="EXE Logo" 
                 width={144}
                 height={144}
@@ -278,13 +279,7 @@ export default function AboutPage() {
                           <span className="text-5xl font-black text-black">{team.founder[0].username.charAt(0).toUpperCase()}</span>
                         </div>
                       )}
-                      <div className="mb-2">
-                        <AnimatedUsername 
-                          username={team.founder[0].username} 
-                          role="founder"
-                          className="inline-block"
-                        />
-                      </div>
+                      <FounderUsername username={team.founder[0].username} className="mb-2" />
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">{team.founder[0].userId}</p>
                     </div>
                   </a>
@@ -308,13 +303,7 @@ export default function AboutPage() {
                         priority
                         className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
                       />
-                      <div className="mb-2">
-                        <AnimatedUsername 
-                          username="imunknown69" 
-                          role="founder"
-                          className="inline-block"
-                        />
-                      </div>
+                      <FounderUsername username="imunknown69" className="mb-2" />
                       <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">959653911923396629</p>
                     </div>
                   </a>
@@ -520,7 +509,8 @@ export default function AboutPage() {
                       href={`https://id.rappytv.com/${manager.userId}`}
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.03] hover:-translate-y-1"
+                      style={{ willChange: 'transform', contain: 'layout style paint' }}
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
                       <div className="relative z-10">
@@ -552,7 +542,8 @@ export default function AboutPage() {
                       href="https://id.rappytv.com/785398118095126570" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.03] hover:-translate-y-1"
+                      style={{ willChange: 'transform', contain: 'layout style paint' }}
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
                       <div className="relative z-10">
@@ -570,7 +561,8 @@ export default function AboutPage() {
                       href="https://id.rappytv.com/1255565188829155388" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.03] hover:-translate-y-1"
+                      style={{ willChange: 'transform', contain: 'layout style paint' }}
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
                       <div className="relative z-10">
@@ -588,7 +580,8 @@ export default function AboutPage() {
                       href="https://id.rappytv.com/1391157574958710835" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.03] hover:-translate-y-1"
+                      style={{ willChange: 'transform', contain: 'layout style paint' }}
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
                       <div className="relative z-10">
@@ -606,7 +599,8 @@ export default function AboutPage() {
                       href="https://id.rappytv.com/930109353137176586" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                      className="relative overflow-hidden bg-gradient-to-br from-[#2a2a2a] via-[#1a1a1a] to-[#0f0f0f] border-2 border-[#3a3a3a] rounded-xl p-6 text-center transition-all duration-300 hover:border-white/40 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.03] hover:-translate-y-1"
+                      style={{ willChange: 'transform', contain: 'layout style paint' }}
                     >
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent" />
                       <div className="relative z-10">

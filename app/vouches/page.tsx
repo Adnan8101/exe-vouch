@@ -48,7 +48,7 @@ export default function VouchesPage() {
               className="mb-4 flex justify-center"
             >
               <img 
-                src="https://cdn.discordapp.com/attachments/1411591288666456084/1439201034848436326/Extreme_Official.gif?ex=6919a7e9&is=69185669&hm=5740bc6c6182bee0f1d0401e22660dd334cf1cdba20b77dd65a3ccf7557a420f&" 
+                src="https://cdn.discordapp.com/attachments/1341814548507791454/1440981673352368251/Extreme_Official-2.gif?ex=69202243&is=691ed0c3&hm=49a0242d3510fe27d09fd039b434417306c5a60464b72d9693a85258ec088505&" 
                 alt="EXE Logo" 
                 loading="lazy"
                 className="h-20 w-20 rounded-full border-4 border-white/20 shadow-2xl shadow-[#c9a76f]/50 backdrop-blur-sm"

@@ -3,16 +3,10 @@
 import { useState, useEffect, memo } from 'react';
 import useSWR from 'swr';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import Pagination from '@/components/Pagination';
 import { VouchSkeleton } from '@/components/Skeletons';
 import { getDiscordMessageUrl } from '@/lib/utils';
 import { MessageWithMentions } from './MessageWithMentions';
-
-const AnimatedUsername = dynamic(() => import('@/components/AnimatedUsername'), {
-  ssr: false,
-  loading: () => <span className="inline-block px-3 py-1.5">Loading...</span>,
-});
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -132,13 +126,10 @@ export default function VouchesClient() {
       ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {vouches.map((vouch, index) => (
-            <a
+            <div
               key={vouch.id}
-              href={`https://id.rappytv.com/${vouch.authorId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 hover:scale-[1.01] flex flex-col h-full relative cursor-pointer block"
-              style={{ contain: 'layout style paint', willChange: 'transform' }}
+              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 flex flex-col h-full relative"
+              style={{ contain: 'layout style paint' }}
             >
               {/* Vouch Number Badge */}
               <div className="absolute top-3 right-3 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-full px-3 py-1 text-xs font-bold text-[#c9a76f]">
@@ -155,12 +146,11 @@ export default function VouchesClient() {
                       height={124}
                       quality={80}
                       unoptimized={vouch.authorAvatar.includes('.gif')}
-                      className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30 hover:scale-105 transition-transform duration-150"
-                      style={{ willChange: 'transform' }}
+                      className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30"
                     />
                   ) : (
                     <div 
-                      className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-[#c9a76f]/30 hover:scale-105 transition-transform duration-150"
+                      className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-[#c9a76f]/30"
                     >
                       {vouch.authorName.charAt(0).toUpperCase()}
                     </div>
@@ -169,12 +159,17 @@ export default function VouchesClient() {
 
                 <div className="flex-1 min-w-0">
                   <div className="mb-2">
-                    <AnimatedUsername 
-                      username={vouch.authorName} 
-                      role="default" 
-                      className="inline-block"
-                    />
+                    <a
+                      href={`https://id.rappytv.com/${vouch.authorId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-[#c9a76f] font-medium hover:text-[#d4b786] transition-colors inline-block"
+                    >
+                      {vouch.authorName}
+                    </a>
                   </div>
+                  <hr className="border-[#2a2a2a] mb-2" />
                   <div className="flex items-center gap-2">
                     <svg className="w-3.5 h-3.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -206,7 +201,7 @@ export default function VouchesClient() {
                       window.open(vouch.proofUrl, '_blank', 'noopener,noreferrer');
                     }
                   }}
-                  className="inline-block mt-auto text-[#c9a76f] hover:text-[#d4b786] font-semibold text-sm transition-colors duration-200 cursor-pointer"
+                  className="inline-block mt-auto text-[#c9a76f] hover:text-[#d4b786] font-semibold text-sm transition-colors duration-200 cursor-pointer hover:underline"
                 >
                   <span className="relative">
                     Proof
@@ -215,7 +210,7 @@ export default function VouchesClient() {
                   <span className="ml-1">→</span>
                 </span>
               )}
-            </a>
+            </div>
           ))}
         </div>
       )}
