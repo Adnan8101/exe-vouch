@@ -48,12 +48,12 @@ export default function FounderUsername({ username, className = '' }: FounderUse
       `}</style>
       <div className={`relative inline-block ${className}`}>
         <p 
-          className="text-2xl sm:text-3xl font-bold tracking-wide"
+          className="text-xl sm:text-2xl font-bold tracking-wide"
           style={{
             fontFamily: "'Inter', 'Helvetica Neue', 'Arial', sans-serif",
             fontWeight: 800,
             letterSpacing: '0.05em',
-            background: 'linear-gradient(110deg, #b8813d 0%, #d4a46a 20%, #e6bb7f 35%, #f5f5f5 50%, #e6bb7f 65%, #d4a46a 80%, #b8813d 100%)',
+            background: 'linear-gradient(110deg, #e6bb7f 0%, #f4e5c3 20%, #fffdf7 35%, #ffffff 50%, #fffdf7 65%, #f4e5c3 80%, #e6bb7f 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',

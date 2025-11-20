@@ -257,12 +257,10 @@ export default function AboutPage() {
                     href={`https://id.rappytv.com/${team.founder[0].userId}`}
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-md"
+                    className="relative group overflow-hidden bg-gradient-to-br from-[#4a4a3a]/90 via-[#2a2a2a] to-[#1a1a1a] border-4 border-[#c9a76f] rounded-2xl p-12 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-lg"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
-                    <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl" />
-                    <div className="relative z-10">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,167,111,0.15),transparent_70%)]" />
+                    <div className="relative z-10 flex flex-col items-center">
                       {team.founder[0].avatarUrl ? (
                         <Image 
                           src={team.founder[0].avatarUrl}
@@ -279,8 +277,7 @@ export default function AboutPage() {
                             <span className="text-5xl font-black text-black">{team.founder[0].username.charAt(0).toUpperCase()}</span>
                           </div>
                       )}
-                      <FounderUsername username={team.founder[0].username} className="mb-1" />
-                      <p className="text-gray-400/60 text-xs font-medium uppercase tracking-wider mb-2">Founder</p>
+                      <FounderUsername username={team.founder[0].username} className="mb-2" />
                       <p className="text-gray-400 text-xs font-mono bg-black/30 rounded-lg px-3 py-1.5 inline-block">{team.founder[0].userId}</p>
                     </div>
                   </a>
@@ -289,12 +286,10 @@ export default function AboutPage() {
                       href="https://id.rappytv.com/959653911923396629" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-md"
+                      className="relative group overflow-hidden bg-gradient-to-br from-[#4a4a3a]/90 via-[#2a2a2a] to-[#1a1a1a] border-4 border-[#c9a76f] rounded-2xl p-12 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-lg"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
-                    <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl" />
-                    <div className="relative z-10">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(201,167,111,0.15),transparent_70%)]" />
+                    <div className="relative z-10 flex flex-col items-center">
                         <Image 
                           src="https://cdn.discordapp.com/avatars/959653911923396629/1a829abb7020436cbca22765be4e331b.png?size=1024" 
                           alt="imunknown69" 
@@ -304,8 +299,7 @@ export default function AboutPage() {
                           priority
                           className="w-36 h-36 rounded-full mx-auto mb-5 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
                         />
-                        <FounderUsername username="imunknown69" className="mb-1" />
-                        <p className="text-gray-400/60 text-xs font-medium uppercase tracking-wider mb-2">Founder</p>
+                        <FounderUsername username="imunknown69" className="mb-2" />
                         <p className="text-gray-400 text-xs font-mono bg-black/30 rounded-lg px-3 py-1.5 inline-block">959653911923396629</p>
                     </div>
                   </a>

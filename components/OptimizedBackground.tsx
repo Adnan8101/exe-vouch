@@ -37,28 +37,46 @@ export default function OptimizedBackground() {
     });
     if (!ctx) return;
 
-    // Set canvas size - use viewport height for better performance
+    // Set canvas size - use document height for full page coverage
     const resizeCanvas = () => {
       const dpr = Math.min(window.devicePixelRatio, 2);
       const canvasWidth = window.innerWidth;
-      const canvasHeight = window.innerHeight;
+      const canvasHeight = Math.max(document.documentElement.scrollHeight, window.innerHeight);
       
       canvas.width = canvasWidth * dpr;
       canvas.height = canvasHeight * dpr;
       canvas.style.width = `${canvasWidth}px`;
       canvas.style.height = `${canvasHeight}px`;
       ctx.scale(dpr, dpr);
+      
+      return { width: canvasWidth, height: canvasHeight };
     };
 
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    const { width, height } = resizeCanvas();
+    
+    // Re-resize on scroll to handle dynamic content
+    let resizeTimeout: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const dims = resizeCanvas();
+        // Redistribute particles if canvas grew significantly
+        particlesRef.current.forEach(particle => {
+          if (particle.y > dims.height) particle.y = Math.random() * dims.height;
+          if (particle.x > dims.width) particle.x = Math.random() * dims.width;
+        });
+      }, 250);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleResize, { passive: true });
 
     // Initialize particles - optimized count
     const particleCount = 200; // Balanced for performance
     
     particlesRef.current = Array.from({ length: particleCount }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
+      x: Math.random() * width,
+      y: Math.random() * height,
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.4,
       size: Math.random() * 3 + 1, // Slightly larger sparkles (1-4px)
@@ -86,11 +104,14 @@ export default function OptimizedBackground() {
           particle.y += particle.vy;
         }
 
-        // Wrap around edges (seamless loop) - use canvas dimensions
-        if (particle.x < 0) particle.x = window.innerWidth;
-        if (particle.x > window.innerWidth) particle.x = 0;
-        if (particle.y < 0) particle.y = window.innerHeight;
-        if (particle.y > window.innerHeight) particle.y = 0;
+        // Wrap around edges (seamless loop) - use full canvas dimensions
+        const canvasWidth = canvas.width / Math.min(window.devicePixelRatio, 2);
+        const canvasHeight = canvas.height / Math.min(window.devicePixelRatio, 2);
+        
+        if (particle.x < 0) particle.x = canvasWidth;
+        if (particle.x > canvasWidth) particle.x = 0;
+        if (particle.y < 0) particle.y = canvasHeight;
+        if (particle.y > canvasHeight) particle.y = 0;
 
         // Twinkle effect
         particle.opacity = Math.abs(Math.sin(time * particle.twinkleSpeed + particle.twinkleOffset));
@@ -122,7 +143,8 @@ export default function OptimizedBackground() {
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleResize);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
