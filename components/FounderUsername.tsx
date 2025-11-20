@@ -53,12 +53,12 @@ export default function FounderUsername({ username, className = '' }: FounderUse
             fontFamily: "'Inter', 'Helvetica Neue', 'Arial', sans-serif",
             fontWeight: 800,
             letterSpacing: '0.05em',
-            background: 'linear-gradient(110deg, #a67439 0%, #c78d4e 20%, #d4a46a 35%, #e6bb7f 45%, #ffffff 50%, #e6bb7f 55%, #d4a46a 65%, #c78d4e 80%, #a67439 100%)',
+            background: 'linear-gradient(110deg, #b8813d 0%, #d4a46a 20%, #e6bb7f 35%, #f5f5f5 50%, #e6bb7f 65%, #d4a46a 80%, #b8813d 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
             backgroundSize: '200% 100%',
-            animation: 'founderShimmer 5s ease-in-out infinite',
+            animation: 'founderShimmer 8s ease-in-out infinite',
             display: 'inline-block',
           }}
         >
