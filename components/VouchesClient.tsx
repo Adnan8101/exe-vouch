@@ -28,7 +28,6 @@ export default function VouchesClient() {
   const [searchQuery, setSearchQuery] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
 
-  // Debounce search query
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedSearch(searchQuery);
