@@ -124,73 +124,69 @@ export default function VouchesClient() {
           <p className="text-gray-400 text-lg">No vouches found</p>
         </div>
       ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {vouches.map((vouch, index) => (
             <div
               key={vouch.id}
-              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 flex flex-col h-full relative"
-              style={{ contain: 'layout style paint' }}
+              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-2.5 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-lg hover:shadow-[#c9a76f]/10 flex flex-col h-full relative group"
+              style={{ contain: 'layout style paint', minHeight: '120px' }}
             >
               {/* Vouch Number Badge */}
-              <div className="absolute top-3 right-3 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-full px-3 py-1 text-xs font-bold text-[#c9a76f]">
+              <div className="absolute top-1.5 right-1.5 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-full px-2 py-0.5 text-xs font-bold text-[#c9a76f]">
                 #{vouch.vouchNumber}
               </div>
               
-              <div className="flex items-start gap-4 mb-4">
+              {/* Header with Avatar and Username */}
+              <div className="flex items-center gap-3 mb-2">
                 <div className="flex-shrink-0">
                   {vouch.authorAvatar ? (
                     <Image
                       src={vouch.authorAvatar}
                       alt={vouch.authorName}
-                      width={124}
-                      height={124}
+                      width={48}
+                      height={48}
                       quality={80}
                       unoptimized={vouch.authorAvatar.includes('.gif')}
-                      className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30"
+                      className="w-12 h-12 rounded-full border border-[#c9a76f]/20"
                     />
                   ) : (
                     <div 
-                      className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-[#c9a76f]/30"
+                      className="w-12 h-12 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-base"
                     >
                       {vouch.authorName.charAt(0).toUpperCase()}
                     </div>
                   )}
                 </div>
-
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-3 mb-2">
-                    <a
-                      href={`https://id.rappytv.com/${vouch.authorId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="group relative text-[#c9a76f] font-semibold text-base hover:text-[#d4b786] transition-colors truncate"
-                    >
+                  <a
+                    href={`https://id.rappytv.com/${vouch.authorId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-block group/username relative"
+                  >
+                    <span className="text-[#c9a76f] font-semibold text-base hover:text-[#d4b786] transition-colors truncate block relative">
                       {vouch.authorName}
-                      <span className="absolute left-0 -bottom-1 w-0 group-hover:w-full h-[2px] bg-[#c9a76f] transition-all duration-300" />
-                      <span className="absolute left-0 -bottom-5 opacity-0 group-hover:opacity-100 text-xs text-[#c9a76f] whitespace-nowrap transition-opacity duration-300">
-                        Check Proof
-                      </span>
-                    </a>
-                    <span className="text-xs text-gray-500 flex-shrink-0 whitespace-nowrap">
-                      {new Date(vouch.timestamp).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric',
-                      })}
                     </span>
-                  </div>
-                  <hr className="border-[#2a2a2a]" />
+                    <span className="absolute left-0 top-full w-0 group-hover/username:w-full h-[1px] bg-[#c9a76f] transition-all duration-300" />
+                  </a>
+                  <p className="text-xs text-gray-500 mt-0.5">
+                    {new Date(vouch.timestamp).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })}
+                  </p>
                 </div>
               </div>
 
-              <p className="text-gray-300 text-sm leading-relaxed flex-grow line-clamp-4 mb-3">
+              <p className="text-gray-300 text-xs leading-relaxed flex-grow line-clamp-2 mb-1">
                 <MessageWithMentions message={vouch.message} />
               </p>
 
               {/* Proof Link */}
               {vouch.proofUrl && (
-                <span
+                <button
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -198,14 +194,14 @@ export default function VouchesClient() {
                       window.open(vouch.proofUrl, '_blank', 'noopener,noreferrer');
                     }
                   }}
-                  className="inline-block mt-auto text-[#c9a76f] hover:text-[#d4b786] font-semibold text-sm transition-colors duration-200 cursor-pointer hover:underline"
+                  className="inline-flex items-center gap-1 mt-auto text-[#c9a76f] hover:text-[#d4b786] font-medium text-xs transition-colors duration-200 cursor-pointer group/proof self-start"
                 >
                   <span className="relative">
                     Proof
-                    <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#c9a76f] group-hover:w-full transition-all duration-200" />
+                    <span className="absolute bottom-0 left-0 w-0 group-hover/proof:w-full h-[1px] bg-current transition-all duration-200" />
                   </span>
-                  <span className="ml-1">→</span>
-                </span>
+                  <span className="transform group-hover/proof:translate-x-0.5 transition-transform duration-200 text-xs">→</span>
+                </button>
               )}
             </div>
           ))}
