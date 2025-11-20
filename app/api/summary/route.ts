@@ -7,13 +7,17 @@ export const revalidate = 0;
 
 export async function GET() {
   try {
-    const [vouches, totalVouches, decorVouches] = await Promise.all([
+    const [vouches, maxVouchNumber, decorVouches] = await Promise.all([
       prisma.vouch.findMany({
         select: {
           message: true,
         },
       }),
-      prisma.vouch.count(),
+      // Get the highest vouch number to show total including deleted vouches
+      prisma.vouch.findFirst({
+        orderBy: { vouchNumber: 'desc' },
+        select: { vouchNumber: true },
+      }),
       // Count vouches containing deco, pfp, or nameplates
       prisma.vouch.count({
         where: {
@@ -29,7 +33,7 @@ export async function GET() {
     const stats = extractCurrencyData(vouches);
 
     return NextResponse.json({
-      totalVouches,
+      totalVouches: maxVouchNumber?.vouchNumber || 0,
       ...stats,
     });
   } catch (error) {
