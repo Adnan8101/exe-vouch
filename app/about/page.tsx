@@ -122,7 +122,7 @@ export default function AboutPage() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div>
-                    <FaCheckCircle className="text-[#c9a76f] text-4xl mb-3 drop-shadow-[0_0_12px_rgba(201,167,111,0.8)]" />
+                    <FaCheckCircle className="text-[#c9a76f] text-4xl mb-3" />
                   </div>
                   <p className="text-sm mb-2 font-black tracking-wider uppercase bg-gradient-to-r from-[#c9a76f] via-[#f4e5c3] to-[#c9a76f] bg-clip-text text-transparent text-center" style={{ letterSpacing: '0.1em' }}>Total Vouches</p>
                   <p className="text-3xl font-black text-white tracking-tight text-center">
@@ -136,7 +136,7 @@ export default function AboutPage() {
                   style={{ willChange: 'transform', contain: 'layout style paint' }}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#22c55e]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                  <div className="text-4xl mb-2 drop-shadow-[0_0_8px_rgba(34,197,94,0.6)]">
+                  <div className="text-4xl mb-2">
                     ₹
                   </div>
                   <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#22c55e]/80 text-center">Total INR</p>
@@ -157,7 +157,7 @@ export default function AboutPage() {
                     width={40}
                     height={40}
                     quality={75}
-                    className="w-10 h-10 mb-2 object-contain drop-shadow-[0_0_8px_rgba(255,107,222,0.6)]"
+                    className="w-10 h-10 mb-2 object-contain"
                   />
                   <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#ff6bde]/80 text-center">Nitro Boosters</p>
                   <p className="text-2xl font-bold text-[#ff6bde] text-center">
@@ -172,7 +172,7 @@ export default function AboutPage() {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-[#8a67ff]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   <div>
-                    <FaGift className="text-[#8a67ff] text-3xl mb-2 drop-shadow-[0_0_8px_rgba(138,103,255,0.6)]" />
+                    <FaGift className="text-[#8a67ff] text-3xl mb-2" />
                   </div>
                   <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#8a67ff]/80 text-center">Decorations</p>
                   <p className="text-2xl font-bold text-[#8a67ff] text-center">
@@ -192,7 +192,7 @@ export default function AboutPage() {
                     width={40}
                     height={40}
                     quality={75}
-                    className="w-10 h-10 mb-2 object-contain rounded-full drop-shadow-[0_0_8px_rgba(255,182,193,0.6)]"
+                    className="w-10 h-10 mb-2 object-contain rounded-full"
                   />
                   <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#ffb6c1]/80 text-center">Owo Currency</p>
                   <p className="text-2xl font-bold text-[#ffb6c1] text-center">
@@ -218,7 +218,7 @@ export default function AboutPage() {
                     width={40}
                     height={40}
                     quality={75}
-                    className="w-10 h-10 mb-2 object-contain drop-shadow-[0_0_8px_rgba(247,147,26,0.6)]"
+                    className="w-10 h-10 mb-2 object-contain"
                   />
                   <p className="text-xs mb-1.5 font-bold tracking-wide uppercase text-[#f7931a]/80 text-center">Crypto Giveaways</p>
                   <p className="text-2xl font-bold text-[#f7931a] text-center">
@@ -239,15 +239,15 @@ export default function AboutPage() {
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Image 
-                  src="https://cdn.discordapp.com/emojis/1398664984640094299.png"
+                  src="https://cdn.discordapp.com/attachments/1358403022106918936/1439626275458252895/st_small_845x845-pad_1000x1000_f8f8f8.u2-removebg-preview.png?ex=692079f3&is=691f2873&hm=2fd4f57ce7dcc04ccc91fdffaf644f93d33b94e16b6d9c347631969c323e71f2&"
                   alt="Founder Badge"
                   width={48}
                   height={48}
                   quality={85}
                   unoptimized
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
+                  className="w-12 h-12 object-contain flex-shrink-0"
                 />
-                <h3 className="text-3xl font-black bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight leading-[3rem]" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>FOUNDER</h3>
+                <h3 className="text-3xl font-black bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight leading-none" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>FOUNDER</h3>
               </div>
               <div className="flex justify-center">
                 {teamLoading ? (
@@ -317,9 +317,9 @@ export default function AboutPage() {
                   height={48}
                   quality={85}
                   unoptimized
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
+                  className="w-12 h-12 object-contain flex-shrink-0"
                 />
-                <h3 className="text-2xl font-extrabold text-[#c9a76f] tracking-tight leading-[3rem]" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>OWNERS</h3>
+                <h3 className="text-2xl font-extrabold text-[#c9a76f] tracking-tight leading-none" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>OWNERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {teamLoading ? (
@@ -426,9 +426,9 @@ export default function AboutPage() {
                   height={48}
                   quality={85}
                   unoptimized
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(255,105,180,1)]"
+                  className="w-12 h-12 object-contain flex-shrink-0"
                 />
-                <h3 className="text-2xl font-extrabold bg-gradient-to-r from-[#ff69b4] via-[#ff1493] to-[#ff69b4] bg-clip-text text-transparent tracking-tight leading-[3rem]" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>GIRL OWNERS</h3>
+                <h3 className="text-2xl font-extrabold bg-gradient-to-r from-[#ff69b4] via-[#ff1493] to-[#ff69b4] bg-clip-text text-transparent tracking-tight leading-none" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>GIRL OWNERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {teamLoading ? (
@@ -487,9 +487,9 @@ export default function AboutPage() {
                   width={48}
                   height={48}
                   quality={80}
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_16px_rgba(201,167,111,0.85)]"
+                  className="w-12 h-12 object-contain flex-shrink-0"
                 />
-                <h3 className="text-xl font-bold text-white/90 leading-[3rem]" style={{ fontFamily: 'Inter, sans-serif' }}>MANAGERS</h3>
+                <h3 className="text-xl font-bold text-white/90 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>MANAGERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {teamLoading ? (
@@ -618,14 +618,14 @@ export default function AboutPage() {
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
                 <Image 
-                  src="https://cdn.discordapp.com/attachments/1358403022106918936/1439627122409869312/lf_discord_early_supporter_acc_1753602131_3641eb14_progressive-removebg-preview.png?ex=691b34bc&is=6919e33c&hm=9af2d6cb3b44b809007399a3967fa83c0884ffa864c5ec486c3a07dea9800f9f&"
+                  src="https://cdn.discordapp.com/attachments/1358403022106918936/1439627122409869312/lf_discord_early_supporter_acc_1753602131_3641eb14_progressive-removebg-preview.png?ex=69207abc&is=691f293c&hm=170fefb746ae842f5c3d30b1cc86cec40c293e36ffb7d6795e24b7dfaf77cd96&"
                   alt="Early Supporter Badge"
                   width={48}
                   height={48}
                   quality={75}
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_12px_rgba(201,167,111,0.7)]"
+                  className="w-12 h-12 object-contain flex-shrink-0"
                 />
-                <h3 className="text-lg font-semibold text-white/70 leading-[3rem]" style={{ fontFamily: 'Inter, sans-serif' }}>EARLY SUPPORTERS</h3>
+                <h3 className="text-lg font-semibold text-white/70 leading-none" style={{ fontFamily: 'Inter, sans-serif' }}>EARLY SUPPORTERS</h3>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 max-w-6xl mx-auto">
                 {teamLoading ? (

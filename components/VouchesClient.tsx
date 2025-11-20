@@ -128,47 +128,45 @@ export default function VouchesClient() {
           {vouches.map((vouch, index) => (
             <div
               key={vouch.id}
-              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-6 hover:border-[#c9a76f] transition-all duration-200 hover:shadow-xl hover:shadow-[#c9a76f]/10 flex flex-col h-full relative"
+              className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#2a2a2a] rounded-xl p-5 hover:border-[#c9a76f] transition-all duration-300 hover:shadow-xl hover:shadow-[#c9a76f]/10 flex flex-col h-full relative"
               style={{ contain: 'layout style paint' }}
             >
-              {/* Vouch Number Badge */}
-              <div className="absolute top-3 right-3 bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-full px-3 py-1 text-xs font-bold text-[#c9a76f]">
-                #{vouch.vouchNumber}
-              </div>
-              
-              <div className="flex items-start gap-4 mb-4">
-                <div className="flex-shrink-0">
-                  {vouch.authorAvatar ? (
-                    <Image
-                      src={vouch.authorAvatar}
-                      alt={vouch.authorName}
-                      width={124}
-                      height={124}
-                      quality={80}
-                      unoptimized={vouch.authorAvatar.includes('.gif')}
-                      className="w-16 h-16 rounded-full border-3 border-[#c9a76f]/50 shadow-lg shadow-[#c9a76f]/30"
-                    />
-                  ) : (
-                    <div 
-                      className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-[#c9a76f]/30"
-                    >
-                      {vouch.authorName.charAt(0).toUpperCase()}
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-3 mb-2">
+              {/* Header: Avatar, Username, Date and Badge */}
+              <div className="flex items-start justify-between gap-3 mb-4">
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <div className="flex-shrink-0">
+                    {vouch.authorAvatar ? (
+                      <Image
+                        src={vouch.authorAvatar}
+                        alt={vouch.authorName}
+                        width={48}
+                        height={48}
+                        quality={80}
+                        unoptimized={vouch.authorAvatar.includes('.gif')}
+                        className="w-12 h-12 rounded-full border-2 border-[#c9a76f]/40 shadow-md"
+                      />
+                    ) : (
+                      <div 
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center text-black font-bold text-lg shadow-md"
+                      >
+                        {vouch.authorName.charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                  </div>
+                  <div className="min-w-0">
                     <a
                       href={`https://id.rappytv.com/${vouch.authorId}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-[#c9a76f] font-semibold text-base hover:text-[#d4b786] transition-colors truncate"
+                      className="group text-[#c9a76f] font-bold text-base hover:text-[#d4b786] transition-colors relative inline-block"
                     >
-                      {vouch.authorName}
+                      <span className="relative">
+                        {vouch.authorName}
+                        <span className="absolute bottom-0 left-0 w-0 group-hover:w-full h-[2px] bg-gradient-to-r from-[#c9a76f] to-[#d4b786] transition-all duration-500 ease-out" />
+                      </span>
                     </a>
-                    <span className="text-xs text-gray-500 flex-shrink-0 whitespace-nowrap">
+                    <span className="text-xs text-gray-500 mt-1 block">
                       {new Date(vouch.timestamp).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
@@ -176,7 +174,9 @@ export default function VouchesClient() {
                       })}
                     </span>
                   </div>
-                  <hr className="border-[#2a2a2a]" />
+                </div>
+                <div className="bg-[#c9a76f]/10 border border-[#c9a76f]/30 rounded-full px-2.5 py-1 text-xs font-bold text-[#c9a76f] flex-shrink-0">
+                  #{vouch.vouchNumber}
                 </div>
               </div>
 

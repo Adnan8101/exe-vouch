@@ -64,7 +64,7 @@ export default function Header() {
                 About
               </Link>
               <a
-                href="https://discord.gg/qn6p5nNTkV"
+                href="https://discord.gg/exeop"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative px-6 py-2.5 rounded-full text-sm font-bold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#5865F2]/50"

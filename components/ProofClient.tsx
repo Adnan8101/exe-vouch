@@ -153,10 +153,19 @@ export default function ProofClient() {
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-white font-semibold text-lg mb-1 truncate">
+                  <a
+                    href={`https://id.rappytv.com/${proof.authorId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-block text-white font-semibold text-lg mb-1 truncate hover:text-[#c9a76f] transition-colors"
+                  >
                     {proof.authorName}
-                  </h3>
-                  <span className="text-xs text-gray-500">
+                    <span className="absolute left-0 -bottom-1 w-0 group-hover:w-full h-[2px] bg-[#c9a76f] transition-all duration-300" />
+                    <span className="absolute left-0 -bottom-5 opacity-0 group-hover:opacity-100 text-xs text-[#c9a76f] whitespace-nowrap transition-opacity duration-300">
+                      Check Proof
+                    </span>
+                  </a>
+                  <span className="text-xs text-gray-500 block mt-1">
                     {new Date(proof.timestamp).toLocaleDateString('en-US', {
                       month: 'short',
                       day: 'numeric',
