@@ -238,16 +238,18 @@ export default function AboutPage() {
             {/* Founder */}
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
-                <Image 
-                  src="https://cdn.discordapp.com/emojis/1398664984640094299.png"
-                  alt="Founder Badge"
-                  width={184}
-                  height={184}
-                  quality={85}
-                  unoptimized
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
-                />
-                <h3 className="text-3xl font-black text-center bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em' }}>FOUNDER</h3>
+                <div className="flex items-center justify-center w-12 h-12 flex-shrink-0">
+                  <Image 
+                    src="https://cdn.discordapp.com/emojis/1398664984640094299.png"
+                    alt="Founder Badge"
+                    width={48}
+                    height={48}
+                    quality={85}
+                    unoptimized
+                    className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
+                  />
+                </div>
+                <h3 className="text-3xl font-black bg-gradient-to-r from-[#c9a76f] via-[#d4b786] to-[#c9a76f] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.02em', lineHeight: '1.2' }}>FOUNDER</h3>
               </div>
               <div className="flex justify-center">
                 {teamLoading ? (
@@ -310,16 +312,18 @@ export default function AboutPage() {
             {/* Owners */}
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
-                <Image 
-                  src="https://cdn.discordapp.com/emojis/1439891152391376896.gif"
-                  alt="Owner Badge"
-                  width={184}
-                  height={184}
-                  quality={85}
-                  unoptimized
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
-                />
-                <h3 className="text-2xl font-extrabold text-center text-[#c9a76f] tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>OWNERS</h3>
+                <div className="flex items-center justify-center w-12 h-12 flex-shrink-0">
+                  <Image 
+                    src="https://cdn.discordapp.com/emojis/1439891152391376896.gif"
+                    alt="Owner Badge"
+                    width={48}
+                    height={48}
+                    quality={85}
+                    unoptimized
+                    className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(201,167,111,1)]"
+                  />
+                </div>
+                <h3 className="text-2xl font-extrabold text-[#c9a76f] tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em', lineHeight: '1.2' }}>OWNERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {teamLoading ? (
@@ -419,16 +423,18 @@ export default function AboutPage() {
             {/* Girl Owners */}
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
-                <Image 
-                  src="https://cdn.discordapp.com/emojis/1435661859112878120.gif"
-                  alt="Girl Owner Badge"
-                  width={184}
-                  height={184}
-                  quality={85}
-                  unoptimized
-                  className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(255,105,180,1)]"
-                />
-                <h3 className="text-2xl font-extrabold text-center bg-gradient-to-r from-[#ff69b4] via-[#ff1493] to-[#ff69b4] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>GIRL OWNERS</h3>
+                <div className="flex items-center justify-center w-12 h-12 flex-shrink-0">
+                  <Image 
+                    src="https://cdn.discordapp.com/emojis/1435661859112878120.gif"
+                    alt="Girl Owner Badge"
+                    width={48}
+                    height={48}
+                    quality={85}
+                    unoptimized
+                    className="w-12 h-12 object-contain drop-shadow-[0_0_20px_rgba(255,105,180,1)]"
+                  />
+                </div>
+                <h3 className="text-2xl font-extrabold bg-gradient-to-r from-[#ff69b4] via-[#ff1493] to-[#ff69b4] bg-clip-text text-transparent tracking-tight" style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em', lineHeight: '1.2' }}>GIRL OWNERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {teamLoading ? (
@@ -481,15 +487,17 @@ export default function AboutPage() {
             {/* Managers */}
             <div className="mb-16">
               <div className="flex items-center justify-center gap-3 mb-8">
-                <Image 
-                  src="https://cdn.discordapp.com/emojis/1384862648314626078.png"
-                  alt="Manager Badge"
-                  width={80}
-                  height={80}
-                  quality={80}
-                  className="w-10 h-10 object-contain drop-shadow-[0_0_16px_rgba(201,167,111,0.85)]"
-                />
-                <h3 className="text-xl font-bold text-center text-white/90" style={{ fontFamily: 'Inter, sans-serif' }}>MANAGERS</h3>
+                <div className="flex items-center justify-center w-12 h-12 flex-shrink-0">
+                  <Image 
+                    src="https://cdn.discordapp.com/emojis/1384862648314626078.png"
+                    alt="Manager Badge"
+                    width={48}
+                    height={48}
+                    quality={80}
+                    className="w-12 h-12 object-contain drop-shadow-[0_0_16px_rgba(201,167,111,0.85)]"
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-white/90" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.2' }}>MANAGERS</h3>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {teamLoading ? (
@@ -616,16 +624,18 @@ export default function AboutPage() {
 
             {/* Early Supporter */}
             <div className="mb-16">
-              <div className="flex items-center justify-center gap-2 mb-8">
-                <Image 
-                  src="https://cdn.discordapp.com/attachments/1358403022106918936/1439627122409869312/lf_discord_early_supporter_acc_1753602131_3641eb14_progressive-removebg-preview.png?ex=691b34bc&is=6919e33c&hm=9af2d6cb3b44b809007399a3967fa83c0884ffa864c5ec486c3a07dea9800f9f&"
-                  alt="Early Supporter Badge"
-                  width={64}
-                  height={64}
-                  quality={75}
-                  className="w-8 h-8 object-contain drop-shadow-[0_0_12px_rgba(201,167,111,0.7)]"
-                />
-                <h3 className="text-lg font-semibold text-center text-white/70" style={{ fontFamily: 'Inter, sans-serif' }}>EARLY SUPPORTERS</h3>
+              <div className="flex items-center justify-center gap-3 mb-8">
+                <div className="flex items-center justify-center w-12 h-12 flex-shrink-0">
+                  <Image 
+                    src="https://cdn.discordapp.com/attachments/1358403022106918936/1439627122409869312/lf_discord_early_supporter_acc_1753602131_3641eb14_progressive-removebg-preview.png?ex=691b34bc&is=6919e33c&hm=9af2d6cb3b44b809007399a3967fa83c0884ffa864c5ec486c3a07dea9800f9f&"
+                    alt="Early Supporter Badge"
+                    width={48}
+                    height={48}
+                    quality={75}
+                    className="w-12 h-12 object-contain drop-shadow-[0_0_12px_rgba(201,167,111,0.7)]"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-white/70" style={{ fontFamily: 'Inter, sans-serif', lineHeight: '1.2' }}>EARLY SUPPORTERS</h3>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 max-w-6xl mx-auto">
                 {teamLoading ? (
