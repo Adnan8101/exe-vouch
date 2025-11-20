@@ -257,7 +257,7 @@ export default function AboutPage() {
                     href={`https://id.rappytv.com/${team.founder[0].userId}`}
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-sm"
+                    className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-8 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-sm"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
@@ -267,44 +267,46 @@ export default function AboutPage() {
                         <Image 
                           src={team.founder[0].avatarUrl}
                           alt={team.founder[0].username}
-                          width={240}
-                          height={240}
+                          width={200}
+                          height={200}
                           quality={90}
                           priority
                           unoptimized={team.founder[0].avatarUrl.includes('.gif')}
-                          className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
+                          className="w-32 h-32 rounded-full mx-auto mb-5 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
                         />
                       ) : (
-                        <div className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center ring-4 ring-[#c9a76f]/30">
-                          <span className="text-5xl font-black text-black">{team.founder[0].username.charAt(0).toUpperCase()}</span>
-                        </div>
+                          <div className="w-32 h-32 rounded-full mx-auto mb-5 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 bg-gradient-to-br from-[#c9a76f] to-[#d4b786] flex items-center justify-center ring-4 ring-[#c9a76f]/30">
+                            <span className="text-5xl font-black text-black">{team.founder[0].username.charAt(0).toUpperCase()}</span>
+                          </div>
                       )}
-                      <FounderUsername username={team.founder[0].username} className="mb-2" />
-                      <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">{team.founder[0].userId}</p>
+                      <FounderUsername username={team.founder[0].username} className="mb-1" />
+                      <p className="text-gray-400/60 text-xs font-medium uppercase tracking-wider mb-2">Founder</p>
+                      <p className="text-gray-400 text-xs font-mono bg-black/30 rounded-lg px-3 py-1.5 inline-block">{team.founder[0].userId}</p>
                     </div>
                   </a>
                 ) : (
-                  <a 
-                    href="https://id.rappytv.com/959653911923396629" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-10 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-sm"
+                    <a 
+                      href="https://id.rappytv.com/959653911923396629" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="relative group overflow-hidden bg-gradient-to-br from-[#c9a76f]/40 via-[#1a1a1a] to-[#0a0a0a] border-4 border-[#c9a76f] rounded-3xl p-8 text-center transition-all duration-500 hover:shadow-[0_0_60px_rgba(201,167,111,0.8)] hover:scale-105 hover:-translate-y-2 max-w-sm"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-[#c9a76f]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#c9a76f]/20 rounded-full blur-3xl" />
                     <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#d4b786]/20 rounded-full blur-3xl" />
                     <div className="relative z-10">
-                      <Image 
-                        src="https://cdn.discordapp.com/avatars/959653911923396629/1a829abb7020436cbca22765be4e331b.png?size=1024" 
-                        alt="imunknown69" 
-                        width={240}
-                        height={240}
-                        quality={90}
-                        priority
-                        className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
-                      />
-                      <FounderUsername username="imunknown69" className="mb-2" />
-                      <p className="text-gray-400 text-sm font-mono bg-black/30 rounded-lg px-4 py-2 inline-block">959653911923396629</p>
+                        <Image 
+                          src="https://cdn.discordapp.com/avatars/959653911923396629/1a829abb7020436cbca22765be4e331b.png?size=1024" 
+                          alt="imunknown69" 
+                          width={200}
+                          height={200}
+                          quality={90}
+                          priority
+                          className="w-32 h-32 rounded-full mx-auto mb-5 border-4 border-[#c9a76f] shadow-2xl shadow-[#c9a76f]/50 ring-4 ring-[#c9a76f]/30"
+                        />
+                        <FounderUsername username="imunknown69" className="mb-1" />
+                        <p className="text-gray-400/60 text-xs font-medium uppercase tracking-wider mb-2">Founder</p>
+                        <p className="text-gray-400 text-xs font-mono bg-black/30 rounded-lg px-3 py-1.5 inline-block">959653911923396629</p>
                     </div>
                   </a>
                 )}
